@@ -1,5 +1,9 @@
-# Proyecto de la asignatura IV (get-match)
+# Get-Match
 
-## Descripción
+## Problema a resolver
 
-API que resuelve el problema de saber el resultado, horario y goleadores de un partido de fútbol.
+Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultado, horario y goleadores de un partido de fútbol.
+
+## Herramientas
+
+Lenguaje usado: Ruby
