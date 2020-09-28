@@ -10,9 +10,9 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 Lenguaje usado: Ruby :diamonds:
 
-## Configuración de git :octocat:
+## Información adicional :clipboard:
 
-El proceso seguido para la configuración de git se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md)
+El proceso seguido para la configuración de git se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
 
 ## Autor :man:
 
