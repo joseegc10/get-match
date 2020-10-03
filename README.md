@@ -9,8 +9,9 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ## Herramientas :diamonds:
 
-- **Lenguaje usado:** he elegido Ruby, ya que es un lenguaje no demasiado difícil y con el cual no he realizado ningún proyecto. Esto me motiva a elegirlo, para poder aprender a realizar proyectos en este lenguaje.
+- **Lenguaje usado:** He elegido Ruby, ya que es un lenguaje no demasiado difícil y con el cual no he realizado ningún proyecto. Esto me motiva a elegirlo, para poder aprender a realizar proyectos en este lenguaje.
 - **Framework:** He elegido Sinatra, descubierto por recomendación en el grupo de telegram de la asignatura. El motivo de la elección ha sido que lo consideran un framework sencillo con el que realizar APIs REST, pues contiene lo mínimo para poder hacerla. Además, es un framework bastante rápido.
+- **Base de datos:** En principio, debido a la poca complejidad de la API, tengo pensado almacenar los datos de forma local, en archivos con formato JSON (JavaScript Object Notation).
 
 ## Información adicional :clipboard:
 
