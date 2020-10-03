@@ -1,7 +1,7 @@
 # Get-Match
 > Proyecto de la asignatura IV 
 
-![logo-get-match](https://github.com/joseegc10/get-match/blob/master/imagenes/logo.png)
+![logo-get-match](https://github.com/joseegc10/get-match/blob/master/docs/logo.png)
 
 ## Problema a resolver :soccer:
 
@@ -10,7 +10,6 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ## Herramientas :diamonds:
 
 - **Lenguaje usado:** he elegido Ruby, ya que es un lenguaje no demasiado difícil y con el cual no he realizado ningún proyecto. Esto me motiva a elegirlo, para poder aprender a realizar proyectos en este lenguaje.
-
 
 ## Información adicional :clipboard:
 
