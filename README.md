@@ -1,7 +1,7 @@
 # Get-Match
 > Proyecto de la asignatura IV 
 
-![logo-get-match](https://github.com/joseegc10/get-match/blob/master/docs/logo.png)
+![logo-get-match](https://github.com/joseegc10/get-match/blob/master/docs/img/logo.png)
 
 ## Problema a resolver :soccer:
 
