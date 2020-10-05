@@ -18,7 +18,6 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ## Información adicional :clipboard:
 
 - El proceso seguido para la configuración de git se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
-- Las historias de usuario del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/HU.md).
 - Los pasos a seguir en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
 
 ## Autor :man:
