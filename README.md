@@ -21,6 +21,12 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - Los pasos a seguir en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
 - [Código inicial](https://github.com/joseegc10/get-match/blob/master/src/partido.rb)
 - [Fichero iv.yaml](https://github.com/joseegc10/get-match/blob/master/iv.yaml)
+- Las tareas (issues) completadas se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
+
+## Historias de usuario
+
+- [HU1](https://github.com/joseegc10/get-match/issues/1).
+- [HU2](https://github.com/joseegc10/get-match/issues/2).
 
 ## Autor :man:
 
