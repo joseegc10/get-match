@@ -22,6 +22,6 @@ class Partido
 
     # Método que añade un goleador al array de goleadores
     def aniadeGoleador(goleador)
-        goleadores << goleador
+        
     end
 end
