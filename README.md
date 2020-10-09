@@ -19,7 +19,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 - El proceso seguido para la configuración de git se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
 - Los pasos a seguir en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
-- [Clase inicial](https://github.com/joseegc10/get-match/blob/master/src/partido.rb)
+- [Código inicial](https://github.com/joseegc10/get-match/blob/master/src/partido.rb)
 
 ## Autor :man:
 
