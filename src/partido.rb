@@ -24,4 +24,10 @@ class Partido
     def aniadeGoleador(goleador)
         
     end
+
+    # Método que calcula el resultado de un partido teniendo en cuenta los goleadores
+    # Se corresponde con la HU1: consulta del resultado de un partido
+    def calculaResultado
+
+    end
 end
