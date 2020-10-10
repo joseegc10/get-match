@@ -18,7 +18,7 @@ class Partido
     attr_reader :local
     attr_reader :visitante
     attr_reader :fecha
-    attr_reader :goleadores
+    attr_reader :goleadores   # HU2: consulta de goleadores
 
     # Método que añade un goleador al array de goleadores
     def aniadeGoleador(goleador)
