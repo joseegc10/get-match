@@ -1,6 +1,6 @@
 # RSPEC
 
-RSpec es una herramienta que nos permite testear el código que escribimos en ruby, realizando pruebas unitarias, es decir, probando cada método o función. Este permite el desarrollo basado en pruebas (TDD), escribiendo las pruebas primero y permitiendo la automatización de estas pruebas.
+[RSpec](https://rspec.info/) es una herramienta que nos permite testear el código que escribimos en ruby, realizando pruebas unitarias, es decir, probando cada método o función. Este permite el desarrollo basado en pruebas (TDD), escribiendo las pruebas primero y permitiendo la automatización de estas pruebas.
 
 ## Ventajas
 
