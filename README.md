@@ -10,7 +10,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ## Herramientas 
 
 - Como **lenguaje de programación** he elegido [Ruby](https://www.ruby-lang.org/es/), ya que es un lenguaje no demasiado difícil y con el cual no he realizado ningún proyecto. Esto me motiva a elegirlo, para poder aprender a realizar proyectos en este lenguaje.
-- Como **gestor de versiones** de ruby he elegido RVM, cuya información puede encontrarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/bundler.md).
+- Como **gestor de versiones** de ruby he elegido RVM, cuya información puede encontrarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rvm.md).
 - Para **administrar las gemas (librerías) de ruby** se hace uso de bundler. La información acerca de esta herramienta se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/bundler.md).
 - Como **herramienta para testear el código** uso Rspec, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rspec.md).
 - Como **herramienta de construcción** uso Rake, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rake.md).
