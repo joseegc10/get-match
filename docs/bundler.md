@@ -6,10 +6,13 @@ Además de que resuelve todo lo anterior, bundler es una herramienta que nos res
 ## Instalación
 
 Bundler es una gema más, por lo que se instala como cualquier gema.
+
 `gem install bundler`
 
 Posteriormente, iniciamos bundler, creándonos el archivo Gemfile donde se declararan las gemas usadas en el proyecto y las versiones.
+
 `bundle init`
 
 Una vez añadimos al archivo Gemfile las gemas y la versión que queremos usar de dichas gemas, hacemos lo siguiente para instalarlas.
+
 `bundle install`
