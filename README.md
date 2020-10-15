@@ -58,6 +58,7 @@ Comentar que para poder realizar esto, es necesario tener instaladas las dos gem
 `gem install rake`
 
 La documentación que he creado sobre bundler y rake se puede consultar en el apartado de herramientas.
+
 Por último, el fichero Gemfile, donde se declaran las gemas a instalar, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Gemfile).
 
 ## Test
