@@ -37,6 +37,10 @@ describe Equipo do
             @equipo.aniadeJugador(@jugador1)
             expect(@equipo.jugadores[0].nombre).to eq 'Ramos'
         end
+
+        it 'no es un jugador' do
+            expect{@equipo.aniadeJugador(@equipo)}.to raise_error(ArgumentError)
+        end
     end
 
     describe '#aniadeJugadores' do
@@ -51,6 +55,17 @@ describe Equipo do
 
             expect(@equipo.jugadores[0].nombre).to eq 'Marcelo'
             expect(@equipo.jugadores[1].nombre).to eq 'Varane'
+        end
+
+        it 'es un array pero no de jugadores' do
+            conjunto = Array.new
+            conjunto << @equipo
+
+            expect{@equipo.aniadeJugadores(conjunto)}.to raise_error(ArgumentError)
+        end
+
+        it 'no es un array de jugadores' do
+            expect{@equipo.aniadeJugadores(@equipo)}.to raise_error(ArgumentError)
         end
     end
 
