@@ -18,16 +18,23 @@ class Equipo
 
     # Método que añade un jugador al equipo
     def aniadeJugador(jugador)
+        raise ArgumentError, 'El parámetro no es un jugador' unless jugador.is_a? Jugador
+
         @jugadores << jugador
     end
 
     # Método que añade un conjunto de jugadores al equipo
     def aniadeJugadores(nuevosJugadores)
+        raise ArgumentError, 'El parámetro no es un array de jugadores' unless nuevosJugadores.is_a? Array
+
         for jugador in nuevosJugadores
+            raise ArgumentError, 'El parámetro no es un array de jugadores' unless jugador.is_a? Jugador
             @jugadores << jugador
         end
     end
 
+    # Método que devuelve el nombre de los jugadores de un equipo
+    # separados por ,
     def sacaJugadores
         nombreJugadores = Array.new
 
