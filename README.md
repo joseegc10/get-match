@@ -21,11 +21,19 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - El proceso seguido para la **configuración de git** se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
 - Los **pasos a seguir** en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
 - Las **tareas (issues) completadas** se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
+- El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
 
-## Código :page_facing_up:
+## Código principal :page_facing_up:
 
 - La **clase principal** del proyecto es la clase partido. Esta clase se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/src/partido.rb).
-- El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
+- Además, otras **clases auxiliares** son la clase [jugador](https://github.com/joseegc10/get-match/blob/master/src/jugador.rb) y la clase [equipo](https://github.com/joseegc10/get-match/blob/master/src/equipo.rb).
+
+## Código de test
+
+- El test de la clase principal partido se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/spec/partido_spec.rb).
+- Otros tests:
+    - [Clase jugador](https://github.com/joseegc10/get-match/blob/master/spec/jugador_spec.rb)
+    - [Clase equipo](https://github.com/joseegc10/get-match/blob/master/spec/equipo_spec.rb)
 
 ## Historias de usuario :walking:
 
