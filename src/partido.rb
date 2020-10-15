@@ -1,3 +1,7 @@
+require_relative "jugador.rb"
+require_relative "equipo.rb"
+require 'date'
+
 # Clase que representa un partido de fútbol
 
 class Partido
@@ -22,7 +26,14 @@ class Partido
 
     # Método que añade un goleador al array de goleadores
     def aniadeGoleador(goleador)
-        
+        @goleadores << goleador
+    end
+
+    # Método que añade un conjunto de goleadores al partido
+    def aniadeGoleadores(nuevosGoleadores)
+        for goleador in nuevosGoleadores
+            @goleadores << goleador
+        end
     end
 
     # Método que calcula el resultado de un partido teniendo en cuenta los goleadores
