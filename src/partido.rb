@@ -75,4 +75,27 @@ class Partido
 
         return nombres
     end
+
+    def maximoGoleador
+        maximoGoleador = ''
+        max_apariciones = 0
+
+        for i in (0..(@goleadores.length)-1) do
+            a_buscar = @goleadores[i].nombre
+            num_apariciones = 1
+            
+            for j in (i+1..(@goleadores.length)-1) do
+                if a_buscar == @goleadores[j].nombre
+                    num_apariciones += 1
+                end
+            end
+
+            if num_apariciones > max_apariciones
+                max_apariciones = num_apariciones
+                maximoGoleador = a_buscar
+            end
+        end
+
+        return maximoGoleador
+    end
 end
