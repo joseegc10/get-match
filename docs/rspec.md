@@ -22,3 +22,7 @@ Instalamos la gema rspec.
 Posteriormente, iniciamos rspec.
 
 `rspec --init`
+
+Una vez hacemos lo anterior, se generan dos cosas:
+- Una carpeta spec, donde se deberán incluir los test que realicemos, con el nombre de la clase y añadiendo _spec en el nombre de todos ellos (Ej: partido_spec.rb). Además, dentro de esta carpeta se genera el archivo spec_helper.rb, necesario para la ejecución de los tests.
+- Un archivo .rspec, que nos servirá para no tener que hacer el require de spec_helper en cada fichero, por lo que es necesario dejarlo en el repositorio.
