@@ -40,6 +40,8 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 - [HU1](https://github.com/joseegc10/get-match/issues/1): Como usuario, quiero poder consultar el resultado de un partido.
 - [HU2](https://github.com/joseegc10/get-match/issues/2): Como usuario, me gustaría poder consultar los goleadores de un partido.
+- [HU3](https://github.com/joseegc10/get-match/issues/32): Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue.
+- [HU4](https://github.com/joseegc10/get-match/issues/35): Como usuario, debo poder consultar el máximo goleador de un partido.
 
 ## Dependencias
 
