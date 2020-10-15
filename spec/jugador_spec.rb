@@ -25,7 +25,7 @@ describe Jugador do
             @jugador.cambiaEquipo(nuevoEquipo)
             
             expect(@jugador.equipo.nombre).to eq 'Barsa'
-        end
+        end 
 
         it 'no es un equipo' do
             expect{@jugador.cambiaEquipo(@jugador)}.to raise_error(ArgumentError)
