@@ -56,4 +56,10 @@ class Partido
 
         return [golesLocal, golesVisitante]
     end
+
+    # Método que calcula el número de días que quedan para el partido
+    # Se corresponde con la HU3: consultar del tiempo que queda para que empiece un partido
+    def diasPara_DesdeElPartido
+        return (@fecha - Date.today)
+    end
 end
