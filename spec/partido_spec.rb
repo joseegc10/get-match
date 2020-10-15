@@ -68,4 +68,12 @@ describe Partido do
             expect(@partido.diasPara_DesdeElPartido).to eq(0)
         end
     end
+
+    describe '#sacaGoleadores' do
+        it 'nombre de los goleadores del partido' do
+            @partido.aniadeGoleadores(@nuevosGoleadores)
+
+            expect(@partido.sacaGoleadores).to eq 'Ramos, Pique'
+        end
+    end
 end
