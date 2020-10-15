@@ -26,15 +26,17 @@ class Partido
 
     # Método que añade un goleador al array de goleadores
     def aniadeGoleador(goleador)
-        raise 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
+        raise ArgumentError, 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
 
         @goleadores << goleador
     end
 
     # Método que añade un conjunto de goleadores al partido
     def aniadeGoleadores(nuevosGoleadores)
+        raise ArgumentError, 'El parámetro no es un array de jugadores' unless nuevosGoleadores.is_a? Array
+
         for goleador in nuevosGoleadores
-            raise 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
+            raise ArgumentError, 'El parámetro no es un array de jugadores' unless goleador.is_a? Jugador
             @goleadores << goleador
         end
     end

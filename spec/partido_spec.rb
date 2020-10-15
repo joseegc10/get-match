@@ -38,6 +38,10 @@ describe Partido do
             @partido.aniadeGoleador(@jugador)
             expect(@partido.goleadores[0].nombre).to eq 'Ramos'
         end
+
+        it 'no es un jugador' do
+            expect{@partido.aniadeGoleador(@local)}.to raise_error(ArgumentError)
+        end
     end
 
     describe '#aniadeGoleadores' do
@@ -51,6 +55,18 @@ describe Partido do
 
             expect(@partido.goleadores[0].nombre).to eq 'Ramos'
             expect(@partido.goleadores[1].nombre).to eq 'Pique'
+        end
+
+        it 'es un array pero no de jugadores' do
+            conjunto = Array.new
+            conjunto << @local
+            conjunto << @visitante
+
+            expect{@partido.aniadeGoleador(conjunto)}.to raise_error(ArgumentError)
+        end
+
+        it 'no es un array de jugadores' do
+            expect{@partido.aniadeGoleadores(@local)}.to raise_error(ArgumentError)
         end
     end
 
