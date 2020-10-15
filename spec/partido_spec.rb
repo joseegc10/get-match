@@ -76,4 +76,15 @@ describe Partido do
             expect(@partido.sacaGoleadores).to eq 'Ramos, Pique'
         end
     end
+
+    describe '#maximoGoleador' do
+        it 'no hay goleadores' do
+            expect(@partido.maximoGoleador).to eq('')
+        end
+
+        it 'calcular el maximo goleador de un partido' do
+            @partido.aniadeGoleador(@jugador)
+            expect(@partido.maximoGoleador).to eq('Ramos')
+        end
+    end
 end
