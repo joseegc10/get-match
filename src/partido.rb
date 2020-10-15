@@ -39,6 +39,21 @@ class Partido
     # Método que calcula el resultado de un partido teniendo en cuenta los goleadores
     # Se corresponde con la HU1: consulta del resultado de un partido
     def calculaResultado
+        golesLocal = 0
+        golesVisitante = 0
 
+        for goleador in @goleadores
+
+            if goleador.equipo.nombre == @local.nombre
+                golesLocal += 1
+
+            elsif goleador.equipo.nombre == @visitante.nombre
+                golesVisitante += 1
+                
+            end 
+
+        end
+
+        return [golesLocal, golesVisitante]
     end
 end
