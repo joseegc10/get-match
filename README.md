@@ -10,10 +10,10 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ## Herramientas :hammer:
 
 - Como **lenguaje de programación** he elegido [Ruby](https://www.ruby-lang.org/es/), ya que es un lenguaje no demasiado difícil y con el cual no he realizado ningún proyecto. Esto me motiva a elegirlo, para poder aprender a realizar proyectos en este lenguaje.
-- Como **gestor de versiones** de ruby he elegido RVM, cuya información puede encontrarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rvm.md).
-- Como **herramienta de gestión de dependencias** se hace uso de bundler. La información acerca de esta herramienta se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/bundler.md).
-- Como **herramienta para testear el código** uso Rspec, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rspec.md).
-- Como **herramienta de construcción** uso Rake, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rake.md).
+- Como **gestor de versiones** de ruby he elegido **RVM**, cuya información puede encontrarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rvm.md).
+- Como **herramienta de gestión de dependencias** se hace uso de **bundler**. La información acerca de esta herramienta se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/bundler.md).
+- Como **herramienta para testear el código** uso **Rspec**, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rspec.md).
+- Como **herramienta de construcción** uso **Rake**, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/rake.md).
 - El planteamiento del **resto de herramientas** que se van a usar en el desarrollo del proyecto se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas.md).
 
 ## Enlaces adicionales :clipboard:
