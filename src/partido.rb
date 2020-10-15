@@ -69,6 +69,7 @@ class Partido
     end
 
     # Método que saca el nombre de los jugadores que han metido gol en el partido
+    # HU2: consulta de goleadores
     def sacaGoleadores
         nombreGoleadores = Array.new
 
