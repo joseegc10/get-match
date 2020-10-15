@@ -22,6 +22,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - Los **pasos a seguir** en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
 - Las **tareas (issues) completadas** se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
 - El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
+- El **fichero Rakefile**, donde se automatizan las tareas, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Rakefile).
 
 ## Código principal :page_facing_up:
 
@@ -56,7 +57,8 @@ Comentar que para poder realizar esto, es necesario tener instaladas las dos gem
 
 `gem install rake`
 
-La documentación que he creado sobre bundler y rake se puede consultar en el apartado de herramientas. 
+La documentación que he creado sobre bundler y rake se puede consultar en el apartado de herramientas.
+Por último, el fichero Gemfile, donde se declaran las gemas a instalar, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Gemfile).
 
 ## Test
 
