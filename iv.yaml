@@ -1,1 +1,10 @@
-entidad: src/partido.rb
+entidad: 
+  - src/partido.rb
+  - src/equipo.rb
+  - src/jugador.rb
+lenguaje: ruby
+taskfile: Rakefile
+test:
+  - spec/partido_spec.rb
+  - spec/equipo_spec.rb
+  - spec/jugador_spec.rb
