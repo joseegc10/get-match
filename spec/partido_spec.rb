@@ -53,4 +53,13 @@ describe Partido do
             expect(@partido.goleadores[1].nombre).to eq 'Pique'
         end
     end
+
+    describe '#calculaResultado' do
+        it 'calcular el resultado de un partido' do
+            @partido.aniadeGoleador(@jugador)
+            golesLocal, golesVisitante = @partido.calculaResultado
+            expect(golesLocal).to eq(1)
+            expect(golesVisitante).to eq(0)
+        end
+    end
 end
