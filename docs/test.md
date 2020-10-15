@@ -5,6 +5,7 @@ Como he comentado en el readme, para realizar el test de todas las clases hay qu
 `rake test`
 
 Sin embargo, he creado tareas para hacer los test de forma particular para cada clase.
+
 Para la clase Partido:
 
 `rake partido`
