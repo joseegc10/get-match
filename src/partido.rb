@@ -62,4 +62,17 @@ class Partido
     def diasPara_DesdeElPartido
         return (@fecha - Date.today)
     end
+
+    # Método que saca el nombre de los jugadores que han metido gol en el partido
+    def sacaGoleadores
+        nombreGoleadores = Array.new
+
+        for goleador in @goleadores
+            nombreGoleadores << goleador.nombre
+        end
+
+        nombres = nombreGoleadores.join(", ")
+
+        return nombres
+    end
 end
