@@ -62,4 +62,10 @@ describe Partido do
             expect(golesVisitante).to eq(0)
         end
     end
+
+    describe '#diasPara_DesdeElPartido' do
+        it 'número de dias que quedan/pasaron para/desde un partido' do
+            expect(@partido.diasPara_DesdeElPartido).to eq(0)
+        end
+    end
 end
