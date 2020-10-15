@@ -1,6 +1,6 @@
 # Pasos a seguir
 
-En este documento se recogerán los pasos a seguir a lo largo del desarrollo del proyecto de la asignatura. Cada hito del proyecto se corresponde con un milestone, el cuál tendrá los issues (tareas) que hay que realizar. Todo ello nos servirá para lograr el objetivo de completar las historias de usuario.
+En este documento se recogerán los pasos a seguir a lo largo del desarrollo del proyecto de la asignatura. Cada hito del proyecto se corresponde con un milestone, el cuál tendrá los issues (tareas) que hay que realizar. Todo ello nos servirá para lograr el objetivo de completar [las historias de usuario](https://github.com/joseegc10/get-match/milestone/2).
 
 ## Hito 0: Git y GitHub para entrega de hitos del proyecto.
 
@@ -20,6 +20,23 @@ En este documento se recogerán los pasos a seguir a lo largo del desarrollo del
 - Creación de la estructura general de una [clase](https://github.com/joseegc10/get-match/blob/master/src/partido.rb).
 - Creación de archivo [iv.yaml](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
 - Descripción de los pasos a seguir en el desarrollo del proyecto.
-- Mejora del readme, incluyendo la motivación del proyecto y enlazando la clase inicial, las tareas completadas, los pasos a seguir y el fichero iv.yaml.
-- Añadir los objetivos de la semana 2.
+- Mejora del [readme](https://github.com/joseegc10/get-match/blob/master/README.md), incluyendo la motivación del proyecto y enlazando la clase inicial, las tareas completadas, los pasos a seguir y el fichero iv.yaml.
+- Añadir los [objetivos](https://github.com/JJ/IV-20-21/blob/master/objetivos/joseegc10.md) de la semana 2.
 - Modificar el archivo del [hito 1](https://github.com/JJ/IV-20-21/blob/master/proyectos/hito-1.md) incluyendo el enlace a mi proyecto y la nueva versión.
+
+## [Hito 2](https://github.com/joseegc10/get-match/milestone/3): Tests
+
+Este hito se basa en la creación de código y de los test de dicho código de tal forma que avancemos en las HUs [1](https://github.com/joseegc10/get-match/issues/1),[2](https://github.com/joseegc10/get-match/issues/2),[3](https://github.com/joseegc10/get-match/issues/32) y [4](https://github.com/joseegc10/get-match/issues/35).
+
+- Crear los test de las siguientes clases:
+    - [Partido](https://github.com/joseegc10/get-match/issues/23)
+    - [Jugador](https://github.com/joseegc10/get-match/issues/33)
+    - [Equipo](https://github.com/joseegc10/get-match/issues/22)
+- Crear el código de las siguientes clases:
+    - [Partido](https://github.com/joseegc10/get-match/issues/25)
+    - [Jugador](https://github.com/joseegc10/get-match/issues/34)
+    - [Equipo](https://github.com/joseegc10/get-match/issues/24)
+- [Crear el fichero Gemfile](https://github.com/joseegc10/get-match/issues/30)
+- [Crear el fichero Rakefile](https://github.com/joseegc10/get-match/issues/27)
+- [Justificar uso de herramientas](https://github.com/joseegc10/get-match/issues/28)
+- [Mejora de la documentación en el readme](https://github.com/joseegc10/get-match/issues/7)
