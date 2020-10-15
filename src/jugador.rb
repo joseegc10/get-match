@@ -19,5 +19,5 @@ class Jugador
 	def cambiaEquipo(nuevoEquipo)
         raise ArgumentError, 'El parámetro no es un equipo' unless nuevoEquipo.is_a? Equipo
 		@equipo = nuevoEquipo
-	end
+	end 
 end
