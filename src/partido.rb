@@ -26,12 +26,15 @@ class Partido
 
     # Método que añade un goleador al array de goleadores
     def aniadeGoleador(goleador)
+        raise 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
+
         @goleadores << goleador
     end
 
     # Método que añade un conjunto de goleadores al partido
     def aniadeGoleadores(nuevosGoleadores)
         for goleador in nuevosGoleadores
+            raise 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
             @goleadores << goleador
         end
     end
@@ -76,6 +79,8 @@ class Partido
         return nombres
     end
 
+    # Método que calcula el máximo goleador de un partido
+    # Se corresponde con la HU4: consultar el máximo goleador de un partido
     def maximoGoleador
         maximoGoleador = ''
         max_apariciones = 0
