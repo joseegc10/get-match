@@ -63,11 +63,11 @@ Por último, el fichero Gemfile, donde se declaran las gemas a instalar, se pued
 
 ## Test
 
-Como he explicado en el apartado de herramientas, como herramienta de construcción uso Rake. En ella, he creado una tarea que automatiza el test de las clases creadas. Para realizar el test, hay que hacer lo siguiente:
+Como he explicado en el apartado de herramientas, como herramienta de construcción uso Rake. En ella, he creado una tarea que automatiza el test de las clases creadas. Para realizar el test de todas las clases, hay que hacer lo siguiente:
 
 `rake test`
 
-Para más información sobre el test, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/test.md).
+Para más información sobre el test (como ejecutar test para una clase particular), consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/test.md).
 
 ## Autor :man:
 
