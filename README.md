@@ -55,7 +55,7 @@ Además, he creado una tarea en rake para poder realizar lo mismo, se haría de 
 
 Comentar que para poder realizar esto, es necesario tener instaladas las dos gemas:
 
-`gem install bundle`
+`gem install bundler`
 
 `gem install rake`
 
