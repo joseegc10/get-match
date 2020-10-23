@@ -13,7 +13,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - Como **gestor de versiones** de ruby he elegido **RVM**, cuya información puede encontrarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/rvm.md).
 - Como **herramienta de gestión de dependencias** se hace uso de **bundler**. La información acerca de esta herramienta se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/bundler.md).
 - Como **herramienta para testear el código** uso **RSpec**, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/rspec.md).
-- Como **herramienta de construcción** uso **Rake**, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/rake.md).
+- Como **gestor de tareas** uso **Rake**, documentada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/rake.md).
 - El planteamiento del **resto de herramientas** que se van a usar en el desarrollo del proyecto se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/herramientas.md).
 
 ## Enlaces adicionales :clipboard:
