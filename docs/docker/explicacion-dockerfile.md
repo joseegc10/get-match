@@ -2,13 +2,14 @@
 
 En este documento se recogerán los distintos pasos que se llevan a cabo en el dockerfile. Para ello, se ha seguido las buenas prácticas para su desarrollo, que se pueden encontrar en el siguiente [enlace](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
 
-De forma general, se han seguido las siguientes buenas prácticas:
+**De forma general, se han seguido las siguientes buenas prácticas:**
 - Organizar los comandos en orden de importancia, ya que Docker usa caché para la construcción de la imagen y es capaz de reusar resultados para hacerlo más rapido, pero si uno de los comandos cambia, los que le suceden van a tener que volver a ejecutarse.
 - Elegir bien la imagen base, para ello se ha hecho un estudio de comparación entre las distintas imágenes oficiales de ruby que se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/pruebas-imagenes.md).
 - Elegir la versión de una imagen base, puesto que si no la elegimos se usará la última y puede que el entorno no sea reproducible.
 - Copiar solo los archivos que sean estrictamente necesarios.
 
-En el Dockerfile podremos distinguir:
+
+**En el Dockerfile podremos distinguir:**
 1. Elección de la imagen base y versión.
 
 `FROM ruby:2.7.2-buster`
