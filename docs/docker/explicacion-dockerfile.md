@@ -24,12 +24,15 @@ En el Dockerfile podremos distinguir:
 4. Copiamos fichero Gemfile y Gemfile.lock, instalamos dependencias y borramos los ficheros que habíamos añadido.
 
 `COPY Gemfile Gemfile.lock ./`
+
 `RUN bundle install`
+
 `RUN rm Gemfile Gemfile.lock`
 
 5. Definimos directorio de trabajo y creamos un volumen para realizar los test.
 
 `WORKDIR /test`
+
 `VOLUME /test`
 
 6. Se establece la ejecución de los tests.
