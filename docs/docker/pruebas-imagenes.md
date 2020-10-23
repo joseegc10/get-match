@@ -23,11 +23,12 @@ En este fichero se va a realizar una comparación en tamaño y velocidad de ejec
 
 ### ruby:\<2.7.2\>
 
-
+![buster](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/buster-tiempo.png)
 
 ### ruby:\<2.7.2\>-slim
 
-
+![slim-buster](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/slim-buster-tiempo.png)
 
 ### ruby:\<2.7.2\>-alpine
 
+![alpine](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/alpine-tiempo.png)
