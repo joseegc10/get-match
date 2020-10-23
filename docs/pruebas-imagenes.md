@@ -17,3 +17,17 @@ En este fichero se va a realizar una comparación en tamaño y velocidad de ejec
 ### ruby:\<2.7.2\>-alpine
 
 ![alpine](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/alpine.png)
+
+
+## Tiempo de construcción
+
+### ruby:\<2.7.2\>
+
+
+
+### ruby:\<2.7.2\>-slim
+
+
+
+### ruby:\<2.7.2\>-alpine
+
