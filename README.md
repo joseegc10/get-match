@@ -43,6 +43,11 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - [HU3](https://github.com/joseegc10/get-match/issues/32): Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue.
 - [HU4](https://github.com/joseegc10/get-match/issues/35): Como usuario, debo poder consultar el máximo goleador de un partido.
 
+## Contenedor para pruebas
+
+- En primer lugar, he explicado las posibles imágenes oficiales a elegir de ruby y se pueden encontrar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/variantes-imagenes.md).
+- La justificación y elección de la imagen de ruby se puede encontrar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/pruebas-imagenes.md).
+
 ## Dependencias
 
 Como he explicado en el apartado de herramientas, como gestor de dependencias uso bundler. Para instalar las dependencias podemos usar:
