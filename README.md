@@ -45,10 +45,19 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ## Contenedor para pruebas
 
+### Docker
+
 - En primer lugar, he explicado las posibles imágenes oficiales a elegir de ruby y se pueden encontrar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/variantes-imagenes.md).
 - La justificación y elección de la imagen de ruby se puede encontrar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/pruebas-imagenes.md).
 - El fichero Dockerfile se puede encontrar [aquí](https://github.com/joseegc10/get-match/blob/master/Dockerfile).
 - Para consultar las buenas prácticas seguidas y la explicación del fichero Dockerfile, se pueden seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/explicacion-dockerfile.md).
+
+### Registro de contenedores
+
+- He usado Docker Hub para almacenar el contenedor creado, el repositorio donde se ha subido el contenedor se puede consultar [aquí](https://hub.docker.com/repository/docker/joseegc10/get-match).
+- Además, he hecho uso de GitHub Container Registry como registro alternativo, puediendo consultarse [aquí]().
+
+Para más información sobre los registros de contenedores, consultar el siguiente [enlace]().
 
 ## Dependencias
 
