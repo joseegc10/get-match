@@ -54,7 +54,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ### Registro de contenedores
 
-- He usado Docker Hub para almacenar el contenedor creado, el repositorio donde se ha subido el contenedor se puede consultar [aquí](https://hub.docker.com/repository/docker/joseegc10/get-match).
+- He usado Docker Hub para almacenar el contenedor creado, el repositorio donde se ha subido el contenedor se puede consultar [aquí](https://hub.docker.com/r/joseegc10/get-match).
 - Además, he hecho uso de GitHub Container Registry como registro alternativo, puediendo consultarse [aquí]().
 
 Para más información sobre los registros de contenedores, consultar el siguiente [enlace]().
