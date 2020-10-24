@@ -1,6 +1,6 @@
 # Variantes de imágenes
 
-En este archivo podremos encontrar las posibles imágenes que se pueden usar en nuestro contenedor de ruby. La lista la he obtenido de la documentación de las imagenes oficiales de ruby en docker hub, puede consultarse [aquí](https://hub.docker.com/_/ruby). He consultado la lista oficial ya que estas van a estar mantenidas por la organización y además dispone de varios sistemas operativos a elegir.
+En este archivo podremos encontrar las posibles imágenes que se pueden usar en nuestro contenedor de ruby. La lista la he obtenido de la documentación de las imágenes oficiales de ruby en docker hub, puede consultarse [aquí](https://hub.docker.com/_/ruby). He consultado la lista oficial ya que estas van a estar mantenidas por la organización y además dispone de varios sistemas operativos a elegir.
 
 ## ruby:\<version\>
 
@@ -12,4 +12,4 @@ En esta imagen no están los paquetes comunes contenidos en la versión anterior
 
 ## ruby:\<version\>-alpine
 
-Basada en la famosa distribución de [Alpine](https://alpinelinux.org/), cuya principal ventaja es el poco peso que tiene dicha distribución, por lo que genera imagenes con muy pequeñas. Por ello, en el caso de que usemos esta imagen deberemos agregar nosotros las herramientas adicionales, ya que no es común que se incluyan. Como advertencia, esta imagen usa musl libc en vez de glibc and friends, por lo que podría provocar problemas dependiendo de los requisitos libc, aunque la mayoría del software no tiene problemas con ello.
+Basada en la famosa distribución de [Alpine](https://alpinelinux.org/), cuya principal ventaja es el poco peso que tiene dicha distribución, por lo que genera imágenes con muy pequeñas. Por ello, en el caso de que usemos esta imagen deberemos agregar nosotros las herramientas adicionales, ya que no es común que se incluyan. Como advertencia, esta imagen usa musl libc en vez de glibc and friends, por lo que podría provocar problemas dependiendo de los requisitos libc, aunque la mayoría del software no tiene problemas con ello.

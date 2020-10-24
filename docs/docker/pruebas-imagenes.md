@@ -62,4 +62,4 @@ En esta gráfica, podemos apreciar que los tiempos son muy parecidos, pues está
 
 ### Conclusión
 
-Como conclusión, **he optado por elegir la versión alpine**, pues es 2,4 veces menos pesada que la versión slim y a pesar de ser más rapida la versión slim, veo que esta diferencia es muy pequeña (en términos de milisegundos), por lo que merece más la pena elegir en función del peso y por tanto elijo alpine.
+Como conclusión, **he optado por elegir la versión alpine**, pues es 2,4 veces menos pesada que la versión slim y a pesar de ser más rapida la versión slim, veo que esta diferencia es muy pequeña (en términos de milisegundos), por lo que merece más la pena elegir en función del peso y por tanto elijo alpine. Además, esta versión viene con los paquetes necesarios para la ejecución de mi proyecto, como son Bundler y Rake, no teniendo paquetes extras que aumenten demasiado el tamaño de la imagen base.
