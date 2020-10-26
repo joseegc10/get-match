@@ -44,7 +44,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - [HU4](https://github.com/joseegc10/get-match/issues/35): Como usuario, debo poder consultar el máximo goleador de un partido.
 
 ## Contenedor para pruebas
- 
+
 ### Docker
 
 - En primer lugar, he explicado las posibles imágenes oficiales a elegir de ruby y se pueden encontrar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/variantes-imagenes.md).
