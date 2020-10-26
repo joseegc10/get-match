@@ -6,7 +6,7 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: login en GitHub Container Registry
-          uses: docker/login-action@v1
+        - uses: docker/login-action@v1
           with:
             registry: ghcr.io
             username: ${{ github.repository_owner }}
