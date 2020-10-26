@@ -18,11 +18,15 @@ En este documento se recogerán los distintos pasos que se llevan a cabo en el d
 
 `LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"`
 
-3. Ejecutamos prueba para ver si son compatible Gemfile y Gemfile.lock.
+3. Creamos un grupo de usuario para los test y creamos un usuario en dicho grupo.
+
+`RUN groupadd -r testgroup && useradd -r -g testuser testgroup`
+
+4. Ejecutamos prueba para ver si son compatible Gemfile y Gemfile.lock.
 
 `RUN bundle config --global frozen 1`
 
-4. Copiamos fichero Gemfile y Gemfile.lock, instalamos dependencias y borramos los ficheros que habíamos añadido.
+5. Copiamos fichero Gemfile y Gemfile.lock, instalamos dependencias y borramos los ficheros que habíamos añadido.
 
 `COPY Gemfile Gemfile.lock ./`
 
@@ -30,12 +34,16 @@ En este documento se recogerán los distintos pasos que se llevan a cabo en el d
 
 `RUN rm Gemfile Gemfile.lock`
 
-5. Definimos directorio de trabajo y creamos un volumen para realizar los test.
+6. Pasamos al usuario sin privilegios de root.
+
+`USER testuser`
+
+7. Definimos directorio de trabajo y creamos un volumen para realizar los test.
 
 `WORKDIR /test`
 
 `VOLUME /test`
 
-6. Se establece la ejecución de los tests.
+8. Se establece la ejecución de los tests.
 
 `CMD ["rake", "test"]`
