@@ -6,13 +6,13 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: login en GitHub Container Registry
-            env:
+          env:
             DOCKER_USER: ${{ secrets.DOCKER_USER }}
             DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-            run: docker login ghcr.io -u $DOCKER_USER -p $DOCKER_PASSWORD 
+          run: docker login ghcr.io -u $DOCKER_USER -p $DOCKER_PASSWORD 
         - name: construccion de la imagen
-            run: docker build -t ghcr.io/joseegc10/env-get-match:latest .
-        - name: push a GitHub Container Registry
-            run: docker push ghcr.io/joseegc10/env-get-match:latest
+          run: docker build -t ghcr.io/joseegc10/env-get-match:latest .
         - name: ejecutar tests
-            run: docker run -t -v `pwd`:/test ghcr.io/joseegc10/env-get-match:latest
+          run: docker run -t -v `pwd`:/test ghcr.io/joseegc10/env-get-match:latest
+        - name: push a GitHub Container Registry
+          run: docker push ghcr.io/joseegc10/env-get-match:latest
