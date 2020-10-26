@@ -1,7 +1,7 @@
 # Elegimos la imagen base y su versión
 FROM ruby:2.7.2-buster
 
-# Definimos version y persona encargada de mantener el Dockerfile
+# Definimos versión y persona encargada de mantener el Dockerfile
 LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"
 
 # Creamos un nuevo grupo de usuario y un nuevo usuario
