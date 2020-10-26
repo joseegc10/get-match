@@ -5,7 +5,7 @@ FROM ruby:2.7.2-buster
 LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"
 
 # Creamos un nuevo grupo de usuario y un nuevo usuario
-RUN groupadd -r testgroup && useradd -r -g testuser testgroup
+RUN groupadd -r testgroup && useradd -r -g testgroup testuser
 
 # Lanza error si el Gemfile no es compatible con Gemfile.lock
 RUN bundle config --global frozen 1
