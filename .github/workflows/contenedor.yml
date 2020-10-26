@@ -7,8 +7,8 @@ jobs:
         - uses: actions/checkout@v2
         - name: login en GitHub Container Registry
           env:
-            DOCKER_USER: ${{ secrets.DOCKER_USER }}
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+            DOCKER_USER: ${{ secrets.USER_GITHUBCR }}
+            DOCKER_PASSWORD: ${{ secrets.PASSWORD_GITHUBCR }}
           run: docker login ghcr.io -u $DOCKER_USER -p $DOCKER_PASSWORD 
         - name: construccion de la imagen
           run: docker build -t ghcr.io/joseegc10/env-get-match:latest .
