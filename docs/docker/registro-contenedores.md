@@ -10,6 +10,14 @@ Además, el tiempo de construcción que se requiere en Docker Hub es de 1 minuto
 
 ![tiempo-docker-hub](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/tiempo-docker-hub.png)
 
+Además, para demostrar la correcta configuración de docker hub para que se realice un build automáticamente tras hacer push a nuestro repositorio de github, podemos ver la siguiente imagen:
+
+![dh](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/docker-hub-auto-build.png)
+
+Para conseguir esto, tuve que crear un repo en docker hub, configurándolo de la siguiente forma:
+
+![dh2](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/config-dh.png)
+
 ## GitHub Container Registry
 
 Como registro alternativo, he visto adecuado usar GitHub Container Registry, pues me permite tener en un mismo lugar mi repositorio del proyecto con el registro del contenedor. Se puede mostrar en la siguiente imagen una prueba de su creación:
