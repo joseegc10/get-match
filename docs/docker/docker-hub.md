@@ -1,5 +1,3 @@
-# Registro de contenedores
-
 ## Docker Hub
 
 En primer lugar he usado Docker Hub. Para ello, tras crearme la cuenta, he creado el repositorio y lo he conectado con mi repositorio de GitHub. El repositorio se puede encontrar en el siguiente [enlace](https://hub.docker.com/r/joseegc10/get-match), mostrándose a continuación una prueba de su creación:
