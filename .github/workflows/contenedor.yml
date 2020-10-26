@@ -11,7 +11,6 @@ jobs:
             registry: ghcr.io
             username: ${{ github.repository_owner }}
             password: ${{ secrets.TOK }}
-          run: docker login ghcr.io -u $DOCKER_USER -p $DOCKER_PASSWORD 
         - name: construccion de la imagen
           run: docker build -t ghcr.io/joseegc10/env-get-match:latest .
         - name: ejecutar tests
