@@ -104,6 +104,6 @@ class Partido
             end
         end
 
-        return maximoGoleador
+        return [maximoGoleador, max_apariciones]
     end
 end
