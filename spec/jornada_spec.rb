@@ -87,4 +87,23 @@ describe Jornada do
             expect(goleador).to eq('Ramos')
         end
     end
+
+    describe '#equipoMasGoleador' do
+        it 'no hay goleadores' do
+            team, num  = @jornada.equipoMasGoleador
+            expect(team).to eq('')
+        end
+
+        it 'calcular el equipo más goleador de una jornada' do
+            @partido.aniadeGoleador(@jugador)
+            @partido.aniadeGoleador(@jugador)
+            @partido2.aniadeGoleador(@jugador2)
+            @jornada.aniadePartido(@partido)
+            @jornada.aniadePartido(@partido2)
+            
+            team, num  = @jornada.equipoMasGoleador
+
+            expect(team.nombre).to eq('Real Madrid')
+        end
+    end
 end
