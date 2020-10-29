@@ -50,27 +50,11 @@ Para consultar las herramientas que se usan en el proyecto seguir el siguiente [
 
 ## Dependencias
 
-Como he explicado en el apartado de herramientas, como gestor de dependencias uso bundler. Para instalar las dependencias podemos usar:
-
-`bundle install`
-
-Además, he creado una tarea en rake para poder realizar lo mismo, se haría de la siguiente forma:
-
-`rake install`
-
-Comentar que para poder realizar esto, es necesario tener instaladas las dos gemas:
-
-`gem install bundler`
-
-`gem install rake`
-
-La documentación que he creado sobre bundler y rake se puede consultar en el apartado de herramientas.
-
-Por último, el fichero Gemfile, donde se declaran las gemas a instalar, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Gemfile).
+Para consultar la información acerca de como se administran las depedencias, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/dependencias.md).
 
 ## Test
 
-La información acerca de los test de las clases se puede consultar [aquí]()https://github.com/joseegc10/get-match/blob/master/docs/test.md.
+La información acerca de los test de las clases se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/test.md).
 
 ## Enlaces adicionales :clipboard:
 
