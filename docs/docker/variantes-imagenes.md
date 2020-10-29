@@ -20,4 +20,4 @@ Basada en la distribución de [Alpine](https://alpinelinux.org/), cuya principal
 
 Posteriormente, podemos pensar en usar como imagen base un sistema operativo que no traiga ruby por defecto. Por la fama que he visto que tiene, he decidido usar la imagen base de Alpine, pues esta nos va a permitir tener un tamaño de la imagen base muy pequeño, pudiendo instalar los paquetes que sean estrictamente necesarios.
 
-Para ve
+Para ver el Dockerfile del que me he ayudado para crear esta imagen, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/Dockerfile-extra).
