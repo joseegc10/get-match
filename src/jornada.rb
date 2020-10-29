@@ -56,4 +56,25 @@ class Jornada
 
         return maxGoleador, maxGoles
     end
+
+    def equipoMasGoleador
+        maxGoles = 0
+        maxEquipo = ""
+
+        for partido in @partidos
+            golesLocal, golesVisitante = partido.calculaResultado()
+
+            if golesLocal > maxGoles
+                maxGoles = golesLocal
+                maxEquipo = partido.local
+            end
+
+            if golesVisitante > maxGoles
+                maxGoles = golesVisitante
+                maxEquipo = partido.visitante
+            end
+        end
+
+        return [maxEquipo, maxGoles]
+    end
 end
