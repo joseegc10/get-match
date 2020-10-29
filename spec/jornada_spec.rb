@@ -75,7 +75,7 @@ describe Jornada do
             expect(goleador).to eq('')
         end
 
-        it 'calcular el maximo goleador de una jornada' do
+        it 'calcular el máximo goleador de una jornada' do
             @partido.aniadeGoleador(@jugador)
             @partido.aniadeGoleador(@jugador)
             @partido2.aniadeGoleador(@jugador2)
