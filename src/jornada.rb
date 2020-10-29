@@ -40,4 +40,20 @@ class Jornada
     def diasPara_DesdeLaJornada
         return (@fechaInicio - Date.today)
     end
+
+    def maximoGoleadorJornada
+        maxGoles = 0
+        maxGoleador = ""
+
+        for partido in @partidos
+            maxGoleadorPartido, goles = partido.maximoGoleador()
+
+            if goles > maxGoles
+                maxGoles = goles
+                maxGoleador = maxGoleadorPartido
+            end
+        end
+
+        return maxGoleador, maxGoles
+    end
 end
