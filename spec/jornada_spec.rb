@@ -68,4 +68,23 @@ describe Jornada do
             expect(@jornada.diasPara_DesdeLaJornada).to eq(0)
         end
     end
+
+    describe '#maximoGoleadorJornada' do
+        it 'no hay goleadores' do
+            goleador, num  = @jornada.maximoGoleadorJornada
+            expect(goleador).to eq('')
+        end
+
+        it 'calcular el maximo goleador de una jornada' do
+            @partido.aniadeGoleador(@jugador)
+            @partido.aniadeGoleador(@jugador)
+            @partido2.aniadeGoleador(@jugador2)
+            @jornada.aniadePartido(@partido)
+            @jornada.aniadePartido(@partido2)
+
+            goleador, num  = @jornada.maximoGoleadorJornada
+
+            expect(goleador).to eq('Ramos')
+        end
+    end
 end
