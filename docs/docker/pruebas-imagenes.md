@@ -36,6 +36,9 @@ En este fichero se va a realizar una comparación en tamaño y velocidad de ejec
 
 ![alpine](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/alpine-tiempo.png)
 
+### alpine:3.12.1
+
+![alpine-base](https://github.com/joseegc10/get-match/blob/master/docs/img/contenedores/alpine-base-tiempo.png)
 
 ## Análisis de resultados
 
