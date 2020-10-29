@@ -34,4 +34,10 @@ class Jornada
             @partidos << partido
         end
     end
+
+    # Método que calcula el número de días que quedan para la jornada
+    # Se corresponde con la HU7: consultar el tiempo que queda para que empiece una jornada o desde que empezó
+    def diasPara_DesdeLaJornada
+        return (@fechaInicio - Date.today)
+    end
 end
