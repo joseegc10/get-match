@@ -31,8 +31,8 @@ Para consultar las herramientas que se usan en el proyecto seguir el siguiente [
 
 ## Código principal :page_facing_up:
 
-- La **clase principal** del proyecto es la clase partido. Esta clase se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/src/partido.rb). Una explicación de esta clase y de las posibles clases futuras viene dada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/Clase-Partido.md).
-- Además, otras **clases auxiliares** son la clase [jugador](https://github.com/joseegc10/get-match/blob/master/src/jugador.rb) y la clase [equipo](https://github.com/joseegc10/get-match/blob/master/src/equipo.rb).
+- La **clase principal** del proyecto es la clase jornada. Esta clase se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/src/jornada.rb). Una explicación de esta clase y de las posibles clases futuras viene dada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/Clase-Jornada.md).
+- Además, otras **clases auxiliares** son la clase [partido](https://github.com/joseegc10/get-match/blob/master/src/partido.rb), [jugador](https://github.com/joseegc10/get-match/blob/master/src/jugador.rb) y la clase [equipo](https://github.com/joseegc10/get-match/blob/master/src/equipo.rb).
 
 ## Código de test
 
