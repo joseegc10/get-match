@@ -7,12 +7,13 @@ En este documento se recogerán los distintos pasos que se llevan a cabo en el d
 - Elegir bien la imagen base, para ello se ha hecho un estudio de comparación entre las distintas imágenes oficiales de ruby que se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/pruebas-imagenes.md).
 - Elegir la versión de una imagen base, puesto que si no la elegimos se usará la última y puede que el entorno no sea reproducible.
 - Copiar solo los archivos que sean estrictamente necesarios.
+- Ejecutar con privilegios de super usuario lo estrictamente necesario.
 
 
 **En el Dockerfile podremos distinguir:**
 1. Elección de la imagen base y versión.
 
-`FROM ruby:2.7.2-buster`
+`FROM ruby:2.7.2-alpine3.12`
 
 2. Definimos las etiquetas de versión y persona encargada del Dockerfile.
 
@@ -20,30 +21,41 @@ En este documento se recogerán los distintos pasos que se llevan a cabo en el d
 
 3. Creamos un grupo de usuario para los test y creamos un usuario en dicho grupo.
 
-`RUN groupadd -r testgroup && useradd -r -g testuser testgroup`
+`RUN adduser -D testuser`
 
-4. Ejecutamos prueba para ver si son compatible Gemfile y Gemfile.lock.
+4. Para poder instalar dependencias sin privilegios de super usuario
 
-`RUN bundle config --global frozen 1`
+`ENV GEM_HOME /usr/local/bundle`
 
-5. Copiamos fichero Gemfile y Gemfile.lock, instalamos dependencias y borramos los ficheros que habíamos añadido.
+`ENV BUNDLE_APP_CONFIG="$GEM_HOME"`
 
-`COPY Gemfile Gemfile.lock ./`
+`ENV PATH $GEM_HOME/bin:$PATH`
 
-`RUN bundle install`
+`RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"`
 
-`RUN rm Gemfile Gemfile.lock`
-
-6. Pasamos al usuario sin privilegios de root.
+5. Cambiamos de usuario
 
 `USER testuser`
 
-7. Definimos directorio de trabajo y creamos un volumen para realizar los test.
+6. Copiamos archivos de dependencias
+
+`COPY Gemfile Gemfile.lock /home/testuser/`
+
+7. Cambiamos de directorio de trabajo
+
+`WORKDIR /home/testuser/`
+
+8. Las instalamos y borramos los archivos
+
+`RUN bundle install`
+`RUN rm /home/testuser/Gemfile /home/testuser/Gemfile.lock`
+
+9. Definimos directorio de trabajo y creamos un volumen para realizar los test.
 
 `WORKDIR /test`
 
 `VOLUME /test`
 
-8. Se establece la ejecución de los tests.
+10. Se establece la ejecución de los tests.
 
 `CMD ["rake", "test"]`
