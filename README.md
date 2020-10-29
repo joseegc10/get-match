@@ -36,8 +36,9 @@ Para consultar las herramientas que se usan en el proyecto seguir el siguiente [
 
 ## Código de test
 
-- El test de la clase principal partido se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/spec/partido_spec.rb).
+- El test de la clase principal jornada se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/spec/jornada_spec.rb).
 - Otros tests:
+    - [Clase partido](https://github.com/joseegc10/get-match/blob/master/spec/partido_spec.rb)
     - [Clase jugador](https://github.com/joseegc10/get-match/blob/master/spec/jugador_spec.rb)
     - [Clase equipo](https://github.com/joseegc10/get-match/blob/master/spec/equipo_spec.rb)
 
