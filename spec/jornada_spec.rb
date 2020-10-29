@@ -62,4 +62,10 @@ describe Jornada do
             expect{@jornada.aniadePartidos(@local)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#diasPara_DesdeLaJornada' do
+        it 'número de dias que quedan/pasaron para/desde una jornada' do
+            expect(@jornada.diasPara_DesdeLaJornada).to eq(0)
+        end
+    end
 end
