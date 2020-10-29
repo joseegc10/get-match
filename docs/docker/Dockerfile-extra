@@ -1,0 +1,40 @@
+FROM alpine:3.12.1
+
+# Definimos versión y persona encargada de mantener el Dockerfile
+LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"
+
+# Añadimos nuevo usuario
+RUN adduser -D usertest
+
+# Instalamos paquetes necesarios
+RUN apk update &&\
+    apk add --no-cache ruby=2.7.1-r3 \
+    ruby-bundler=2.1.4-r1 \
+    ruby-rake=2.7.1-r3
+
+# Esto nos permite instalar dependencias sin privilegios de superusuario
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_APP_CONFIG="$GEM_HOME"
+ENV PATH $GEM_HOME/bin:$PATH
+RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
+
+# Cambio de usuario
+USER usertest
+
+#Traemos los ficheros de dependencias
+COPY Gemfile* /home/usertest/
+
+# Cambiamos de directorio de trabajo
+WORKDIR /home/usertest/
+
+#Instalamos las dependencias
+RUN bundle install
+
+#Ya no necesitamos los Gemfiles porque las dependencias se han instalado ya
+RUN rm /home/usertest/Gemfile /home/usertest/Gemfile.lock
+
+WORKDIR /test
+VOLUME /test
+
+#Ejecución de los tests
+CMD ["rake","test"]

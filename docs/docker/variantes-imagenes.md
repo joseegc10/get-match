@@ -16,4 +16,8 @@ En esta imagen no están los paquetes comunes contenidos en la versión anterior
 
 Basada en la distribución de [Alpine](https://alpinelinux.org/), cuya principal ventaja es el poco peso que tiene dicha distribución, por lo que genera imágenes muy pequeñas. Por ello, en el caso de que usemos esta imagen deberemos agregar nosotros las herramientas adicionales, ya que no es común que se incluyan.
 
-**Posteriormente, podemos pensar en usar como imagen base un sistema operativo que no traiga ruby por defecto.**. Por la fama que he visto que tiene, he decidido usar la imagen base de Alpine, pues esta nos va a permitir tener un tamaño de la imagen base muy pequeño, pudiendo instalar los paquetes que sean estrictamente necesarios.
+## Imagen base Alpine sin ruby
+
+Posteriormente, podemos pensar en usar como imagen base un sistema operativo que no traiga ruby por defecto. Por la fama que he visto que tiene, he decidido usar la imagen base de Alpine, pues esta nos va a permitir tener un tamaño de la imagen base muy pequeño, pudiendo instalar los paquetes que sean estrictamente necesarios.
+
+Para ve
