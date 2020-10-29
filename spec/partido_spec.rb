@@ -95,12 +95,14 @@ describe Partido do
 
     describe '#maximoGoleador' do
         it 'no hay goleadores' do
-            expect(@partido.maximoGoleador).to eq('')
+            goleador, num  = @partido.maximoGoleador
+            expect(goleador).to eq('')
         end
 
         it 'calcular el maximo goleador de un partido' do
             @partido.aniadeGoleador(@jugador)
-            expect(@partido.maximoGoleador).to eq('Ramos')
+            goleador, num  = @partido.maximoGoleador
+            expect(goleador).to eq('Ramos')
         end
     end
 end
