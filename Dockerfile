@@ -1,21 +1,28 @@
 # Elegimos la imagen base y su versión
-FROM ruby:2.7.2-buster
+FROM ruby:2.7.2-alpine3.12
 
 # Definimos versión y persona encargada de mantener el Dockerfile
 LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"
 
-# Creamos un nuevo grupo de usuario y un nuevo usuario
-RUN groupadd -r testgroup && useradd -r -g testgroup testuser
+# Creamos un nuevo usuario
+RUN adduser -D testuser
 
-# Lanza error si el Gemfile no es compatible con Gemfile.lock
-RUN bundle config --global frozen 1
-
-# Copiamos archivos de dependencias, las instalamos y los borramos
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
-RUN rm Gemfile Gemfile.lock
+# Para poder instalar dependencias sin privilegios de super usuario
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_APP_CONFIG="$GEM_HOME"
+ENV PATH $GEM_HOME/bin:$PATH
+RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 
 USER testuser
+
+# Copiamos archivos de dependencias
+COPY Gemfile Gemfile.lock /home/testuser/
+
+WORKDIR /home/testuser/
+
+# las instalamos y los borramos
+RUN bundle install
+RUN rm /home/testuser/Gemfile /home/testuser/Gemfile.lock
 
 # Definimos directorio de trabajo y volumen para tests
 WORKDIR /test
