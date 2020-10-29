@@ -1,6 +1,6 @@
 # Test
 
-Como he comentado en el readme, para realizar el test de todas las clases hay que hacer lo siguiente:
+Como he explicado en el apartado de herramientas, como herramienta de construcción uso Rake. En ella, he creado una tarea que automatiza el test de las clases creadas. Para realizar el test de todas las clases, hay que hacer lo siguiente:
 
 `rake test`
 
@@ -17,6 +17,10 @@ Para la clase Equipo:
 Para la clase Jugador:
 
 `rake jugador`
+
+Para la clase Jornada:
+
+`rake jornada`
 
 Además, aqui se puede ver una muestra de ejecución de los test, comprobando la inexistencia de errores:
 

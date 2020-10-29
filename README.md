@@ -29,14 +29,6 @@ He creado una github action para que cuando hagamos push al repositorio de githu
 
 Para consultar las herramientas que se usan en el proyecto seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/herramientas/herramientas.md).
 
-## Enlaces adicionales :clipboard:
-
-- El proceso seguido para la **configuración de git** se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
-- Los **pasos a seguir** en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
-- Las **tareas (issues) completadas** se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
-- El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
-- El **fichero Rakefile**, donde se automatizan las tareas, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Rakefile).
-
 ## Código principal :page_facing_up:
 
 - La **clase principal** del proyecto es la clase partido. Esta clase se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/src/partido.rb). Una explicación de esta clase y de las posibles clases futuras viene dada en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/Clase-Partido.md).
@@ -78,11 +70,15 @@ Por último, el fichero Gemfile, donde se declaran las gemas a instalar, se pued
 
 ## Test
 
-Como he explicado en el apartado de herramientas, como herramienta de construcción uso Rake. En ella, he creado una tarea que automatiza el test de las clases creadas. Para realizar el test de todas las clases, hay que hacer lo siguiente:
+La información acerca de los test de las clases se puede consultar [aquí]()https://github.com/joseegc10/get-match/blob/master/docs/test.md.
 
-`rake test`
+## Enlaces adicionales :clipboard:
 
-Para más información sobre el test (como ejecutar test para una clase particular), consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/test.md).
+- El proceso seguido para la **configuración de git** se puede consultar [aquí](https://github.com/joseegc10/ejercicios-IV/blob/master/configuracion-git/Pasos-seguidos.md).
+- Los **pasos a seguir** en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
+- Las **tareas (issues) completadas** se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
+- El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
+- El **fichero Rakefile**, donde se automatizan las tareas, se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/Rakefile).
 
 ## Autor :man:
 
