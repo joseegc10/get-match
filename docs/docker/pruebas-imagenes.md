@@ -71,3 +71,6 @@ En esta gráfica, podemos apreciar que los tiempos son muy parecidos, pues está
 Como conclusión, **he optado por elegir la versión oficial de ruby de alpine**, pues es 2,4 veces menos pesada que la versión slim y a pesar de ser más rapida la versión slim, veo que esta diferencia es muy pequeña (en términos de milisegundos), por lo que merece más la pena elegir en función del peso y por tanto elijo alpine. Además, esta versión viene con los paquetes necesarios para la ejecución de mi proyecto, como son Bundler y Rake, no teniendo paquetes extras que aumenten demasiado el tamaño de la imagen base.
 
 En cuanto a la diferencia con mi imagen base de alpine, pienso que existe muy poca diferencia en peso, mientras que en ejecución mi versión de alpine es la que más tarde, por lo que pienso que en el momento que mi proyecto vaya cogiendo más tamaño se aumentará la diferencia de tiempos y prefiero optar por una imagen que es casi igual de pesada pero que tarda menos, como es la versión oficial de alpine de ruby.
+
+
+**Una vez he elegido la imagen de alpine oficial de ruby, lo que deberíamos hacer es optmizar dicha imagen para disminuir su tamaño. Este procedimiento puede consultarse en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/optimizacion.md).**
