@@ -2,6 +2,8 @@
 
 En primer lugar, la optimización ha consistido en la elección de una imagen base que fuera poco pesada como es el caso de alpine y tal y como se pudo ver en el archivo de comparación de las imágenes. Esta imagen contiene los paquetes necesarios para la ejecución, no sobrecargando de paquetes innecesarios.
 
+**Para consultar el dockerfile del que partí para realizar la optimización, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/Dockerfile-inicial).**
+
 Además, para conseguir reducir el tamaño de la imagen, he seguido el concepto de "multi-stage builds". Con este concepto, se pueden definir varias imágenes, realizando en cada una de ellas lo necesario, copiando de una a otra lo que sea necesario y dejar atrás todo lo que no lo sea. En mi caso, hago uso de dos imágenes:
 
 - La primera me sirve para instalar las dependencias, pasando a la imagen final los archivos necesarios para que se enlacen en la ejecución de los tests.
@@ -17,7 +19,7 @@ Esencialmente lo que tuve que hacer fue definir dos variables de entorno, para q
 
 `ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH`
 
-Posteriormente, copia las depedencias desde la imagen primera hasta la imagen final.
+Posteriormente, copio las depedencias desde la imagen primera hasta la imagen final.
 
 `COPY --from=builder $GEM_HOME $GEM_HOME`
 

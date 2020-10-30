@@ -11,51 +11,83 @@ En este documento se recogerán los distintos pasos que se llevan a cabo en el d
 
 
 **En el Dockerfile podremos distinguir:**
-1. Elección de la imagen base y versión.
 
-`FROM ruby:2.7.2-alpine3.12`
+Elegimos la imagen base y su versión:
 
-2. Definimos las etiquetas de versión y persona encargada del Dockerfile.
+`FROM ruby:2.7.2-alpine3.12 as base`
+
+Definimos versión y persona encargada de mantener el Dockerfile
 
 `LABEL version="1.0" maintainer="José Alberto García <joseegc10@gmail.com>"`
 
-3. Creamos un grupo de usuario para los test y creamos un usuario en dicho grupo.
+Declaramos variable global
 
-`RUN adduser -D testuser`
+`ARG GEM_HOME=/usr/local/bundle`
 
-4. Para poder instalar dependencias sin privilegios de super usuario
+Añadimos una nueva imagen para las dependencias
 
-`ENV GEM_HOME /usr/local/bundle`
+`FROM base as builder`
+
+Creamos una variable para el usuario
+
+`ENV USER_NAME depuser`
+
+Creamos un nuevo usuario
+
+`RUN adduser -D depuser`
+
+Definimos donde se van a instalar las dependencias
+
+`ENV GEM_HOME $GEM_HOME`
 
 `ENV BUNDLE_APP_CONFIG="$GEM_HOME"`
 
-`ENV PATH $GEM_HOME/bin:$PATH`
+Definimos nueva variable
 
-`RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"`
+`ENV USER_HOME /home/$USER_NAME/`
 
-5. Cambiamos de usuario
+Pasamos al usuario sin privilegios
+
+`USER $USER_NAME`
+
+Copiamos archivos de dependencias
+
+`COPY Gemfile Gemfile.lock $USER_HOME`
+
+Pasamos al directorio de trabajo de usuario
+
+`WORKDIR $USER_HOME`
+
+Instalamos dependencias
+
+`RUN bundle install`
+
+Añadimos la imagen final
+
+`FROM base as final`
+
+Creamos un nuevo usuario
+
+`RUN adduser -D testuser`
+
+Pasamos al usuario de test
 
 `USER testuser`
 
-6. Copiamos archivos de dependencias
+Definimos variable donde se encuentras las dependencias
 
-`COPY Gemfile Gemfile.lock /home/testuser/`
+`ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH`
 
-7. Cambiamos de directorio de trabajo
+Copiamos las dependencias de la imagen anterior a la final
 
-`WORKDIR /home/testuser/`
+`COPY --from=builder $GEM_HOME $GEM_HOME`
 
-8. Las instalamos y borramos los archivos
-
-`RUN bundle install`
-`RUN rm /home/testuser/Gemfile /home/testuser/Gemfile.lock`
-
-9. Definimos directorio de trabajo y creamos un volumen para realizar los test.
+Definimos directorio de trabajo y volumen para tests
 
 `WORKDIR /test`
 
 `VOLUME /test`
 
-10. Se establece la ejecución de los tests.
+Se establece la ejecución de los tests
 
 `CMD ["rake", "test"]`
