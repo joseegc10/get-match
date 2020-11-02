@@ -40,3 +40,17 @@ Este hito se basa en la creación de código y de los test de dicho código de t
 - [Crear el fichero Rakefile](https://github.com/joseegc10/get-match/issues/27)
 - [Justificar uso de herramientas](https://github.com/joseegc10/get-match/issues/28)
 - [Mejora de la documentación en el readme](https://github.com/joseegc10/get-match/issues/7)
+
+## [Hito 3](https://github.com/joseegc10/get-match/milestone/4): Creación de un contenedor para pruebas
+
+Este hito se basa en la creación de un contenedor que nos permita ejecutar los tests de forma que dicha ejecución sea reproducible. 
+
+En este se ha avanzado en las HUs [5](https://github.com/joseegc10/get-match/issues/44),[6](https://github.com/joseegc10/get-match/issues/51),[7](https://github.com/joseegc10/get-match/issues/52), [8](https://github.com/joseegc10/get-match/issues/53) y [9](https://github.com/joseegc10/get-match/issues/54).
+
+- [Elección de la imagen base del contenedor, haciendo una comparación entre varias.](https://github.com/joseegc10/get-match/issues/43)
+- [Añadir Dockerfile.](https://github.com/joseegc10/get-match/issues/41)
+- [Optimizar imagen.](https://github.com/joseegc10/get-match/issues/58)
+- [Crear documentación de buenas prácticas y explicación del Dockerfile.](https://github.com/joseegc10/get-match/issues/48)
+- [Subir contenedor a Docker Hub.](https://hub.docker.com/r/joseegc10/get-match)
+- [Subir contenedor a GitHub Container Registry.](https://github.com/users/joseegc10/packages/container/package/env-get-match)
+- [Crear el código de la clase Jornada y tests de dicha clase.](https://github.com/joseegc10/get-match/issues/50)
