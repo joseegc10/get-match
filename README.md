@@ -7,6 +7,12 @@
 
 Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultado y goleadores de un partido de fútbol. La motivación de get-match viene dada porque es un problema que hemos tenido en mi grupo de amigos y para solucionarlo hemos tenido que recurrir a aplicaciones que realicen lo mismo, por lo que quiero desarrollar una API propia que lo resuelva. Además, al ser mi primer proyecto de este estilo, pienso que no tiene una excesiva dificultad y lo veo como una buena opción de empezar. Como conclusión, lo que quiero desarrollar es una API REST que, mediante peticiones HTTP, proporcione todo lo relacionado con el problema a resolver.
 
+## Integración continua
+
+### Travis
+
+La documentación sobre el proceso seguido en la configuración de Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
+
 ## Contenedor para pruebas
 
 ### Docker
