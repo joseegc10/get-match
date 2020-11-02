@@ -1,4 +1,4 @@
-languaje: ruby
+language: ruby
 
 rvm:
     - 2.7.0
