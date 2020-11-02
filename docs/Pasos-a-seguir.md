@@ -26,7 +26,7 @@ En este documento se recogerán los pasos a seguir a lo largo del desarrollo del
 
 ## [Hito 2](https://github.com/joseegc10/get-match/milestone/3): Tests
 
-Este hito se basa en la creación de código y de los test de dicho código de tal forma que avancemos en las HUs [1](https://github.com/joseegc10/get-match/issues/1),[2](https://github.com/joseegc10/get-match/issues/2),[3](https://github.com/joseegc10/get-match/issues/32) y [4](https://github.com/joseegc10/get-match/issues/35).
+Este hito se basa en la creación de código y de los test de dicho código de tal forma que avancemos en las HUs [1](https://github.com/joseegc10/get-match/issues/1), [2](https://github.com/joseegc10/get-match/issues/2), [3](https://github.com/joseegc10/get-match/issues/32) y [4](https://github.com/joseegc10/get-match/issues/35).
 
 - Crear los test de las siguientes clases:
     - [Partido](https://github.com/joseegc10/get-match/issues/23)
@@ -41,11 +41,11 @@ Este hito se basa en la creación de código y de los test de dicho código de t
 - [Justificar uso de herramientas](https://github.com/joseegc10/get-match/issues/28)
 - [Mejora de la documentación en el readme](https://github.com/joseegc10/get-match/issues/7)
 
-## [Hito 3](https://github.com/joseegc10/get-match/milestone/4): Creación de un contenedor para pruebas
+## [Hito 3](https://github.com/joseegc10/get-match/milestone/5): Creación de un contenedor para pruebas
 
 Este hito se basa en la creación de un contenedor que nos permita ejecutar los tests de forma que dicha ejecución sea reproducible. 
 
-En este se ha avanzado en las HUs [5](https://github.com/joseegc10/get-match/issues/44),[6](https://github.com/joseegc10/get-match/issues/51),[7](https://github.com/joseegc10/get-match/issues/52), [8](https://github.com/joseegc10/get-match/issues/53) y [9](https://github.com/joseegc10/get-match/issues/54).
+En este se ha avanzado en las HUs [5](https://github.com/joseegc10/get-match/issues/44), [6](https://github.com/joseegc10/get-match/issues/51), [7](https://github.com/joseegc10/get-match/issues/52), [8](https://github.com/joseegc10/get-match/issues/53) y [9](https://github.com/joseegc10/get-match/issues/54).
 
 - [Elección de la imagen base del contenedor, haciendo una comparación entre varias.](https://github.com/joseegc10/get-match/issues/43)
 - [Añadir Dockerfile.](https://github.com/joseegc10/get-match/issues/41)
