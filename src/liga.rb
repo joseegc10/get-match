@@ -27,6 +27,11 @@ class Liga
         inicializaClasificacion()
     end
 
+    attr_reader :equipos
+    attr_reader :jornadas
+    attr_reader :rankingGoleadores
+    attr_reader :clasificacion
+
     def inicializaClasificacion()
         for equipo in @equipos
             nuevoEquipo = Equipo_Puntos.new(equipo, 0)
