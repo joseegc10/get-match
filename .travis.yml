@@ -15,5 +15,7 @@ rvm:
 before_install:
     - gem install bundle
 
+install: bundle install
+
 # Para ejecutar los test 
 script: rake test
