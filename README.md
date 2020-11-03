@@ -9,9 +9,10 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ## Integración continua
 
-### Travis
+### Travis-CI
 
-La documentación sobre el proceso seguido en la configuración de Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
+- La documentación sobre el proceso seguido en la configuración de Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
+- Para consultar una explicación de Travis-CI, incluyendo sus ventajas, como se ha hecho la construcción del fichero .travis.yml y otras posibilidades que nos ofrece, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md).
 
 ## Contenedor para pruebas
 

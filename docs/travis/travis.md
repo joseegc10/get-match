@@ -16,7 +16,7 @@ La integración continua es un método de desarrollo de software que permite que
 
 Como se ha dicho en las ventajas, es muy fácil empezar con Travis-CI. Simplemente debemos crear un fichero, llamado **.travis.yml**, que esté en la carpeta principal de nuestro proyecto. El fichero que he creado para este proyecto se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/.travis.yml). En él, hacemos lo siguiente:
 
-1. Establacemos el lenguaje de código.
+1. Establacemos el lenguaje del código.
 
 `languaje: ruby`
 
