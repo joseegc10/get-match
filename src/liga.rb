@@ -46,31 +46,105 @@ class Liga
             for goleador in partido.goleadores
                 indice = nombreGoleadores.index(goleador.nombre)
                 if indice
-                    nuevoGoleador = rankingGoleadores[indice]
-                    rankingGoleadores.delete_at(indice)
+                    # Sumamos un gol al goleador
+                    nuevoGoleador = @rankingGoleadores[indice]
+                    @rankingGoleadores.delete_at(indice)
                     nuevoGoleador.goles += 1
 
                     pos = 0
                     salir = false
 
-                    while pos < rankingGoleadores.length and !salir
-                        if rankingGoleadores[pos].goles < nuevoGoleador.goles
+                    while pos < @rankingGoleadores.length and !salir
+                        if @rankingGoleadores[pos].goles < nuevoGoleador.goles
                             salir = true
-                            rankingGoleadores.insert(pos, nuevoGoleador)
+                            @rankingGoleadores.insert(pos, nuevoGoleador)
                         end
 
                         pos += 1
                     end
                 else
+                    # Creamos el par goleador_goles porque ese goleador ha marcado su primer gol en la liga
                     nuevoGoleador = Goleador_Goles.new(goleador, 1)
-                    rankingGoleadores << nuevoGoleador
+                    @rankingGoleadores << nuevoGoleador
                 end
             end
         end
     end
 
     def actualizaClasificacion(partidos)
+        nombreEquipos = Array.new
 
+        for equipo_puntos in @clasificacion
+            nombreEquipos << equipo_puntos.equipo.nombre
+        end
+
+        for partido in partidos
+            golesLocal, golesVisitante = partido.calculaResultado()
+
+            if golesLocal != golesVisitante # Hay un ganador
+                if golesLocal > golesVisitante
+                    ganador = partido.local
+                else
+                    ganador = partido.visitante
+                end
+    
+                # Sumamos un punto al equipo ganador
+                indice = nombreEquipos.index(ganador.nombre)
+                nuevoEquipo = @clasificacion[indice]
+                @clasificacion.delete_at(indice)
+                nuevoEquipo.puntos += 3
+    
+                pos = 0
+                salir = false
+    
+                while pos < @clasificacion.length and !salir
+                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
+                        salir = true
+                        @clasificacion.insert(pos, nuevoEquipo)
+                    end
+    
+                    pos += 1
+                end
+            else # Empate
+
+                # Sumamos un punto al equipo local
+                indice = nombreEquipos.index(partido.local.nombre)
+                nuevoEquipo = @clasificacion[indice]
+                @clasificacion.delete_at(indice)
+                nuevoEquipo.puntos += 1
+    
+                pos = 0
+                salir = false
+    
+                while pos < @clasificacion.length and !salir
+                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
+                        salir = true
+                        @clasificacion.insert(pos, nuevoEquipo)
+                    end
+    
+                    pos += 1
+                end
+
+                # Sumamos un punto al equipo visitante
+                indice = nombreEquipos.index(partido.visitante.nombre)
+                nuevoEquipo = @clasificacion[indice]
+                @clasificacion.delete_at(indice)
+                nuevoEquipo.puntos += 3
+    
+                pos = 0
+                salir = false
+    
+                while pos < @clasificacion.length and !salir
+                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
+                        salir = true
+                        @clasificacion.insert(pos, nuevoEquipo)
+                    end
+    
+                    pos += 1
+                end
+            end
+            
+        end
     end
 
     def aniadeJornada(jornada)
