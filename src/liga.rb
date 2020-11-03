@@ -67,6 +67,10 @@ class Liga
 
                         pos += 1
                     end
+
+                    if !salir
+                        @rankingGoleadores << nuevoGoleador
+                    end
                 else
                     # Creamos el par goleador_goles porque ese goleador ha marcado su primer gol en la liga
                     nuevoGoleador = Goleador_Goles.new(goleador, 1)
@@ -130,11 +134,15 @@ class Liga
                     pos += 1
                 end
 
+                if !salir
+                    @clasificacion << nuevoEquipo
+                end
+
                 # Sumamos un punto al equipo visitante
                 indice = nombreEquipos.index(partido.visitante.nombre)
                 nuevoEquipo = @clasificacion[indice]
                 @clasificacion.delete_at(indice)
-                nuevoEquipo.puntos += 3
+                nuevoEquipo.puntos += 1
     
                 pos = 0
                 salir = false
@@ -146,6 +154,10 @@ class Liga
                     end
     
                     pos += 1
+                end
+
+                if !salir
+                    @clasificacion << nuevoEquipo
                 end
             end
             
