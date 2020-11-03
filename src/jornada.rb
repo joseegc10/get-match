@@ -4,17 +4,14 @@ require_relative "partido.rb"
 
 class Jornada
 	# Una jornada vendrá identificado por:
-    #      - Número de jornada
     #      - Fecha en la que comienza
     #      - Lista de partidos que se juegan en la jornada
 	
-	def initialize(numero, fechaInicio)
-        @numero = numero
+	def initialize(fechaInicio)
         @fechaInicio = fechaInicio
         @partidos = Array.new
 	end
 
-	attr_reader :numero
     attr_reader :fechaInicio
     attr_reader :partidos
     
