@@ -18,19 +18,13 @@ describe Jornada do
         @nuevosGoleadores << @jugador
         @nuevosGoleadores << @jugador2
 
-        @jornada = Jornada.new(1,Date.today)
+        @jornada = Jornada.new(Date.today)
 
         @partido2 = Partido.new(@visitante, @local, @fecha) 
 
         @nuevosPartidos = Array.new
         @nuevosPartidos << @partido
         @nuevosPartidos << @partido2
-    end
-
-    describe 'numero' do
-        it 'numero de la jornada' do
-            expect(@jornada.numero).to eq(1)
-        end
     end
 
     describe '#aniadePartido' do
