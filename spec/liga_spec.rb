@@ -51,15 +51,19 @@ describe Liga do
         end
     end
 
-    """
     describe '#actualizaRanking' do
-        it 'nueva jornada' do
+        it 'goles' do
             @liga.aniadeJornada(@jornada)
-            print (@liga.rankingGoleadores[1].goles)
             expect(@liga.rankingGoleadores[0].goles).to eq(3)
+            expect(@liga.rankingGoleadores[1].goles).to eq(2)
+        end
+
+        it 'nombres goleadores' do
+            @liga.aniadeJornada(@jornada)
+            expect(@liga.rankingGoleadores[0].goleador.nombre).to eq('Ramos')
+            expect(@liga.rankingGoleadores[1].goleador.nombre).to eq('Pique')
         end
     end
-    """
 
     describe '#actualizaClasificacion' do
         it 'puntos' do

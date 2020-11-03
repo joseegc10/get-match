@@ -75,6 +75,7 @@ class Liga
                     # Creamos el par goleador_goles porque ese goleador ha marcado su primer gol en la liga
                     nuevoGoleador = Goleador_Goles.new(goleador, 1)
                     @rankingGoleadores << nuevoGoleador
+                    nombreGoleadores << nuevoGoleador.goleador.nombre
                 end
             end
         end
