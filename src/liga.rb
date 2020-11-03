@@ -22,7 +22,16 @@ class Liga
         @equipos = equipos
         @jornadas = Array.new
         @rankingGoleadores = Array.new
+
         @clasificacion = Array.new
+        inicializaClasificacion()
+    end
+
+    def inicializaClasificacion()
+        for equipo in @equipos
+            nuevoEquipo = Equipo_Puntos.new(equipo, 0)
+            @clasificacion << nuevoEquipo
+        end
     end
 
     def actualizaRanking(partidos)
