@@ -38,4 +38,10 @@ describe Liga do
             expect(@liga.equipos.length).to eq(2)
         end
     end
+
+    describe 'clasificacion' do
+        it 'num_equipos' do
+            expect(@liga.clasificacion.length).to eq(2)
+        end
+    end
 end
