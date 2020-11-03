@@ -153,11 +153,7 @@ class Liga
     end
 
     def aniadeJornada(jornada)
-        raise ArgumentError, 'El parámetro no es un array de partidos' unless jornada.is_a? Array
-
-        for partido in jornada.partidos
-            raise ArgumentError, 'El parámetro no es un array de partidos' unless partido.is_a? Partido
-        end
+        raise ArgumentError, 'El parámetro no es una jornada' unless jornada.is_a? Jornada
 
         @jornadas << jornada
 

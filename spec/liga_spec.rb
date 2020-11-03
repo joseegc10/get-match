@@ -44,4 +44,10 @@ describe Liga do
             expect(@liga.clasificacion.length).to eq(2)
         end
     end
+
+    describe '#aniadeJornada' do
+        it 'no es una jornada' do
+            expect{@liga.aniadeJornada(@local)}.to raise_error(ArgumentError)
+        end
+    end
 end
