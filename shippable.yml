@@ -2,5 +2,6 @@ build:
     pre_ci_boot:
         options: -v /test
     ci:
+        - copy . /test
         - docker build -t gmshippable .
-        - docker run -t --volume-from `pwd`:/test gmshippable:latest
+        - docker run -t -v `pwd`:/test gmshippable:latest
