@@ -4,11 +4,11 @@
 
 2. Tras hacer todo lo anterior, deberíamos tener lo siguiente:
 
-![inicio](docs/img/shippable/inicio.png)
+![inicio](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/inicio.png)
 
 3. Posteriormente, presionamos en GitHub en el panel de la izquierda y elegimos nuestro usuario.
 
-![gh](https://github.com/joseegc10/get-match/docs/img/shippable/gh.png)
+![gh](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/gh.png)
 
 4. Tras ello, presionamos en Enable a Project y posteriormente activamos nuestro proyecto.
  
@@ -16,4 +16,4 @@
 
 5. Por último, volvemos a la página principal de Shippable y ya podemos ver que nuestro proyecto de GitHub se encuentra enlazado con Shippable.
 
-![enlazado](https://github.com/joseegc10/get-match/tree/master/docs/img/shippable/enlazado.png)
+![enlazado](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/enlazado.png)
