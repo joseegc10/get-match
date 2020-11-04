@@ -1,6 +1,6 @@
 integrations:
     hub:
-      - integrationName: get-match
+      - integrationName: gm_hub
         type: dockerRegistryLogin
 
 build:
