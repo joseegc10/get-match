@@ -1,12 +1,12 @@
-# Configuración de Shippable
+# Configuración de CircleCI
 
-1. La configuración inicial es muy similar a la ya explicada en Travis. El primer paso es el mismo, darle al botón de registrarnos y selección GitHub como método de registro. Una vez hacemos esto, autorizamos a Shippable acceder a nuestro GitHub y ponemos nuestra contraseña.
+1. La configuración inicial es muy similar a la ya explicada en Travis. El primer paso es el mismo, darle al botón de registrarnos y selección GitHub como método de registro. Una vez hacemos esto, autorizamos a CircleCI acceder a nuestro GitHub y ponemos nuestra contraseña.
 
 2. Tras hacer todo lo anterior, deberíamos tener lo siguiente:
 
 ![inicio](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/inicio.png)
 
-3. Posteriormente, presionamos en GitHub en el panel de la izquierda y elegimos nuestro usuario.
+3. Posteriormente, presionamos en Set Up Project en el proyecto que queremos conectar, en mi caso get-match.
 
 ![gh](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/gh.png)
 
