@@ -1,12 +1,9 @@
 version: 2.1
 
-orbs:
-    ruby: circleci/ruby@0.1.2
-
 jobs:
-    build:
-        executor: ruby/default    
-        steps:
-            - checkout
-            - run: docker build -t getmatch_circle .
-            - run: docker run -t -v `pwd`:/test getmatch_circle:latest
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker build -t gm_circle .
+      - run: docker run -t -v `pwd`:/test gm_circle:latest
