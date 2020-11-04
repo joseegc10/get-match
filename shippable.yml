@@ -1,0 +1,10 @@
+languaje: ruby
+
+rvm:
+    - 2.7.2
+
+build:
+    ci:
+        - gem install bundler
+        - bundle install
+        - rake test
