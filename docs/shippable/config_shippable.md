@@ -12,7 +12,7 @@
 
 4. Tras ello, presionamos en Enable a Project y posteriormente activamos nuestro proyecto.
  
-![fin](https://github.com/joseegc10/get-match/tree/master/docs/img/shippable/fin.png)
+![fin](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/shippable/fin.png)
 
 5. Por último, volvemos a la página principal de Shippable y ya podemos ver que nuestro proyecto de GitHub se encuentra enlazado con Shippable.
 
