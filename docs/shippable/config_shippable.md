@@ -4,7 +4,7 @@
 
 2. Tras hacer todo lo anterior, deberíamos tener lo siguiente:
 
-![inicio](https://github.com/joseegc10/get-match/tree/master/docs/img/shippable/inicio.png)
+![inicio](docs/img/shippable/inicio.png)
 
 3. Posteriormente, presionamos en GitHub en el panel de la izquierda y elegimos nuestro usuario.
 
