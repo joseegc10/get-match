@@ -1,6 +1,5 @@
 build:
     ci:
         - docker build -t gmshippable .
-        - ls -la
-        - docker run -t -v `pwd`:/test gmshippable:latest ls
+        - echo `pwd`
         - docker run -t -v `pwd`:/test gmshippable:latest
