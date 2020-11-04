@@ -1,6 +1,0 @@
-build:
-    pre_ci_boot:
-        options: -v /test
-    ci:
-        - docker build -t gmshippable .
-        - docker run -t --volumes-from $SHIPPABLE_CONTAINER_NAME gmshippable:latest
