@@ -96,4 +96,16 @@ bundler_args: --without production
 
 De esa forma, se excluirían los paquetes ruby-debug y unicorn.
 
+4. Por último, podríamos hacer uso de docker para la ejecución de los tests. Para ello deberíamos añadir lo siguiente:
+
+```
+before_script:
+  - docker build -t gmtravis .
+
+script:
+  - docker run -t -v `pwd`:/test gmtravis:latest
+```
+
+Como vemos, añadimos el apartado de before_script, y en el apartado de script en lugar de usar rake test deberíamos usar la orden que he puesto arriba, que también haría rake test pero lo obtiene desde el Dockerfile.
+
 A parte de esto, existen otras posibilidades en la construcción del fichero .travis.yml, que se pueden consultar en el [manual oficial de Travis para Ruby](https://docs.travis-ci.com/user/languages/ruby/).
