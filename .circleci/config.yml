@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   build:
+    machine: false
     steps:
       - checkout
       - run: docker build -t gm_circle .
