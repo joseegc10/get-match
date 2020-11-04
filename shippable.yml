@@ -1,9 +1,4 @@
-languaje: ruby
-
-rvm:
-    - 2.7.2
-
 build:
     ci:
-        - bundle install
-        - rake test
+        - docker build -t gmshippable .
+        - docker run -t -v `pwd`:/test gmshippable:latest
