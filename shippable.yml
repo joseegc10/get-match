@@ -1,5 +1,4 @@
 build:
     ci:
-        - gem install bundler
         - docker build -t gmshippable .
         - docker run -t -v `pwd`:/test gmshippable:latest
