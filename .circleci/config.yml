@@ -6,5 +6,4 @@ jobs:
       - image: joseegc10/get-match
     steps:
       - checkout
-      - run: docker build -t gm_circle .
       - run: docker run -t -v `pwd`:/test gm_circle:latest
