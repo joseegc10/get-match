@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: gm_circle:latest
+      - image: joseegc10/get-match
     steps:
       - checkout
       - run: docker build -t gm_circle .
