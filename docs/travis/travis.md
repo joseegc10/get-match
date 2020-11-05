@@ -2,7 +2,7 @@
 
 La integración continua es un método de desarrollo de software que permite que los miembros de un equipo puedan integrar su trabajo, de tal forma que cada miembro solo incluya su trabajo a la rama principal cuando ha pasado los tests y se encuentra por tanto libre de errores.
 
-**Travi-CI es un sistema de integración continua gratuito para proyectos Open Source y va a ser uno de los que use en este proyecto. Su página oficial se puede encontrar [aquí](https://travis-ci.com/).**
+**Travi-CI es un sistema de integración continua "gratuito" para proyectos Open Source y va a ser uno de los que use en este proyecto. Su página oficial se puede encontrar [aquí](https://travis-ci.com/). Lo de que sea gratuito ya no es del todo cierto, pues desde que se pasó al dominio .com, se establecen limitaciones, que en nuestro caso por ser estudiantes quedan eliminadas.**
 
 ## Ventajas de Travis-CI
 
@@ -106,3 +106,5 @@ script:
 Como vemos, en el apartado de script en lugar de usar rake test deberíamos usar la orden que he puesto arriba, que también haría rake test pero lo obtiene desde el Dockerfile.
 
 A parte de esto, existen otras posibilidades en la construcción del fichero .travis.yml, que se pueden consultar en el [manual oficial de Travis para Ruby](https://docs.travis-ci.com/user/languages/ruby/).
+
+**Como conclusión final, he elegido Travis para realizar lo explicado arriba debido a que quería utilizar un sistema que me permitiera probar los tests en diferentes versiones de ruby. Travis, gracias a que permite la ejecución en paralelo, la veo ideal para este cometido.**
