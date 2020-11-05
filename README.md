@@ -19,6 +19,10 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 - La documentación sobre el proceso seguido en la configuración de CircleCI se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/config_circleci.md).
 - Para consultar una explicación de CircleCI, incluyendo sus ventajas, como se ha construido el fichero config.yml y una comparación con Travis, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/circleci.md).
 
+### Github Action
+
+He creado una github action para la publicación automática de la imagen en GitHub Container Registry. La explicación del fichero se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/ghact.md).
+
 ## Contenedor para pruebas
 
 ### Docker
@@ -33,10 +37,6 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 - He usado Docker Hub para almacenar el contenedor creado, el repositorio donde se ha subido el contenedor se puede consultar [aquí](https://hub.docker.com/r/joseegc10/get-match). Para ver más información sobre la configuración de Docker Hub, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/docker-hub.md).
 - Además, he hecho uso de GitHub Container Registry como registro alternativo, puediendo consultarse [aquí](https://github.com/users/joseegc10/packages/container/package/env-get-match). Para ver más información sobre la configuración de GitHub Container Registry, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/docker/git-hub-container.md).
-
-### Github Action
-
-He creado una github action para que cuando hagamos push al repositorio de github, haga un build de nuevo de la imagen, ejecute los tests y si no fallan estos, haga push automáticamente a Github Container Registry. Esta Github Action se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/.github/workflows/contenedor.yml).
 
 ## Herramientas y justificación :hammer:
 
