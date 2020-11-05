@@ -5,5 +5,4 @@ jobs:
     docker:
       - image: joseegc10/get-match
     steps:
-      - checkout
-      - run: rake test
+      - run: - docker run -t -v `pwd`:/test joseegc10/get-match
