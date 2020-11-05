@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   gm_circle:
     docker:
-      steps:
-        - checkout
-        - run: docker build -t gm_circle .
-        - run: docker run -t -v `pwd`:/test gm_circle:latest
+      - image: gm_circle:latest
+    steps:
+      - checkout
+      - run: docker build -t gm_circle .
+      - run: docker run -t -v `pwd`:/test gm_circle:latest
