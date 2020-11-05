@@ -35,6 +35,8 @@ WORKDIR $USER_HOME
 # Instalamos dependencias
 RUN bundle install
 
+USER root
+
 # Añadimos la imagen final
 FROM base as final
 
