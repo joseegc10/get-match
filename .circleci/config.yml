@@ -1,6 +1,6 @@
 version: 2.1
-
-image: circleci/ruby@sha256:be06794b34768076ae9d8f94f8d7f3930d31ef866fbe3e6d53a4875d3ec245c0
+orbs:
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
