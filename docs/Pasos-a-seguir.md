@@ -54,3 +54,16 @@ En este se ha avanzado en las HUs [5](https://github.com/joseegc10/get-match/iss
 - [Subir contenedor a Docker Hub.](https://hub.docker.com/r/joseegc10/get-match)
 - [Subir contenedor a GitHub Container Registry.](https://github.com/users/joseegc10/packages/container/package/env-get-match)
 - [Crear el código de la clase Jornada y tests de dicha clase.](https://github.com/joseegc10/get-match/issues/50)
+
+## [Hito 4](https://github.com/joseegc10/get-match/milestone/6): Integración continua
+
+Este hito se basa en añadir integración continua al proyecto y ha consistido en las siguientes tareas:
+
+- Elección de los sistemas de integración continua.
+- [Configuración de Travis y documentación](https://github.com/joseegc10/get-match/issues/59).
+- [Creación del fichero .travis.yml y documentación del mismo](https://github.com/joseegc10/get-match/issues/60).
+- [Configurar CircleCI y documentarlo](https://github.com/joseegc10/get-match/issues/66).
+- [Creación del fichero .circleci/config.yml y documentación del mismo](https://github.com/joseegc10/get-match/issues/66).
+- [Avance de código, creando la clase Liga y los tests para ella](https://github.com/joseegc10/get-match/issues/62).
+
+Con ello, se ha avanzado en las HUs [10](https://github.com/joseegc10/get-match/issues/63), [11](https://github.com/joseegc10/get-match/issues/64) y [12](https://github.com/joseegc10/get-match/issues/65)
