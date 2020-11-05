@@ -98,7 +98,7 @@ class Liga
                     ganador = partido.visitante
                 end
     
-                # Sumamos un punto al equipo ganador
+                # Sumamos tres puntos al equipo ganador
                 indice = nombreEquipos.index(ganador.nombre)
                 nuevoEquipo = @clasificacion[indice]
                 @clasificacion.delete_at(indice)
