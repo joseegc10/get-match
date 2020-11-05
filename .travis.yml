@@ -1,4 +1,4 @@
 # Lenguaje del código
 language: ruby
 
-script: docker run -t -v `pwd`:/test gmtravis:latest
+script: docker run -t -v `pwd`:/test joseegc10/get-match
