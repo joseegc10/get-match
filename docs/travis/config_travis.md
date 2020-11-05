@@ -25,3 +25,5 @@ En este archivo se recogerán los pasos seguidos para la configuración de Travi
 8. Volvemos a la pagina principal y vemos que ya se encuentra activado nuestro repositorio.
 
 ![fin](https://github.com/joseegc10/get-match/blob/master/docs/img/travis/fin.png)
+
+Con lo anterior queda creado nuestro perfil en Travis y queda enlazado nuestro proyecto, pudiéndose consultar esto [aquí](https://travis-ci.com/github/joseegc10/get-match).
