@@ -1,7 +1,5 @@
 version: 2.1
 
-image: 2.7.2-buster
-
 jobs:
   build:
     machine: true
