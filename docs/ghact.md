@@ -1,6 +1,6 @@
 # GitHub Action
 
-En este archivo se recogerán las github actions que elabore a lo largo del proyecto.
+En este archivo se recogerán las github actions que elabore a lo largo del proyecto. 
 
 En primer lugar, he creado una github action para que cuando hagamos push al repositorio de github, haga un build de nuevo de la imagen, ejecute los tests y si no fallan estos, haga push automáticamente a Github Container Registry. Esta Github Action se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/.github/workflows/contenedor.yml) y ha quedado de la siguiente forma:
 
