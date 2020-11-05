@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  gm_circle:
+  build:
     docker:
       - image: gm_circle:latest
     steps:
