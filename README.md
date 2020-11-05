@@ -17,6 +17,7 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ### Circle-CI
 
 - La documentación sobre el proceso seguido en la configuración de CircleCI se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/config_circleci.md).
+- Para consultar una explicación de CircleCI, incluyendo sus ventajas, como se ha construido el fichero config.yml y una comparación con Travis, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/circleci.md).
 
 ## Contenedor para pruebas
 

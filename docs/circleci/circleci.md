@@ -8,7 +8,7 @@
 - Los trabajos se ejecutan de forma rápida.
 - Soporta múltiples plataformas.
 - Tiene soporte Docker.
-- Se puede llegar a hacer ejecuciones en palalelo mediante el uso de contenedores, pero es mas dificil que Travis.
+- Se puede llegar a hacer ejecuciones en palalelo mediante el uso de contenedores, pero lo veo con mayor dificultad que en Travis.
 
 ## Uso
 
@@ -38,6 +38,7 @@ Lo explicamos paso por paso:
 `version: 2.1`
 
 2. Indicamos los trabajos que se van a realizar:
+
 `jobs:`
 
 3. Tarea build:
@@ -53,13 +54,11 @@ En la tarea anterior, en primer lugar indicamos que vamos a utilizar una máquin
 
     1. Hacemos checkout del repo.
 
-    `- checkout`
+    - checkout
 
     2. Ejecutamos el contenedor que tenemos en docker, al no encontrarlo primero hará el pull y posteriormente hará el run que ejecute los tests.
 
-    ```
     - run: docker run -t -v `pwd`:/test joseegc10/get-match
-    ```
 
 En la siguiente imagen se muestra el correcto funcionamiento del trabajo build, es decir, cuando hacemos push a nuestro repositorio de GitHub, en CircleCI se va a proceder a hacer el pull de nuestro contenedor y la ejecución de los test:
 
@@ -84,4 +83,4 @@ Mientras que CircleCI tardó lo siguiente:
 
 ![prueba-circle](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/circleci/prueba-circle.png)
 
-Como se puede apreciar, circle es 3 segundos más rapido. La diferencia en este caso no es demasiado grande, aunque circleci es un 12% más rapido. Tampoco podría existir una excesiva diferencia pues las tareas que realizamos son sencillas, simplemente hace el pull y después ejecuta los tests.
+Como se puede apreciar, circle es 3 segundos más rapido. La diferencia en este caso no es excesivamente grande, aunque circleci es un 12% más rapido. Tampoco podría existir una excesiva diferencia pues las tareas que realizamos son sencillas, simplemente hace el pull y después ejecuta los tests.
