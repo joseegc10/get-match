@@ -5,4 +5,4 @@ jobs:
     docker:
       - image: joseegc10/get-match
     steps:
-      - run: - docker run -t -v `pwd`:/test joseegc10/get-match
+      - run: docker run -t -v `pwd`:/test joseegc10/get-match
