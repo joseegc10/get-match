@@ -78,4 +78,17 @@ describe Liga do
             expect(@liga.clasificacion[1].equipo.nombre).to eq('Barsa')
         end
     end
+
+    describe '#numGolesEquipo' do
+
+        it 'should raise an exception if the argument is not of type Equipo' do
+            expect{@liga.numGolesEquipo("noEsUnEquipo")}.to raise_error(ArgumentError)
+        end
+
+        it 'should do the counting right' do
+            @liga.aniadeJornada(@jornada)
+            expect(@liga.numGolesEquipo(@local)).to eq(3)
+        end
+
+    end
 end
