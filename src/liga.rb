@@ -39,6 +39,20 @@ class Liga
         end
     end
 
+    def numGolesEquipo(equipo)
+        raise ArgumentError, 'El parámetro no es un equipo' unless equipo.is_a? Equipo
+
+        golesEquipo = 0
+
+        for goleador_goles in @rankingGoleadores
+            if goleador_goles.goleador.equipo.nombre == equipo.nombre
+                golesEquipo += goleador_goles.goles
+            end
+        end
+
+        return golesEquipo
+    end
+
     def actualizaRanking(partidos)
         nombreGoleadores = Array.new
 
