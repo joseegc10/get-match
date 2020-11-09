@@ -79,8 +79,8 @@ describe Liga do
         end
     end
 
+    # Test para HU13: Consultar el número de goles de un equipo
     describe '#numGolesEquipo' do
-
         it 'should raise an exception if the argument is not of type Equipo' do
             expect{@liga.numGolesEquipo("noEsUnEquipo")}.to raise_error(ArgumentError)
         end
@@ -89,6 +89,5 @@ describe Liga do
             @liga.aniadeJornada(@jornada)
             expect(@liga.numGolesEquipo(@local)).to eq(3)
         end
-
     end
 end
