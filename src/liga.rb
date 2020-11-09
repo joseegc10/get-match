@@ -3,7 +3,7 @@ require_relative "equipo.rb"
 require_relative "partido.rb"
 
 # Struct para el par Equipo-puntos
-Equipo_Puntos = Struct.new(:equipo, :puntos)
+Equipo_Puntos_Goles = Struct.new(:equipo, :puntos, :goles)
 
 # Struct para el par Goleador-número de goles
 Goleador_Goles = Struct.new(:goleador, :goles)
@@ -34,7 +34,7 @@ class Liga
 
     def inicializaClasificacion()
         for equipo in @equipos
-            nuevoEquipo = Equipo_Puntos.new(equipo, 0)
+            nuevoEquipo = Equipo_Puntos_Goles.new(equipo, 0, 0)
             @clasificacion << nuevoEquipo
         end
     end
@@ -54,15 +54,15 @@ class Liga
             raise ArgumentError, 'El parámetro no es un equipo de la liga'
         end
 
-        golesEquipo = 0
+        nombreEquipos = Array.new
 
-        for goleador_goles in @rankingGoleadores
-            if goleador_goles.goleador.equipo.nombre == equipo.nombre
-                golesEquipo += goleador_goles.goles
-            end
+        for equipo_puntos_goles in @clasificacion
+            nombreEquipos << equipo_puntos_goles.equipo.nombre
         end
 
-        return golesEquipo
+        indice = nombreEquipos.index(equipo.nombre)
+
+        return @clasificacion[indice].goles
     end
 
     def actualizaRanking(partidos)
@@ -110,22 +110,30 @@ class Liga
     def actualizaClasificacion(partidos)
         nombreEquipos = Array.new
 
-        for equipo_puntos in @clasificacion
-            nombreEquipos << equipo_puntos.equipo.nombre
+        for equipo_puntos_goles in @clasificacion
+            nombreEquipos << equipo_puntos_goles.equipo.nombre
         end
 
         for partido in partidos
             golesLocal, golesVisitante = partido.calculaResultado()
 
+            # Añado los goles a cada equipo
+            indiceLocal = nombreEquipos.index(partido.local.nombre)
+            indiceVisitante = nombreEquipos.index(partido.visitante.nombre)
+
+            @clasificacion[indiceLocal].goles += golesLocal
+            @clasificacion[indiceVisitante].goles += golesVisitante
+
             if golesLocal != golesVisitante # Hay un ganador
                 if golesLocal > golesVisitante
                     ganador = partido.local
+                    indice = indiceLocal
                 else
                     ganador = partido.visitante
+                    indice = indiceVisitante
                 end
     
                 # Sumamos tres puntos al equipo ganador
-                indice = nombreEquipos.index(ganador.nombre)
                 nuevoEquipo = @clasificacion[indice]
                 @clasificacion.delete_at(indice)
                 nuevoEquipo.puntos += 3
