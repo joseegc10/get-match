@@ -7,10 +7,10 @@ rvm:
     - ruby-head
     # Pruebo jruby en su última versión
     - jruby-head
-    # Pruebo una versión intermedia
-    - 2.6
     # Pruebo la última versión compatible
     - 2.3
+    # Pruebo una versión intermedia
+    - 2.6
 
 # Instalamos última versión de bundle
 before_install:

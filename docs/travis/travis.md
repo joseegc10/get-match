@@ -28,10 +28,10 @@ rvm:
     - ruby-head
     # Pruebo jruby en su última versión
     - jruby-head
-    # Pruebo una versión intermedia
-    - 2.6
     # Pruebo la última versión compatible
     - 2.3
+    # Pruebo una versión intermedia
+    - 2.6
 ```
 
 La elección de las versiones no se ha hecho de forma aleatoria. Como veremos más adelante, voy a usar la versión 2.1.4 de bundler. Esto hace que solo sean compatibles con él las versiones de ruby posteriores o iguales a la 2.3.0.
@@ -67,8 +67,41 @@ before_install:
 
 A parte de esto, existen otras posibilidades en la construcción del fichero .travis.yml, que se pueden consultar en el [manual oficial de Travis para Ruby](https://docs.travis-ci.com/user/languages/ruby/).
 
-## Justificación de las versiones utilizadas
+## Pruebas realizadas en Travis
 
+### Versiones de ruby utilizadas
 
+En este subapartado se recogerán la versiones de ruby utilizadas y una justificación de las mismas. Como se puede apreciar arriba, se han elegido 4 versiones diferentes de ruby:
+- En primer lugar, he considerado que es fundamental probar la última versión de ruby, pues esto nos va a permitir saber si nuestro código "está al día" con ruby, siendo compatible con su última versión.
+- En segundo lugar, he descubierto la existencia de JRuby, que es una implementación 100% Java del lenguaje Ruby. Debido a su fama (gracias a ser compatible con bibliotecas Java), he considerado adecuado ver si mi código funcionaba para esta versión también.
+- En tercer lugar, tal y como se ha explicado arriba, para que mi código sea compatible con bundler, es necesario instalarlo en su última versión actual, pues la que viene por defecto en Travis provoca incompatibilidad. Por ello, es necesario saber cual es la última versión de ruby compatible con esta versión de bundler. Como podemos apreciar arriba, la última versión es la 2.3, por lo que considero importante mantener en Travis la última versión para la que mi código funciona.
+- Por último, en cuarto lugar, he decidido añadir una versión intermedia entre la última que funciona y la más reciente, para ver que efectivamente si funciona en las versiones intermedias, pues podría ocurrir que funcionara en la 2.3 y en la última pero no en las intermedias.
+
+### Diferentes sistemas operativos
+
+Además de probar en diferentes versiones, considero bueno probar en que sistemas operativos funciona mi código. Para ello, hay que añadir lo siguiente al archivo .travis.yml:
+
+```
+os:
+  - windows
+  - linux
+  - osx
+```
+
+En linux ya sabíamos que iba a funcionar, pues es el SO que viene por defecto y ya lo habíamos probado. En cuanto a windows y osx, no sabíamos el resultado que iba a tener.
+
+El resultado de la prueba que he realizado se puede ver en el siguiente [enlace](https://travis-ci.com/github/joseegc10/get-match/builds/199372910).
+
+Resultado para windows:
+
+![windows](https://github.com/joseegc10/get-match/blob/master/docs/img/travis/windows.png)
+
+Como se puede apreciar, para windows no funciona mi código. Si nos adentramos en el error, vemos que no funciona debido a que ruby no es soportado actualmente por windows.
+
+Resultado para osx:
+
+![osx](https://github.com/joseegc10/get-match/blob/master/docs/img/travis/osx.png)
+
+En cuanto a osx, vemos que si funciona para 3 de las 4 versiones que hemos probado. En el caso de la versión 2.3 falla debido a la incompatibilidad de esta versión con un paquete en osx.
 
 **Como conclusión final, he elegido Travis para realizar lo explicado arriba debido a que quería utilizar un sistema que me permitiera probar los tests en diferentes versiones de ruby. Travis, gracias a que permite la ejecución en paralelo, la veo ideal para este cometido.**
