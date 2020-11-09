@@ -21,14 +21,15 @@ version: 2.1
 # Trabajos
 jobs:
   build:
-    # Indicamos que hacemos uso de máquina con linux
-    machine: true
+    # Indicamos que hacemos uso de docker
+    docker:
+      - image: joseegc10/get-match
     # Pasos en la ejecución del trabajo build
     steps:
       # Descargamos el repo
       - checkout
       # Ejecutamos los test con el contenedor de docker
-      - run: docker run -t -v `pwd`:/test joseegc10/get-match
+      - run: rake test
 ```
 
 Lo explicamos paso por paso:
@@ -43,22 +44,26 @@ Lo explicamos paso por paso:
 
 3. Tarea build:
 ```
-  build:
-    machine: true
+    # Indicamos que hacemos uso de docker
+    docker:
+      - image: joseegc10/get-match
+    # Pasos en la ejecución del trabajo build
     steps:
+      # Descargamos el repo
       - checkout
-      - run: docker run -t -v `pwd`:/test joseegc10/get-match
+      # Ejecutamos los test con el contenedor de docker
+      - run: rake test
 ```
 
-En la tarea anterior, en primer lugar indicamos que vamos a utilizar una máquina con linux, pues me aporta todo lo necesario para hacer lo que quiero y es recomendado su uso con docker. Esto se indica con `machine: true`. Posteriormente, establecemos los pasos a seguir en el trabajo:
+En la tarea anterior, en primer lugar indicamos que vamos a utilizar un contenedor de Docker, pues este aumenta el rendimiento compilando solo lo necesario. Posteriormente, establecemos los pasos a seguir en el trabajo:
 
     1. Hacemos checkout del repo.
 
     - checkout
 
-    2. Ejecutamos el contenedor que tenemos en docker, al no encontrarlo primero hará el pull y posteriormente hará el run que ejecute los tests.
+    2. Ejecutamos los test en el contenedor de docker
 
-    - run: docker run -t -v `pwd`:/test joseegc10/get-match
+    - run: rake test
 
 En la siguiente imagen se muestra el correcto funcionamiento del trabajo build, es decir, cuando hacemos push a nuestro repositorio de GitHub, en CircleCI se va a proceder a hacer el pull de nuestro contenedor y la ejecución de los test:
 
@@ -83,4 +88,4 @@ Mientras que CircleCI tardó lo siguiente:
 
 ![prueba-circle](https://raw.githubusercontent.com/joseegc10/get-match/master/docs/img/circleci/prueba-circle.png)
 
-Como se puede apreciar, circle es 3 segundos más rapido. La diferencia en este caso no es excesivamente grande, aunque circleci es un 12% más rapido. Tampoco podría existir una excesiva diferencia pues las tareas que realizamos son sencillas, simplemente hace el pull y después ejecuta los tests.
+Como se puede apreciar, pasamos de 25 segundos a 11. Esto demuestra lo que decíamos al principio, CircleCI es más rapido, en concreto es más de 2 veces más rapido, por lo que es muy adecuado para la ejecución de los tests usando mi contenedor de docker.
