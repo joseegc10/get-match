@@ -11,8 +11,11 @@ rvm:
     - 2.6
     # Pruebo la última versión compatible
     - 2.3
-    # Pruebo versión anterior para fallo
-    - 2.2
+
+os:
+    - windows
+    - linux
+    - osx
 
 # Instalamos última versión de bundle
 before_install:
@@ -23,8 +26,3 @@ install: bundle install
 
 # Para ejecutar los test 
 script: rake test
-
-after_failure:
-    - gem unistall bundler
-    - gem install bundler -v 1.17.3
-    - rake test 
