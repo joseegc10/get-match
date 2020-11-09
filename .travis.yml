@@ -11,6 +11,8 @@ rvm:
     - 2.6
     # Pruebo la última versión compatible
     - 2.3
+    # Pruebo versión anterior para fallo
+    - 2.2
 
 # Instalamos última versión de bundle
 before_install:
