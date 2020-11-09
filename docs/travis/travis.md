@@ -104,4 +104,6 @@ Resultado para osx:
 
 En cuanto a osx, vemos que si funciona para 3 de las 4 versiones que hemos probado. En el caso de la versión 2.3 falla debido a la incompatibilidad de esta versión con un paquete en osx.
 
+Comentar que esto se ha realizado como prueba, pero he decidido no dejar los diferentes sistemas operativos en el fichero travis para que el tiempo de ejecución de este no aumentara demasiado.
+
 **Como conclusión final, he elegido Travis para realizar lo explicado arriba debido a que quería utilizar un sistema que me permitiera probar los tests en diferentes versiones de ruby. Travis, gracias a que permite la ejecución en paralelo, la veo ideal para este cometido.**
