@@ -6,7 +6,7 @@ rvm:
     # Pruebo la última versión de ruby
     - ruby-head
     # Pruebo una versión beta
-    - 3.0.0-preview1
+    - 3.0.0
     # Pruebo jruby en su última versión
     - jruby-head
     # Pruebo la última versión compatible
