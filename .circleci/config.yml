@@ -4,11 +4,12 @@ version: 2.1
 # Trabajos
 jobs:
   build:
-    # Indicamos que hacemos uso de máquina con linux
-    machine: true
+    # Indicamos que hacemos uso de docker
+    docker:
+      - image: joseegc10/get-match
     # Pasos en la ejecución del trabajo build
     steps:
       # Descargamos el repo
       - checkout
       # Ejecutamos los test con el contenedor de docker
-      - run: docker run -t -v `pwd`:/test joseegc10/get-match
+      - run: rake test
