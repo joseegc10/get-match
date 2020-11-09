@@ -1,4 +1,4 @@
-# Configuración de CircleCI
+# Enlazar repositorio con CircleCI
 
 Pasos para enlazar mi repositorio con CircleCI:
 

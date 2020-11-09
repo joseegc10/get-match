@@ -11,12 +11,12 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ### Travis-CI
 
-- La documentación sobre el proceso seguido en la configuración de Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
-- Para consultar una explicación de Travis-CI, incluyendo sus ventajas, como se ha hecho la construcción del fichero .travis.yml y otras posibilidades que nos ofrece, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md).
+- La documentación sobre el proceso seguido para enlazar este repositorio con Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
+- Para consultar una explicación de Travis-CI, incluyendo sus ventajas, como se ha hecho la construcción del fichero .travis.yml y la justificación de las versiones de ruby utilizadas y pruebas realizadas, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md).
 
 ### Circle-CI
 
-- La documentación sobre el proceso seguido en la configuración de CircleCI se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/config_circleci.md).
+- La documentación sobre el proceso seguido para enlazar este repositorio con CircleCI se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/config_circleci.md).
 - Para consultar una explicación de CircleCI, incluyendo sus ventajas, como se ha construido el fichero config.yml y una comparación con Travis, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/circleci.md).
 
 ### Github Action

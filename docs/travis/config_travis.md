@@ -1,6 +1,8 @@
-# Configuración de Travis
+# Enlazar repositorio con Travis
 
-En este archivo se recogerán los pasos seguidos para la configuración de Travis, de tal forma que quede enlazado con mi repositorio de GitHub. La explicación de Travis y la justificación de la configuración que se ha usado se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md). Los pasos para enlazar el repo de GitHub con Travis son los siguientes:
+En este archivo se recogerán los pasos seguidos para la configuración de Travis, de tal forma que quede enlazado con mi repositorio de GitHub. La explicación de Travis y la justificación de la configuración que se ha usado se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md). 
+
+Los pasos para enlazar el repo de GitHub con Travis son los siguientes:
 
 1. Accedemos al apartado de repositorios.
 
