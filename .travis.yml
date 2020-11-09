@@ -3,12 +3,8 @@ language: ruby
 
 # Versiones de ruby donde se va a probar
 rvm:
-    - 2.7.2
-    - 2.7.1
-    - 2.7.0
-    - 2.6.0
-    - 2.5.0
-    - 2.4.0
+    - ruby-head
+    - ruby-beta
     - 2.3.0
 
 # Instalamos última versión de bundle
