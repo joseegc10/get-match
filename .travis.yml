@@ -12,11 +12,6 @@ rvm:
     # Pruebo la última versión compatible
     - 2.3
 
-os:
-    - windows
-    - linux
-    - osx
-
 # Instalamos última versión de bundle
 before_install:
     - gem install bundler

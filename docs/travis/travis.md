@@ -24,13 +24,14 @@ Como se ha dicho en las ventajas, es muy fácil empezar con Travis-CI. Simplemen
 
 ```
 rvm:
-    - 2.7.2
-    - 2.7.1
-    - 2.7.0
-    - 2.6.0
-    - 2.5.0
-    - 2.4.0
-    - 2.3.0
+    # Pruebo la última versión de ruby
+    - ruby-head
+    # Pruebo jruby en su última versión
+    - jruby-head
+    # Pruebo una versión intermedia
+    - 2.6
+    # Pruebo la última versión compatible
+    - 2.3
 ```
 
 La elección de las versiones no se ha hecho de forma aleatoria. Como veremos más adelante, voy a usar la versión 2.1.4 de bundler. Esto hace que solo sean compatibles con él las versiones de ruby posteriores o iguales a la 2.3.0.
@@ -64,47 +65,10 @@ before_install:
 
 `script: rake test`
 
-## Otras posibilidades
-
-Comentar también que Travis da la posibilidad de hacer más cosas. Algunas utilidades extra podrían ser las siguiente:
-
-1. Podríamos cachear las dependencias con el siguiente comando:
-
-`cache: bundler`
-
-Sin embargo, debido a las pocas dependencias que hay en la actualidad en el proyecto, no lo veo necesario, aunque en un futuro podría incluirlo en caso de que estas dependencias comenzaran a crecer.
-
-2. Podríamos probar diferentes versiones de dependencias. Por ejemplo, haciendo uso de diferentes ficheros gemfile, que deberían estar almacenados en un directorio llamado ./gemfiles. Un posible ejemplo sería el siguiente:
-
-```
-gemfile:
-  - gemfiles/primero.gemfile
-  - gemfiles/segundo.gemfile
-  - gemfiles/tercero.gemfile
-```
-
-3. Otra forma de acelerar la instalación, además del uso de cache, podría ser excluyendo dependencias no esenciales en la instalación. Esto es útil ya que en ocasiones tenemos bibliotecas por defecto que no se van a usar. Para excluirlas, deberíamos poner lo siguiente:
-
-```
-group :production do
-  gem 'ruby-debug'
-  gem 'unicorn'
-end
-
-bundler_args: --without production
-```
-
-De esa forma, se excluirían los paquetes ruby-debug y unicorn.
-
-4. Por último, podríamos hacer uso de docker para la ejecución de los tests. Para ello el archivo .travis.yml contendría solamente lo siguiente:
-
-```
-script:
-  - docker run -t -v `pwd`:/test joseegc10/get-match
-```
-
-Como vemos, en el apartado de script en lugar de usar rake test deberíamos usar la orden que he puesto arriba, que también haría rake test pero lo obtiene desde el Dockerfile.
-
 A parte de esto, existen otras posibilidades en la construcción del fichero .travis.yml, que se pueden consultar en el [manual oficial de Travis para Ruby](https://docs.travis-ci.com/user/languages/ruby/).
+
+## Justificación de las versiones utilizadas
+
+
 
 **Como conclusión final, he elegido Travis para realizar lo explicado arriba debido a que quería utilizar un sistema que me permitiera probar los tests en diferentes versiones de ruby. Travis, gracias a que permite la ejecución en paralelo, la veo ideal para este cometido.**
