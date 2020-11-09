@@ -42,6 +42,18 @@ class Liga
     def numGolesEquipo(equipo)
         raise ArgumentError, 'El parámetro no es un equipo' unless equipo.is_a? Equipo
 
+        # Comprobamos que el equipo pertenece a la liga
+        encontrado = false
+        for equipo_liga in @equipos
+            if equipo_liga.nombre == equipo.nombre
+                encontrado = true
+            end
+        end
+
+        if !encontrado
+            raise ArgumentError, 'El parámetro no es un equipo de la liga'
+        end
+
         golesEquipo = 0
 
         for goleador_goles in @rankingGoleadores
