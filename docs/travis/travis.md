@@ -106,4 +106,14 @@ En cuanto a osx, vemos que si funciona para 3 de las 4 versiones que hemos proba
 
 Comentar que esto se ha realizado como prueba, pero he decidido no dejar los diferentes sistemas operativos en el fichero travis para que el tiempo de ejecución de este no aumentara demasiado.
 
+## Diferencias entre Rake, Bundler y Gem
+
+Por último, explico por qué son necesarias las tres herramientas que uso en Travis. 
+
+En primer lugar, Gem permite la instalación de gemas y la uso para la instalación de bundler. Sin embargo, Gem no es un gestor de dependencias, pues solo permite instalar las gemas una a una.
+
+Bundler es el gestor de dependencias y me permite indicar en el fichero Gemfile las gemas que hay que instalar y la versión de dichas gemas. En este fichero incluyo rspec, que sirve para el test del código.
+
+Rake es el gestor de tareas y me permite crear una tarea para la ejecución de los tests.
+
 **Como conclusión final, he elegido Travis para realizar lo explicado arriba debido a que quería utilizar un sistema que me permitiera probar los tests en diferentes versiones de ruby. Travis, gracias a que permite la ejecución en paralelo, la veo ideal para este cometido.**
