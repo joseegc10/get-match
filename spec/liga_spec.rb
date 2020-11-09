@@ -85,6 +85,12 @@ describe Liga do
             expect{@liga.numGolesEquipo("noEsUnEquipo")}.to raise_error(ArgumentError)
         end
 
+        equipo_fuera_liga = Equipo.new('Atletico')
+
+        it 'should raise an exception if the argument is not a team of the league' do
+            expect{@liga.numGolesEquipo(equipo_fuera_liga)}.to raise_error(ArgumentError)
+        end
+
         it 'should do the counting right' do
             @liga.aniadeJornada(@jornada)
             expect(@liga.numGolesEquipo(@local)).to eq(3)
