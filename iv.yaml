@@ -8,3 +8,4 @@ test:
   - spec/partido_spec.rb
   - spec/equipo_spec.rb
   - spec/jugador_spec.rb
+URL: https://get-match.joseegc10.vercel.app/api
