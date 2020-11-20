@@ -2,6 +2,8 @@ require 'json'
 require 'net/https'
 require 'date'
 
+TOKEN = ENV['TG_TOKEN']
+
 def cargaDatos()
     url = 'https://raw.githubusercontent.com/openfootball/football.json/master/2020-21/es.1.json'
     uri = URI(url)
