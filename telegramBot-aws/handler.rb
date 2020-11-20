@@ -123,10 +123,36 @@ def getMatch(event:, context:)
         message = data["message"]["text"]
         chat_id = data["message"]["chat"]["id"]
         first_name = data["message"]["chat"]["first_name"]
+
+        partidos, equipos = cargaDatos()
+
+        palabras = message.split()
+        comando = palabras[0]
+
+        case comando
+        when '/juega'
+            url = 'https://get-match.joseegc10.vercel.app/api'
+            uri = URI(url)
+            response = Net::HTTP.get(uri)
+            respuestaVercel = JSON.parse(response)
+
+            msg = respuestaVercel["mensaje"]
+
+        else
+            mensajes = []
+            mensajes << 'Bienvenido al bot para la consulta de la liga Española.'
+            mensajes << 'Usa -- /equipos -- para consultar el nombre de los equipos de la liga Española.'
+            mensajes << 'Usa -- /juega nombreEquipo -- para consultar cuántos días quedan para que juegue dicho equipo.'
+            mensajes << 'Usa -- /resultado nombreEquipo jornada -- para saber el resultado de dicho equipo en dicha jornada.'
+            
+            msg = ""
+            for mensaje in mensajes
+                msg += mensaje
+                msg += "\n"
+            end
+        end
     
-        response = "Bot de prueba"
-    
-        payload = {text: response, chat_id: chat_id}
+        payload = {text: msg, chat_id: chat_id}
     
         uri = URI("https://api.telegram.org")
     
