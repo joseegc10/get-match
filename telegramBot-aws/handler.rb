@@ -99,6 +99,24 @@ def calculaResultado(partidos, equipo, jornada)
     end
 end
 
+def unePalabras(palabras)
+    union = ""
+  
+    if (palabras.size > 0)
+        i = 0
+    
+        while i < palabras.size-1
+            union += palabras[i]
+            union += " "
+            i += 1
+        end
+    
+        union += palabras[i]
+    end
+  
+    return union
+end
+
 def getMatch(event:, context:)
     begin
         data = JSON.parse(event["body"])
