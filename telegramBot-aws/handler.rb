@@ -145,6 +145,23 @@ def getMatch(event:, context:)
                 msg += "\n"
             end
 
+        when '/resultado'
+            begin
+                jornada = Integer(palabras[palabras.size-1])
+                # Elimino jornada
+                palabras.pop()
+            rescue
+                # Ultima jornada
+                jornada = -1
+            end
+      
+            # Elimino comando
+            palabras.shift()
+      
+            equipo = unePalabras(palabras)
+      
+            msg = calculaResultado(partidos, equipo, jornada)
+
         else
             mensajes = []
             mensajes << 'Bot para la consulta de la liga Española.'
