@@ -138,9 +138,16 @@ def getMatch(event:, context:)
 
             msg = respuestaVercel["mensaje"]
 
+        when '/equipos'
+            msg = ""
+            for equipo in equipos
+                msg += equipo
+                msg += "\n"
+            end
+
         else
             mensajes = []
-            mensajes << 'Bienvenido al bot para la consulta de la liga Española.'
+            mensajes << 'Bot para la consulta de la liga Española.'
             mensajes << 'Usa -- /equipos -- para consultar el nombre de los equipos de la liga Española.'
             mensajes << 'Usa -- /juega nombreEquipo -- para consultar cuántos días quedan para que juegue dicho equipo.'
             mensajes << 'Usa -- /resultado nombreEquipo jornada -- para saber el resultado de dicho equipo en dicha jornada.'
