@@ -1,6 +1,10 @@
 name: Deploy master branch
 
-on: [push]
+on:
+  push:
+    paths:
+      - "telegramBot.rb"
+      - "serverless.yml"
 
 jobs:
   deploy:

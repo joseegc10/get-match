@@ -164,7 +164,7 @@ def getMatch(event:, context:)
 
         else
             mensajes = []
-            mensajes << 'Bott para la consulta de la liga Española.'
+            mensajes << 'Bot para la consulta de la liga Española.'
             mensajes << 'Usa -- /equipos -- para consultar el nombre de los equipos de la liga Española.'
             mensajes << 'Usa -- /juega nombreEquipo -- para consultar cuántos días quedan para que juegue dicho equipo.'
             mensajes << 'Usa -- /resultado nombreEquipo jornada -- para saber el resultado de dicho equipo en dicha jornada.'
