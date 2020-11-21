@@ -48,7 +48,7 @@ Handler = Proc.new do |req, res|
   
     equipo = req.query['equipo'] || 'Real Madrid'
 
-    partidos = cargaDatos()
+    partidos, nombresEquipos = cargaDatos()
 
     dias = proximoPartido(partidos, equipo)
 
