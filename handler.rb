@@ -181,7 +181,7 @@ def getMatch(event:, context:)
         uri = URI("https://api.telegram.org")
     
         Net::HTTP.start(uri.hostname, uri.port, {use_ssl: true}) do |http|
-            req = Net::HTTP::Post.new("/bot#{TOKEN}/sendMessage", {'Content-Type' => 'application/json; charset=utf-8'})
+            req = Net::HTTP::Get.new("/bot#{TOKEN}/sendMessage", {'Content-Type' => 'application/json; charset=utf-8'})
             req.body = payload.to_json
             http.request(req)
         end
