@@ -8,7 +8,17 @@ def cargaDatos()
     response = Net::HTTP.get(uri)
     partidos = JSON.parse(response)
   
-    return partidos
+    url = 'https://raw.githubusercontent.com/openfootball/football.json/master/2020-21/es.1.clubs.json'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    equipos = JSON.parse(response)["clubs"]
+    nombresEquipos = []
+  
+    for equipo in equipos
+        nombresEquipos << equipo["name"]
+    end
+  
+    return [partidos, nombresEquipos]
 end
 
 def proximoPartido(partidos, equipo)

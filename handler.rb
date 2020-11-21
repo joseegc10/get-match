@@ -53,7 +53,7 @@ def calculaResultado(partidos, equipo, jornada)
                 msg = "En la última jornada, el equipo #{equipoLocal} le ganó #{golesLocal} a #{golesVisitante} al equipo #{equipoVisitante}."
                 return msg
             elsif golesLocal < golesVisitante
-                msg = "En la última jornada, el equipo #{equipoVisitante} le ganó #{golesVisitante} a #{golesLocal} al equipo #{equipoLocal}."
+                msg = "En la última jornada, el equipo #{equipoVisitante} le ganó #{golesLocal} a #{golesVisitante} al equipo #{equipoLocal}."
                 return msg
             else
                 msg = "En la última jornada, se produjo un empate entre el equipo #{equipoLocal} y el equipo #{equipoVisitante}."
@@ -79,7 +79,7 @@ def calculaResultado(partidos, equipo, jornada)
                         msg = "El equipo #{partido["team1"]} le ganó #{golesLocal} a #{golesVisitante} al equipo #{partido["team2"]}."
                         return msg
                     elsif golesLocal < golesVisitante
-                        msg = "El equipo #{partido["team2"]} le ganó #{golesVisitante} a #{golesLocal} al equipo #{partido["team1"]}."
+                        msg = "El equipo #{partido["team2"]} le ganó #{golesLocal} a #{golesVisitante} al equipo #{partido["team1"]}."
                         return msg
                     else
                         msg = "Se produjo un empate entre el equipo #{partido["team1"]} y el equipo #{partido["team2"]}."
