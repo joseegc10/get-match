@@ -27,3 +27,18 @@ describe '#calculaResultado' do
         expect(res).to eq 'El equipo NoEstoyEnLiga no ha disputado la última jornada.'
     end
 end
+
+describe '#unePalabras' do
+    it 'no hay palabras' do
+        palabras = []
+        expect(unePalabras(palabras)).to eq ''
+    end
+
+    it 'hay palabras' do
+        palabras = []
+        palabras << "primera"
+        palabras << "segunda"
+
+        expect(unePalabras(palabras)).to eq 'primera segunda'
+    end
+end
