@@ -9,6 +9,9 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./telegramBot-aws
     strategy:
       matrix:
         node-version: [12.x]
@@ -18,8 +21,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: change directory
-      run: cd telegramBot-aws
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
