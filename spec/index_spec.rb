@@ -15,3 +15,14 @@ describe '#proximoPartido' do
         expect(dias).to eq (-1)
     end
 end
+
+describe 'handler Vercel' do
+    it 'proximo partido de un equipo desde vercel' do
+        url = 'https://get-match.vercel.app/api?equipo=NoEstoyEnLiga'
+        uri = URI(url)
+        response = Net::HTTP.get(uri)
+        respuestaVercel = JSON.parse(response)
+
+        expect(respuestaVercel["mensaje"]).to eq 'NoEstoyEnLiga no es un equipo de la Liga Española'
+    end
+end
