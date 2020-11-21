@@ -3,7 +3,7 @@ name: Deploy master branch
 on:
   push:
     paths:
-      - "telegramBot.rb"
+      - "handler.rb"
       - "serverless.yml"
 
 jobs:
