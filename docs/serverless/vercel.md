@@ -16,7 +16,7 @@ De nuevo, podemos conectarnos a Vercel de la misma forma que explicamos por ejem
 
 Posteriormente, nos piden elegir la carpeta root. En el caso de Vercel con ruby, al encontrarse este en fase alpha, no nos dejan elegir una carpeta distinta del directorio principal, provocando el siguiente error en caso de que elijamos una diferente:
 
-![error-root](./docs/img/serverless/error.jpg)
+![error-root](../img/serverless/error.jpg)
 
 Por ello, he tenido que hacer deploy de todo el repositorio.
 
@@ -30,7 +30,7 @@ En mi caso, he usado los datos sobre la temporada actual de la liga Española, p
 
 ## Uso de Vercel
 
-Para hacer uso de Vercel, este exige una estructura de directorios concreta. Dentro del directorio que hemos marcado como root, debe existir una carpeta api, donde se encontrará el archivo que va a contener nuestra función Serverless. Este archivo se puede consultar [aquí](./api/index.rb).
+Para hacer uso de Vercel, este exige una estructura de directorios concreta. Dentro del directorio que hemos marcado como root, debe existir una carpeta api, donde se encontrará el archivo que va a contener nuestra función Serverless. Este archivo se puede consultar [aquí](../../api/index.rb).
 
 ## Código de la función
 
@@ -85,9 +85,9 @@ El despliegue a Vercel se puede hacer de dos formas:
 
 2. Mediante el CLI de Vercel. Este lo descargamos con `npm i -g vercel`, mientras que para hacer deploy simplemente ejecutamos `vercel` en el directorio donde tengamos la carpeta api.
 
-En la siguiente imagen se puede ver el correcto deploy a Vercel, pudiéndose consultar [aquí](https://vercel.com/joseegc10) nuestro proyecto en Vercel:
+En la siguiente imagen se puede ver el correcto deploy a Vercel, pudiéndose consultar [aquí](https://vercel.com/joseegc10/get-match) nuestro proyecto en Vercel:
 
-![error-root](./docs/img/serverless/deploy.jpg)
+![deploy](../img/serverless/deploy.jpg)
 
 ## Prueba de funcionamiento
 
