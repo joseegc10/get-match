@@ -52,7 +52,7 @@ La información acerca de los test de las clases se puede consultar [aquí](http
 - Los **pasos a seguir** en el desarrollo del proyecto se pueden consultar [aquí](https://github.com/joseegc10/get-match/blob/master/docs/Pasos-a-seguir.md).
 - Las **tareas (issues) completadas** se pueden consultar [aquí](https://github.com/joseegc10/get-match/issues?q=is%3Aissue+is%3Aclosed).
 - El **fichero iv.yaml** se puede consultar [aquí](https://github.com/joseegc10/get-match/blob/master/iv.yaml).
-- Más documentación sobre el proyecto se puede consultar en el siguiente [enlace]().
+- Más documentación sobre el proyecto se puede consultar en el siguiente [enlace](./docs/doc_extra.md).
 - [Otros enlaces adicionales](https://github.com/joseegc10/get-match/blob/master/docs/enlaces_adicionales.md).
 
 ## Autor :man:
