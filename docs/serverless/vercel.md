@@ -95,7 +95,7 @@ El despliegue a Vercel se puede hacer de dos formas:
 
 En la siguiente imagen se puede ver el correcto deploy a Vercel, pudiéndose consultar [aquí](https://vercel.com/joseegc10/get-match) nuestro proyecto en Vercel:
 
-![deploy](../img/serverless/deploy.png)
+![deploy-vercel](../img/serverless/deploy.png)
 
 ## Prueba de funcionamiento
 
