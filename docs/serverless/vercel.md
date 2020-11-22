@@ -81,7 +81,7 @@ Por último, establecemos el json que va a ir en el cuerpo de la respuesta. Este
 
 El despliegue a Vercel se puede hacer de dos formas:
 
-1. Mediante el uso de git push. Al tener conectado nuestro repositorio a Vercel, con cada push se va a hacer deploy de nuestro proyecto a Vercel. 
+1. Mediante el uso de git push. Al tener conectado nuestro repositorio a Vercel, con cada push se va a hacer deploy de nuestro proyecto a Vercel.
 
 2. Mediante el CLI de Vercel. Este lo descargamos con `npm i -g vercel`, mientras que para hacer deploy simplemente ejecutamos `vercel` en el directorio donde tengamos la carpeta api.
 
