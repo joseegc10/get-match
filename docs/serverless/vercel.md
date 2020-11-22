@@ -32,6 +32,10 @@ En mi caso, he usado los datos sobre la temporada actual de la liga Española, p
 
 Para hacer uso de Vercel, este exige una estructura de directorios concreta. Dentro del directorio que hemos marcado como root, debe existir una carpeta api, donde se encontrará el archivo que va a contener nuestra función Serverless. Este archivo se puede consultar [aquí](../../api/index.rb).
 
+## Integración con el proyecto
+
+Para conseguir una integración con el resto del proyecto, he creado la función Serverless de tal forma que se avance la [HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue](https://github.com/joseegc10/get-match/issues/32), siendo este un caso particular, pues nos permite consultar los días hasta el próximo partido.
+
 ## Código de la función
 
 En primer lugar, he hecho una función auxiliar para la lectura de datos desde el repositorio que expliqué en el apartado anterior.
@@ -76,6 +80,10 @@ Posteriormente, cargamos los datos y obtenemos el número de días con las funci
 Después, en función de los días recibimos creamos un mensaje que sea explicativo para el usuario.
 
 Por último, establecemos el json que va a ir en el cuerpo de la respuesta. Este va a contener el equipo, los días restantes y el mensaje explicativo.
+
+## Test del código
+
+Como siempre, es necesario testear todo el código que creamos. El archivo en el que se realizan los test de dicho código se puede consultar [aquí](../../spec/index_spec.rb).
 
 ## Despliegue
 
