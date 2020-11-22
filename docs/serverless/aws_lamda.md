@@ -111,11 +111,11 @@ def getMatch(event:, context:)
 
 Como se puede observar, considero tres comandos:
 
-- /juega devuelve el número de días que quedan para el próximo partido de un equipo. **Para ello, lo que he hecho es usar la función serverless que cree en Vercel.**
+- /juega devuelve el número de días que quedan para el próximo partido de un equipo. **Para ello, lo que he hecho es conectarme a la función serverless que cree en Vercel.**
 
 - /equipos me devuelve la lista de los equipos de la liga (HU10).
 
-- /resultado espera que se reciba como último parámetro el número de la jornada y entre el comando y la jornada el equipo, devolviendo el resultado del partido.
+- /resultado espera que se reciba como último parámetro el número de la jornada y entre el comando y la jornada el equipo, devolviendo el resultado del partido (HU1).
 
 - En otro caso, devuelve un mensaje explicativo sobre los posibles usos del bot.
 
@@ -135,13 +135,13 @@ Como se puede observar, considero tres comandos:
 
 ## Test del código
 
-Como siempre, es necesario testear todo el código que creamos. El archivo en el que se realizan los test de dicho código se puede consultar [aquí](../../spec/index_handler.rb).
+Como siempre, es necesario testear todo el código que creamos. El archivo en el que se realizan los test de dicho código se puede consultar [aquí](../../spec/handler_spec.rb).
 
 ## Despliegue
 
 El despliegue a AWS Lambda se puede hacer de dos formas:
 
-1. Mediante el uso de git push. Al tener haber creado la action que expliqué, con cada push se va a hacer deploy de nuestro proyecto a AWS Lambda siempre que se modifique el archivo serverless.yml o el archivo de la función lambda.
+1. Mediante el uso de git push. Al haber creado la action que expliqué, con cada push se va a hacer deploy de nuestro proyecto a AWS Lambda siempre que se modifique el archivo serverless.yml o el archivo de la función lambda.
 
 2. Mediante el CLI de Serverless. Como ya expliqué, con `serverless deploy`.
 

@@ -29,3 +29,5 @@ De forma general, establezco lo siguiente:
 - Nombre del servicio
 - Proveedor: aws con runtime de ruby. En mi caso he establecido un tamaño de memoria menor que el que venía por defecto (1024), pues no requería de tanto. Además, es necesario establecer la región, en mi caso París, el más cercano a mi ubicación.
 - Función serverless: hay que establecer en que archivo está la función serverless y qué función de ellas es. En mi caso está en el archivo handler y se llama getMatch. Establecemos que ese trata de un evento get y le proporcionamos una variable TG_TOKEN que contiene el valor del token de telegram y la cual he creado desde la página de AWS para que pueda acceder a ella.
+
+El uso de esta herramienta me permite poder mover mi bot de una plataforma a otra de una manera muy sencilla. Por ejemplo, para pasar mi bot a Azure simplemente tendría que cambiar el apartado provider, indicando en el nombre azure, cambiando la región a la correspondiente en dicha plataforma y ajustando el resto de parámetros que representan al proveedor, ejecutando el correspondiende `serverless deploy` o directamente al hacer push se subiría a dicha plataforma.
