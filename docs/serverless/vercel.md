@@ -93,7 +93,7 @@ El despliegue a Vercel se puede hacer de dos formas:
 
 2. Mediante el CLI de Vercel. Este lo descargamos con `npm i -g vercel`, mientras que para hacer deploy simplemente ejecutamos `vercel` en el directorio donde tengamos la carpeta api.
 
-En la siguiente imagen se puede ver el correcto deploy a Vercel, pudiéndose consultar [aquí](https://vercel.com/joseegc10/get-match) nuestro proyecto en Vercel:
+En la siguiente imagen se puede ver el correcto deploy a Vercel:
 
 ![deploy-vercel](../img/serverless/deploy.png)
 
