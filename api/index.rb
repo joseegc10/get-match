@@ -34,7 +34,7 @@ def proximoPartido(partidos, equipo)
             end
         end
     end
-  
+
     if minimaDiferencia != Float::INFINITY
         return Integer(minimaDiferencia)
     else
