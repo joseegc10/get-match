@@ -131,7 +131,10 @@ def getMatch(event:, context:)
 
         case comando
         when '/juega'
-            url = 'https://get-match.joseegc10.vercel.app/api'
+            # Elimino comando
+            palabras.shift()
+            equipo = unePalabras(palabras)
+            url = 'https://get-match.joseegc10.vercel.app/api?equipo=' + equipo
             uri = URI(url)
             response = Net::HTTP.get(uri)
             respuestaVercel = JSON.parse(response)
