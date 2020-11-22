@@ -192,6 +192,6 @@ def getMatch(event:, context:)
         puts e.message
         puts e.backtrace.inspect
     end
-  
+
     return { statusCode: 200 }
 end
