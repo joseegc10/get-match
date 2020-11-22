@@ -12,12 +12,12 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 
 ### Vercel
 
-La documentación sobre Vercel y la función Serverless creada se puede consultar en el siguiente [enlace]().
+La documentación sobre Vercel y la función Serverless creada se puede consultar en el siguiente [enlace](./docs/serverless/vercel.md).
 
 ### AWS Lambda
 
-- La documentación sobre Vercel y el bot de Telegram creado se puede consultar en el siguiente [enlace]().
-- He creado una github action para el deploy automático a aws lambda cuando hacemos push en este repositorio modificando alguno de los dos archivos del bot. La información sobre esta action se puede consultar [aquí](). 
+- La documentación sobre Vercel y el bot de Telegram creado se puede consultar en el siguiente [enlace](./docs/serverless/aws_lambda.md).
+- He creado una github action para el deploy automático a aws lambda cuando hacemos push en este repositorio modificando alguno de los dos archivos del bot. La información sobre esta action se puede consultar [aquí](./docs/serverless/deploy_aws_lambda.md).
 
 ## Integración continua
 
