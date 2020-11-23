@@ -3,17 +3,14 @@ service: bot-get-match
 provider:
   name: aws
   runtime: ruby2.7
-  memorySize: 128
-  region: eu-west-3
   stage: dev
+  region: eu-west-3
 
 functions:
-  getMatch:
+  post:
     handler: handler.getMatch
-    description: "Da el resultado de un partido de fútbol"
     events:
       - http:
-          path: /
-          method: get
-    environment:
-      TG_TOKEN: ${ssm:bot-get-match-token~true}
+          path: getMatch
+          method: post
+          cors: true

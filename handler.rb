@@ -2,8 +2,6 @@ require 'json'
 require 'net/https'
 require 'date'
 
-TOKEN = ENV['TG_TOKEN']
-
 def cargaDatos()
     url = 'https://raw.githubusercontent.com/openfootball/football.json/master/2020-21/es.1.json'
     uri = URI(url)
@@ -179,19 +177,23 @@ def getMatch(event:, context:)
             end
         end
     
-        payload = {text: msg, chat_id: chat_id}
-    
-        uri = URI("https://api.telegram.org")
-    
-        Net::HTTP.start(uri.hostname, uri.port, {use_ssl: true}) do |http|
-            req = Net::HTTP::Get.new("/bot#{TOKEN}/sendMessage", {'Content-Type' => 'application/json; charset=utf-8'})
-            req.body = payload.to_json
-            http.request(req)
-        end
+        return {
+            statusCode: 200,
+            body: ({text:msg, method:'sendMessage', chat_id:chat_id}).to_json,
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
     rescue Exception => e
         puts e.message
         puts e.backtrace.inspect
     end
 
-    return { statusCode: 200 }
+    return {
+        statusCode: 200,
+        body: ({text:msg, method:'sendMessage', chat_id:chat_id}).to_json,
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
 end
