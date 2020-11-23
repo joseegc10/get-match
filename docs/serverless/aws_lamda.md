@@ -28,7 +28,13 @@ Para usar la herramienta Serverless, la instalamos con `curl -o- -L https://slss
 
 Para conseguir una integración con el resto del proyecto, he creado en este caso un bot de telegram de tal forma que se avance la [HU1: Como usuario, quiero poder consultar el resultado de un partido](https://github.com/joseegc10/get-match/issues/1) y la [HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga](https://github.com/joseegc10/get-match/issues/63).
 
-## Código de la función
+## Código
+
+### Código de configuración
+
+Como he mencionado arriba, esta herramienta requiere de un archivo serverless.yml para la configuración del deploy. Este archivo se encuentra explicado en el siguiente [enlace](./serverless.md).
+
+### Código de la función
 
 En primer lugar, he hecho uso de la misma función para obtener los datos que ya usé en Vercel.
 
@@ -146,6 +152,18 @@ El despliegue a AWS Lambda se puede hacer de dos formas:
 En la siguiente imagen se puede ver el correcto deploy a AWS Lambda:
 
 ![deploy](../img/serverless/lambda.png)
+
+## Webhook
+
+Hacemos uso de webhooks, con los que evitamos que el programa este preguntando constantemente si hay algún mensaje de un usuario. Estos se basan en definir un evento (en este caso un mensaje del usuario) que activan el webhook y este va a activar la función lambda explicada arriba y va a devolver la respuesta al usuario.
+
+Por ello, una vez hemos hecho el deploy, debemos establecer el webhook. Esto se hace mediante una petición HTTP, pasando el endpoint que obtenemos en el deploy y el token del bot de telegram. Por ejemplo podemos usar el siguiente comando:
+
+`curl --request POST --url https://api.telegram.org/botSOY_EL_TOKEN_DEL_BOT/setWebHook --header 'content-type: application/json' --data '{"url": "SOY_EL_ENDPOINT_QUE_DEVUELVE_EL_DEPLOY"}'`
+
+Lo cual si se ha realizado correctamente, nos va a devolver lo siguiente:
+
+`{"ok":true,"result":true,"description":"Webhook was set"}`
 
 ## Prueba de funcionamiento
 
