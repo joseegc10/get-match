@@ -4,13 +4,13 @@ provider:
   name: aws
   runtime: ruby2.7
   stage: dev
-  region: eu-west-3
+  region: eu-west-2
 
 functions:
-  post:
+  get:
     handler: handler.getMatch
     events:
       - http:
           path: getMatch
-          method: post
+          method: get
           cors: true

@@ -119,18 +119,16 @@ Como se puede observar, considero tres comandos:
 
 - En otro caso, devuelve un mensaje explicativo sobre los posibles usos del bot.
 
-4. Por último, nos conectamos a la API de Telegram, para devolver el mensaje a traves del bot que creamos.
+4. Por último, devolvemos el mensaje correspondiente al usuario.
 
 ```ruby
-        payload = {text: msg, chat_id: chat_id}
-    
-        uri = URI("https://api.telegram.org")
-    
-        Net::HTTP.start(uri.hostname, uri.port, {use_ssl: true}) do |http|
-            req = Net::HTTP::Get.new("/bot#{TOKEN}/sendMessage", {'Content-Type' => 'application/json; charset=utf-8'})
-            req.body = payload.to_json
-            http.request(req)
-        end
+        return {
+            statusCode: 200,
+            body: ({text:msg, method:'sendMessage', chat_id:chat_id}).to_json,
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
 ```
 
 ## Test del código
@@ -151,7 +149,7 @@ En la siguiente imagen se puede ver el correcto deploy a AWS Lambda:
 
 ## Prueba de funcionamiento
 
-Para probar el bot podemos usarlo desde el siguiente [enlace](https://t.me/getMatch_bot). Pruebas de su correcto funcionamiento puede verse a continuación:
+Para probar el bot podemos usarlo desde el siguiente [enlace](https://t.me/getMatchbot). Pruebas de su correcto funcionamiento puede verse a continuación:
 
 ![bot1](../img/serverless/bot1.png)
 
