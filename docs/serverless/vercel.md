@@ -12,13 +12,19 @@ Vercel es una plataforma en la nube para sitios estáticos y funciones Serverles
 
 ## Conexión con GitHub
 
-De nuevo, podemos conectarnos a Vercel de la misma forma que explicamos por ejemplo para Travis. Debemos registarnos con GitHub y dar acceso al repositorio.
+De nuevo, podemos conectarnos a Vercel de la misma forma que explicamos por ejemplo para Travis. Debemos registarnos con GitHub y dar acceso al repositorio. Una vez hemos hecho eso, seleccionamos en la pantalla principal el boton de importar proyecto, elegimos que lo hacemos a traves de github y ponemos la url al repositorio que queremos importar.
 
 Posteriormente, nos piden elegir la carpeta root. En el caso de Vercel con ruby, al encontrarse este en fase alpha, no nos dejan elegir una carpeta distinta del directorio principal, provocando el siguiente error en caso de que elijamos una diferente:
 
 ![error-root](../img/serverless/error.jpg)
 
-Por ello, he tenido que hacer deploy de todo el repositorio.
+Por ello, he tenido que hacer deploy de todo el repositorio, quedando de la siguiente forma una vez está importado:
+
+![deploy-vercel](../img/serverless/deploy.png)
+
+Con ello, se crea una conexión con github a traves de una github app, a partir de la cual cada vez que hagamos push a nuestro repositorio se hará un deploy a Vercel. Esto se puede demostrar con la siguiente imagen:
+
+![ghapp](../img/serverless/ghapp.png)
 
 ## Datos usados y agradecimientos
 
@@ -95,7 +101,7 @@ El despliegue a Vercel se puede hacer de dos formas:
 
 En la siguiente imagen se puede ver el correcto deploy a Vercel:
 
-![deploy-vercel](../img/serverless/deploy.png)
+![deploy-vercel2](../img/serverless/deploy2.pjpgng)
 
 ## Prueba de funcionamiento
 
