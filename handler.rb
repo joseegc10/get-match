@@ -181,19 +181,11 @@ def getMatch(event:, context:)
             statusCode: 200,
             body: ({text:msg, method:'sendMessage', chat_id:chat_id}).to_json,
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json; charset=utf-8'
             }
         }
     rescue Exception => e
         puts e.message
         puts e.backtrace.inspect
     end
-
-    return {
-        statusCode: 200,
-        body: ({text:msg, method:'sendMessage', chat_id:chat_id}).to_json,
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    }
 end
