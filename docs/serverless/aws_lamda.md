@@ -40,7 +40,7 @@ En primer lugar, he hecho uso de la misma función para obtener los datos que ya
 
 En segundo lugar, he creado una función auxiliar que a partir de un equipo y un número de jornada, devuelve un mensaje explicativo en el que se recoge el resultado del partido que jugó dicho equipo en dicha jornada. En caso de que no se haya jugado dicho partido, ya sea porque el equipo no esté en la liga o no se haya jugado dicha jornada, también se notifica con un mensaje explicativo. En el caso de recibir como jornada -1, devolvemos el resultado de la última jornada que ha disputado dicho equipo.
 
-Por último, encontramos la función Lambda. Comentar que para crear el bot de telegram no he usado bibliotecas orientadas a ello pues ninguna de ellas me pareció que estuviera bien documentada para poder saber las posibilidades de las que disponía. Por ello, simplemente me conecto a la api de telegram mediante HTTP.
+Por último, encontramos la función Lambda:
 
 1. Leemos los datos del usuario.
 
