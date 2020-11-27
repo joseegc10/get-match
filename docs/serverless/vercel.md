@@ -10,7 +10,9 @@ Vercel es una plataforma en la nube para sitios estáticos y funciones Serverles
 - Posibilidad de consigurar un dominio personalizado.
 - Tier gratuito.
 
-## Conexión con GitHub
+## Uso de Vercel (Rúbricas 1 y 2)
+
+### Conexión con GitHub
 
 De nuevo, podemos conectarnos a Vercel de la misma forma que explicamos por ejemplo para Travis. Debemos registarnos con GitHub y dar acceso al repositorio. Una vez hemos hecho eso, seleccionamos en la pantalla principal el boton de importar proyecto, elegimos que lo hacemos a traves de github y ponemos la url al repositorio que queremos importar.
 
@@ -26,7 +28,7 @@ Con ello, se crea una conexión con github a traves de una github app, a partir 
 
 ![ghapp](../img/serverless/ghapp.png)
 
-## Datos usados y agradecimientos
+### Datos usados y agradecimientos
 
 Para que mis funciones Serverless tuvieran una funcionalidad real, he hecho uso de un repositorio que contiene datos sobres las ligas de fútbol, actualizándose automáticamente. El repositorio es [este](https://github.com/openfootball/football.json).
 
@@ -34,15 +36,17 @@ Este repositorio contiene los datos de las ligas de fútbol desde la temporada 2
 
 En mi caso, he usado los datos sobre la temporada actual de la liga Española, por lo que estas funciones Serverless han podido usar datos reales gracias a dicho repositorio.
 
-## Uso de Vercel
+### Estructura requerida
 
 Para hacer uso de Vercel, este exige una estructura de directorios concreta. Dentro del directorio que hemos marcado como root, debe existir una carpeta api, donde se encontrará el archivo que va a contener nuestra función Serverless. Este archivo se puede consultar [aquí](../../api/index.rb).
 
-## Integración con el proyecto
+### Integración con el proyecto y finalidad de uso
 
 Para conseguir una integración con el resto del proyecto, he creado la función Serverless de tal forma que se avance la [HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue](https://github.com/joseegc10/get-match/issues/32), siendo este un caso particular, pues nos permite consultar los días hasta el próximo partido.
 
-## Código de la función
+Como seguidor del fútbol, considero muy útil el hecho de saber el número de días que quedan para que juegue tu equipo el próximo partido, por lo que he decidido orientar esta función severless a conseguir ese objetivo. Además, esto me va a permitir salirme de los ejemplos iniciales que tenemos en vercel, teniendo un poco más de complejidad y permitiendo avanzar una historia de usuario, lo que implica un avance en el proyecto.
+
+### Código de la función
 
 En primer lugar, he hecho una función auxiliar para la lectura de datos desde el repositorio que expliqué en el apartado anterior.
 
@@ -87,7 +91,7 @@ Después, en función de los días recibimos creamos un mensaje que sea explicat
 
 Por último, establecemos el json que va a ir en el cuerpo de la respuesta. Este va a contener el equipo, los días restantes y el mensaje explicativo.
 
-## Test del código
+### Test del código
 
 Como siempre, es necesario testear todo el código que creamos. El archivo en el que se realizan los test de dicho código se puede consultar [aquí](../../spec/index_spec.rb).
 

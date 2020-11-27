@@ -10,31 +10,33 @@ Sin embargo, quería que todo mi proyecto estuviera integrado en Ruby y AWS Lamb
 
 Además, esta proporciona una capa gratuita de un año que me permite realizar todo lo que se require.
 
-## Conexión con GitHub
+## Uso de AWS Lambda
+
+### Conexión con GitHub
 
 Para poder integrar la función Lambda con el repositorio de GitHub, AWS proporciona herramientas como Code Pipeline y Code Deploy. Sin embargo, encontré una excesiva dificultad para el sencillo objetivo que buscaba, pues solo quería que al hacer push a mi repo modificando alguno de los archivos del bot, se volviera a hacer deploy a AWS. Por ello, decidí crear una GitHub action para ello, pudiéndose consultar una explicación de esta en el siguiente [enlace](./deploy_aws_lambda.md).
 
-## Datos usados y agradecimientos
+### Datos usados y agradecimientos
 
 En esta función he hecho uso de los mismos datos que ya expliqué para Vercel.
-
-## Uso de AWS Lambda
 
 Para hacer uso de AWS Lambda, he utilizado la herramienta [Serverless](https://www.serverless.com/framework/docs/). Este es un Framework open source que facilita el uso de aws. Este no pide una estructura de directorios concreta, solamente require un archivo serverless.yml en el que configuremos el deploy.
 
 Para usar la herramienta Serverless, la instalamos con `curl -o- -L https://slss.io/install | bash` y hacemos el deploy con `serverless deploy` en el directorio donde se encuentre el archivo serverless.yml.
 
-## Integración con el proyecto
+### Integración con el proyecto y finalidad de uso
 
 Para conseguir una integración con el resto del proyecto, he creado en este caso un bot de telegram de tal forma que se avance la [HU1: Como usuario, quiero poder consultar el resultado de un partido](https://github.com/joseegc10/get-match/issues/1) y la [HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga](https://github.com/joseegc10/get-match/issues/63).
 
-## Código
+El motivo de elegir un bot de telegram para la función serverless ha sido el tener un "frontend" en el que un usuario pueda probar algunas de las funcionalidades de mi proyecto y estar puedan ser "útiles", pues un usuario no va a entrar en el enlace de vercel y poner el equipo que desea en el propio enlace. Además, me va a permitir avanzar historias de usuario de mi proyecto, proporcionando al usuario las funcionalidades que se explicarán en el siguiente apartado.
 
-### Código de configuración
+### Código
+
+#### Código de configuración
 
 Como he mencionado arriba, esta herramienta requiere de un archivo serverless.yml para la configuración del deploy. Este archivo se encuentra explicado en el siguiente [enlace](./serverless.md).
 
-### Código de la función
+#### Código de la función
 
 En primer lugar, he hecho uso de la misma función para obtener los datos que ya usé en Vercel.
 
@@ -137,7 +139,7 @@ Como se puede observar, considero tres comandos:
         }
 ```
 
-## Test del código
+### Test del código
 
 Como siempre, es necesario testear todo el código que creamos. El archivo en el que se realizan los test de dicho código se puede consultar [aquí](../../spec/handler_spec.rb).
 
