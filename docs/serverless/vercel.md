@@ -105,7 +105,7 @@ El despliegue a Vercel se puede hacer de dos formas:
 
 En la siguiente imagen se puede ver el correcto deploy a Vercel:
 
-![deploy-vercel2](../img/serverless/deploy2.pjpgng)
+![deploy-vercel2](../img/serverless/deploy2.png)
 
 ## Prueba de funcionamiento
 
