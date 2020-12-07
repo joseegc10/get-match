@@ -5,10 +5,6 @@ require_relative "partido.rb"
 # Struct para el par Equipo-puntos
 Equipo_Puntos_Goles = Struct.new(:equipo, :puntos, :goles)
 
-# Struct para el par Goleador-número de goles
-Goleador_Goles = Struct.new(:goleador, :goles)
-
-
 # Clase que representa una liga de fútbol
 
 class Liga
@@ -17,11 +13,14 @@ class Liga
     #      - Lista de jornadas de la liga
     #      - Ranking de goleadores de la liga
     #      - Clasificación de la liga
+    #      - Nombre de la liga
 
-    def initialize(equipos)
+    def initialize(equipos, nombreLiga)
         @equipos = equipos
         @jornadas = Array.new
         @rankingGoleadores = Array.new
+
+        @nombreLiga = nombreLiga
 
         @clasificacion = Array.new
         inicializaClasificacion()
@@ -31,6 +30,17 @@ class Liga
     attr_reader :jornadas
     attr_reader :rankingGoleadores
     attr_reader :clasificacion
+    attr_reader :nombreLiga
+
+    def buscaEquipo(nombreEquipo)
+        for e in @equipos
+            if e.nombre == nombreEquipo
+                return e
+            end
+        end
+
+        return nil
+    end
 
     def inicializaClasificacion()
         for equipo in @equipos
@@ -43,12 +53,7 @@ class Liga
         raise ArgumentError, 'El parámetro no es un equipo' unless equipo.is_a? Equipo
 
         # Comprobamos que el equipo pertenece a la liga
-        encontrado = false
-        for equipo_liga in @equipos
-            if equipo_liga.nombre == equipo.nombre
-                encontrado = true
-            end
-        end
+        encontrado = buscaEquipo(equipo.nombre)
 
         if !encontrado
             raise ArgumentError, 'El parámetro no es un equipo de la liga'
@@ -115,87 +120,98 @@ class Liga
         end
 
         for partido in partidos
-            golesLocal, golesVisitante = partido.calculaResultado()
+            begin
+                resultado = partido.calculaResultado()
+                golesLocal = resultado.golesLocal
+                golesVisitante = resultado.golesVisitante
+                jugado = true
+            rescue
+                jugado = false
+            end
 
-            # Añado los goles a cada equipo
-            indiceLocal = nombreEquipos.index(partido.local.nombre)
-            indiceVisitante = nombreEquipos.index(partido.visitante.nombre)
+            if (jugado)
+                # Añado los goles a cada equipo
+                indiceLocal = nombreEquipos.index(partido.local.nombre)
+                indiceVisitante = nombreEquipos.index(partido.visitante.nombre)
 
-            @clasificacion[indiceLocal].goles += golesLocal
-            @clasificacion[indiceVisitante].goles += golesVisitante
+                @clasificacion[indiceLocal].goles += golesLocal
+                @clasificacion[indiceVisitante].goles += golesVisitante
 
-            if golesLocal != golesVisitante # Hay un ganador
-                if golesLocal > golesVisitante
-                    ganador = partido.local
-                    indice = indiceLocal
-                else
-                    ganador = partido.visitante
-                    indice = indiceVisitante
-                end
-    
-                # Sumamos tres puntos al equipo ganador
-                nuevoEquipo = @clasificacion[indice]
-                @clasificacion.delete_at(indice)
-                nuevoEquipo.puntos += 3
-    
-                pos = 0
-                salir = false
-    
-                while pos < @clasificacion.length and !salir
-                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
-                        salir = true
-                        @clasificacion.insert(pos, nuevoEquipo)
+                if golesLocal != golesVisitante # Hay un ganador
+                    if golesLocal > golesVisitante
+                        ganador = partido.local
+                        indice = indiceLocal
+                    else
+                        ganador = partido.visitante
+                        indice = indiceVisitante
                     end
-    
-                    pos += 1
-                end
-            else # Empate
-
-                # Sumamos un punto al equipo local
-                indice = nombreEquipos.index(partido.local.nombre)
-                nuevoEquipo = @clasificacion[indice]
-                @clasificacion.delete_at(indice)
-                nuevoEquipo.puntos += 1
-    
-                pos = 0
-                salir = false
-    
-                while pos < @clasificacion.length and !salir
-                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
-                        salir = true
-                        @clasificacion.insert(pos, nuevoEquipo)
+        
+                    # Sumamos tres puntos al equipo ganador
+                    nuevoEquipo = @clasificacion[indice]
+                    @clasificacion.delete_at(indice)
+                    nuevoEquipo.puntos += 3
+        
+                    pos = 0
+                    salir = false
+        
+                    while pos < @clasificacion.length and !salir
+                        if (@clasificacion[pos].puntos < nuevoEquipo.puntos) or 
+                            (@clasificacion[pos].puntos == nuevoEquipo.puntos and @clasificacion[pos].goles < nuevoEquipo.goles)
+                            salir = true
+                            @clasificacion.insert(pos, nuevoEquipo)
+                        end
+        
+                        pos += 1
                     end
-    
-                    pos += 1
-                end
+                else # Empate
 
-                if !salir
-                    @clasificacion << nuevoEquipo
-                end
-
-                # Sumamos un punto al equipo visitante
-                indice = nombreEquipos.index(partido.visitante.nombre)
-                nuevoEquipo = @clasificacion[indice]
-                @clasificacion.delete_at(indice)
-                nuevoEquipo.puntos += 1
-    
-                pos = 0
-                salir = false
-    
-                while pos < @clasificacion.length and !salir
-                    if @clasificacion[pos].puntos < nuevoEquipo.puntos
-                        salir = true
-                        @clasificacion.insert(pos, nuevoEquipo)
+                    # Sumamos un punto al equipo local
+                    indice = nombreEquipos.index(partido.local.nombre)
+                    nuevoEquipo = @clasificacion[indice]
+                    @clasificacion.delete_at(indice)
+                    nuevoEquipo.puntos += 1
+        
+                    pos = 0
+                    salir = false
+        
+                    while pos < @clasificacion.length and !salir
+                        if (@clasificacion[pos].puntos < nuevoEquipo.puntos) or 
+                            (@clasificacion[pos].puntos == nuevoEquipo.puntos and @clasificacion[pos].goles < nuevoEquipo.goles)
+                            salir = true
+                            @clasificacion.insert(pos, nuevoEquipo)
+                        end
+        
+                        pos += 1
                     end
-    
-                    pos += 1
-                end
 
-                if !salir
-                    @clasificacion << nuevoEquipo
+                    if !salir
+                        @clasificacion << nuevoEquipo
+                    end
+
+                    # Sumamos un punto al equipo visitante
+                    indice = nombreEquipos.index(partido.visitante.nombre)
+                    nuevoEquipo = @clasificacion[indice]
+                    @clasificacion.delete_at(indice)
+                    nuevoEquipo.puntos += 1
+        
+                    pos = 0
+                    salir = false
+        
+                    while pos < @clasificacion.length and !salir
+                        if (@clasificacion[pos].puntos < nuevoEquipo.puntos) or 
+                            (@clasificacion[pos].puntos == nuevoEquipo.puntos and @clasificacion[pos].goles < nuevoEquipo.goles)
+                            salir = true
+                            @clasificacion.insert(pos, nuevoEquipo)
+                        end
+        
+                        pos += 1
+                    end
+
+                    if !salir
+                        @clasificacion << nuevoEquipo
+                    end
                 end
             end
-            
         end
     end
 
