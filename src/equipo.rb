@@ -46,4 +46,14 @@ class Equipo
 
         return nombres
     end
+
+    def buscaJugador(nombreJugador)
+        for jugador in @jugadores
+            if jugador.nombre == nombreJugador
+                return jugador
+            end
+        end
+
+        raise ArgumentError, 'No existe un jugador con ese nombre en el equipo'
+    end
 end
