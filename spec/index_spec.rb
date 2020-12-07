@@ -4,7 +4,7 @@ describe 'carga datos vercel' do
     it 'datos correctos vercel' do
         partidos, equipos = cargaDatos()
         expect(partidos["name"]).to eq 'Primera División 2020/21'
-        expect(equipos[0]).to eq 'SD Eibar'
+        expect(equipos[0]).to eq 'Cádiz CF'
     end
 end
 
