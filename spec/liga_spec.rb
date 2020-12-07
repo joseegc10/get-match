@@ -51,21 +51,15 @@ describe Liga do
         end
     end
 
-    describe '#aniadeJornada' do
-        it 'no es una jornada' do
-            expect{@liga.aniadeJornada(@local)}.to raise_error(ArgumentError)
-        end
-    end
-
     describe '#actualizaRanking' do
         it 'goles' do
-            @liga.aniadeJornada(@jornada)
+            @liga.aniadeJornada(@jornada, 0)
             expect(@liga.rankingGoleadores[0].goles).to eq(3)
             expect(@liga.rankingGoleadores[1].goles).to eq(2)
         end
 
         it 'nombres goleadores' do
-            @liga.aniadeJornada(@jornada)
+            @liga.aniadeJornada(@jornada, 0)
             expect(@liga.rankingGoleadores[0].goleador.nombre).to eq('Ramos')
             expect(@liga.rankingGoleadores[1].goleador.nombre).to eq('Pique')
         end
@@ -73,13 +67,13 @@ describe Liga do
 
     describe '#actualizaClasificacion' do
         it 'puntos' do
-            @liga.aniadeJornada(@jornada)
+            @liga.aniadeJornada(@jornada, 0)
             expect(@liga.clasificacion[0].puntos).to eq(4)
             expect(@liga.clasificacion[1].puntos).to eq(1)
         end
 
         it 'nombres equipos' do
-            @liga.aniadeJornada(@jornada)
+            @liga.aniadeJornada(@jornada, 0)
             expect(@liga.clasificacion[0].equipo.nombre).to eq('Real Madrid')
             expect(@liga.clasificacion[1].equipo.nombre).to eq('Barsa')
         end
