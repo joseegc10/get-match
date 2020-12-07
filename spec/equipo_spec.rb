@@ -77,4 +77,14 @@ describe Equipo do
         end
     end
 
+    describe '#buscaJugador' do
+        it 'jugador en equipo' do
+            @equipo.aniadeJugador(@jugador1)
+            expect(@equipo.buscaJugador('Ramos').nombre).to eq 'Ramos'
+        end
+
+        it 'jugador no está en equipo' do
+            expect{@equipo.buscaJugador('NoEstoy')}.to raise_error(ArgumentError)
+        end
+    end
 end
