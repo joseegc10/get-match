@@ -1,0 +1,57 @@
+{
+    "name": "Primera División 2020/21",
+    "matches": [
+        {
+            "round": "Jornada 1",
+            "date": "2020-12-1",
+            "team1": "Real Madrid",
+            "team2": "Sevilla FC",
+            "score": {
+              "ft": [
+                1,
+                0
+              ],
+              "scorers": [
+                    {
+                        "team": "Real Madrid",
+                        "name": "Sergio Ramos"
+                    }
+              ]  
+            }
+        },
+
+        {
+            "round": "Jornada 1",
+            "date": "2020-12-2",
+            "team1": "FC Barcelona",
+            "team2": "Atlético Madrid",
+            "score": {
+                "ft": [
+                  1,
+                  2
+                ],
+                "scorers": [
+                    {
+                        "team": "FC Barcelona",
+                        "name": "Leo Messi"
+                    },
+                    {
+                        "team": "Atlético Madrid",
+                        "name": "Joao Felix"
+                    },
+                    {
+                        "team": "Atlético Madrid",
+                        "name": "Joao Felix"
+                    }
+                ]  
+            }
+        },
+
+        {
+            "round": "Jornada 2",
+            "date": "2020-12-8",
+            "team1": "Atlético Madrid",
+            "team2": "Real Madrid"
+        }
+    ]
+}
