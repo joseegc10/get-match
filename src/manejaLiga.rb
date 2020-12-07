@@ -29,4 +29,16 @@ class ManejaLiga
             raise ArgumentError, 'Ese equipo no pertenece a la liga'
         end
     end
+
+    # HU1: Como usuario, quiero poder consultar el resultado de un partido
+    def resultadoPartido(numJornada, nombreEquipo)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        equipo = buscaEquipo(nombreEquipo)
+        
+        resultado = @liga.resultadoPartido(numJornada, equipo)
+
+        return resultado
+    end
 end

@@ -14,4 +14,11 @@ describe ManejaLiga do
             expect{@gestor.buscaEquipo('No estoy en la liga')}.to raise_error(ArgumentError)
         end
     end
+
+    # HU1: Como usuario, quiero poder consultar el resultado de un partido
+    describe '#resultadoPartido' do
+        it 'obtener el resultado de un partido' do
+            expect(@gestor.resultadoPartido(1,'Real Madrid').golesLocal).to eq (1)
+        end
+    end
 end
