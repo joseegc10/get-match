@@ -28,6 +28,16 @@ describe Partido do
         end
     end
 
+    describe '#aniadeGoleadorNombre' do
+        it 'equipo del jugador no juega el partido' do
+            expect{@partido.aniadeGoleadorNombre('Goleador', 'EquipoNoPartido')}.to raise_error(ArgumentError)
+        end
+
+        it 'jugador no pertenece a un equipo que juega el partido' do
+            expect{@partido.aniadeGoleadorNombre('GoleadorNoPartido', 'Barsa')}.to raise_error(ArgumentError)
+        end
+    end
+
     describe '#aniadeGoleador' do
         it 'nuevo goleador' do
             @partido.aniadeGoleador(@jugador)
@@ -41,6 +51,12 @@ describe Partido do
 
         it 'no es un jugador' do
             expect{@partido.aniadeGoleador(@local)}.to raise_error(ArgumentError)
+        end
+
+        it 'no es un jugador de un equipo que juegue el partido' do
+            equipoNoPartido = Equipo.new('No soy un equipo del partido')
+            jugadorCualquiera = Jugador.new('jugador cualquiera', equipoNoPartido)
+            expect{@partido.aniadeGoleador(jugadorCualquiera)}.to raise_error(ArgumentError)
         end
     end
 
@@ -62,20 +78,28 @@ describe Partido do
             conjunto << @local
             conjunto << @visitante
 
-            expect{@partido.aniadeGoleador(conjunto)}.to raise_error(ArgumentError)
+            expect{@partido.aniadeGoleadores(conjunto)}.to raise_error(ArgumentError)
         end
 
         it 'no es un array de jugadores' do
             expect{@partido.aniadeGoleadores(@local)}.to raise_error(ArgumentError)
+        end
+
+        it 'hay un jugador que no es de un equipo que juegue el partido' do
+            equipoNoPartido = Equipo.new('No soy un equipo del partido')
+            jugadorCualquiera = Jugador.new('jugador cualquiera', equipoNoPartido)
+            conjunto = Array.new
+            conjunto << jugadorCualquiera
+            expect{@partido.aniadeGoleadores(conjunto)}.to raise_error(ArgumentError)
         end
     end
 
     describe '#calculaResultado' do
         it 'calcular el resultado de un partido' do
             @partido.aniadeGoleador(@jugador)
-            golesLocal, golesVisitante = @partido.calculaResultado
-            expect(golesLocal).to eq(1)
-            expect(golesVisitante).to eq(0)
+            resultado = @partido.calculaResultado
+            expect(resultado.golesLocal).to eq(1)
+            expect(resultado.golesVisitante).to eq(0)
         end
     end
 
@@ -95,14 +119,13 @@ describe Partido do
 
     describe '#maximoGoleador' do
         it 'no hay goleadores' do
-            goleador, num  = @partido.maximoGoleador
-            expect(goleador).to eq('')
+            expect{@partido.maxGoleador}.to raise_error(ArgumentError)
         end
 
         it 'calcular el maximo goleador de un partido' do
             @partido.aniadeGoleador(@jugador)
-            goleador, num  = @partido.maximoGoleador
-            expect(goleador).to eq('Ramos')
+            goleador_goles = @partido.maxGoleador
+            expect(goleador_goles.goleador.nombre).to eq('Ramos')
         end
     end
 end
