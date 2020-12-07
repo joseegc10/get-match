@@ -100,4 +100,11 @@ describe Jornada do
             expect(equipo_goles.goles).to eq(2)
         end
     end
+
+    describe '#calculaResultado' do
+        it 'equipo que no ha jugado la jornada' do
+            equipoNoJornada = Equipo.new('Equipo que no juega la jornada')
+            expect{@jornada.calculaResultado(equipoNoJornada)}.to raise_error(ArgumentError)
+        end
+    end
 end
