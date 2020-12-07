@@ -30,7 +30,7 @@ describe Liga do
         @jornada.aniadePartido(@partido)
         @jornada.aniadePartido(@partido2)
 
-        @liga = Liga.new(@equipos)
+        @liga = Liga.new(@equipos, "Liga prueba")
     end
 
     describe 'equipos' do
@@ -42,6 +42,12 @@ describe Liga do
     describe 'clasificacion' do
         it 'num_equipos' do
             expect(@liga.clasificacion.length).to eq(2)
+        end
+    end
+
+    describe '#buscaEquipo' do
+        it 'buscar un equipo de la liga' do
+            expect(@liga.buscaEquipo('Real Madrid').nombre).to eq('Real Madrid')
         end
     end
 
