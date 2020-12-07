@@ -1,5 +1,8 @@
 require_relative "partido.rb"
 
+# Struct para el par Equipo-número de goles
+Equipo_Goles = Struct.new(:equipo, :goles)
+
 # Clase que representa una jornada de fútbol
 
 class Jornada
@@ -40,18 +43,25 @@ class Jornada
 
     def maximoGoleadorJornada
         maxGoles = 0
-        maxGoleador = ""
+        maxGoleador = nil
 
         for partido in @partidos
-            maxGoleadorPartido, goles = partido.maximoGoleador()
+            begin
+                goleador_goles = partido.maxGoleador
 
-            if goles > maxGoles
-                maxGoles = goles
-                maxGoleador = maxGoleadorPartido
+                if goleador_goles.goles > maxGoles
+                    maxGoles = goleador_goles.goles
+                    maxGoleador = goleador_goles
+                end 
+            rescue
             end
         end
 
-        return maxGoleador, maxGoles
+        if maxGoleador
+            return maxGoleador
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
     end
 
     def equipoMasGoleador
@@ -73,5 +83,36 @@ class Jornada
         end
 
         return [maxEquipo, maxGoles]
+    end
+
+    def equipoMasGoleador
+        maxGoles = 0
+        maxEquipo = nil
+
+        for partido in @partidos
+            begin
+                resultado = partido.calculaResultado()
+                golesLocal = resultado.golesLocal
+                golesVisitante = resultado.golesVisitante
+
+                if golesLocal > maxGoles
+                    maxGoles = golesLocal
+                    maxEquipo = partido.local
+                end
+
+                if golesVisitante > maxGoles
+                    maxGoles = golesVisitante
+                    maxEquipo = partido.visitante
+                end
+            rescue
+            end
+        end
+
+        if maxEquipo
+            equipo_goles = Equipo_Goles.new(maxEquipo, maxGoles)
+            return equipo_goles
+        else
+            raise ArgumentError, "Dicha jornada no se ha jugado"
+        end
     end
 end
