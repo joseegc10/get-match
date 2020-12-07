@@ -96,4 +96,10 @@ describe Liga do
             expect(@liga.numGolesEquipo(@local)).to eq(3)
         end
     end
+
+    describe '#resultadoPartido' do
+        it 'jornada no disputada' do
+            expect{@liga.resultadoPartido(99, @local)}.to raise_error(ArgumentError)
+        end
+    end
 end

@@ -233,4 +233,16 @@ class Liga
         actualizaRanking(jornada.partidos)
         actualizaClasificacion(jornada.partidos)
     end
+
+    def resultadoPartido(numJornada, equipo)
+        if numJornada < @jornadas.size and numJornada >= 0
+            jornada = @jornadas[numJornada]
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
+
+        resultado = jornada.calculaResultado(equipo)
+
+        return resultado
+    end
 end
