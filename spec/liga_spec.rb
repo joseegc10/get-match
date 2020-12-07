@@ -98,7 +98,7 @@ describe Liga do
         end
 
         it 'should do the counting right' do
-            @liga.aniadeJornada(@jornada)
+            @liga.aniadeJornada(@jornada, 0)
             expect(@liga.numGolesEquipo(@local)).to eq(3)
         end
     end

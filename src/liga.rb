@@ -215,11 +215,21 @@ class Liga
         end
     end
 
-    def aniadeJornada(jornada)
-        raise ArgumentError, 'El parámetro no es una jornada' unless jornada.is_a? Jornada
+    def aniadeJornada(jornada, numJornada)
+        if numJornada != @jornadas.size
+            raise ArgumentError, 'Número de jornada incorrecta'
+        end
+
+        for partido in jornada.partidos
+            local = buscaEquipo(partido.local.nombre)
+            visitante = buscaEquipo(partido.visitante.nombre)
+
+            if !local or !visitante
+                raise ArgumentError, 'Hay un partido que lo juega un equipo que no participa en la liga'
+            end
+        end
 
         @jornadas << jornada
-
         actualizaRanking(jornada.partidos)
         actualizaClasificacion(jornada.partidos)
     end
