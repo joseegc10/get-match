@@ -65,8 +65,7 @@ describe Jornada do
 
     describe '#maximoGoleadorJornada' do
         it 'no hay goleadores' do
-            goleador, num  = @jornada.maximoGoleadorJornada
-            expect(goleador).to eq('')
+            expect{@jornada.maximoGoleadorJornada}.to raise_error(ArgumentError)
         end
 
         it 'calcular el máximo goleador de una jornada' do
@@ -76,16 +75,16 @@ describe Jornada do
             @jornada.aniadePartido(@partido)
             @jornada.aniadePartido(@partido2)
 
-            goleador, num  = @jornada.maximoGoleadorJornada
+            goleador_goles  = @jornada.maximoGoleadorJornada
 
-            expect(goleador).to eq('Ramos')
+            expect(goleador_goles.goleador.nombre).to eq('Ramos')
+            expect(goleador_goles.goles).to eq(2)
         end
     end
 
     describe '#equipoMasGoleador' do
         it 'no hay goleadores' do
-            team, num  = @jornada.equipoMasGoleador
-            expect(team).to eq('')
+            expect{@jornada.equipoMasGoleador}.to raise_error(ArgumentError)
         end
 
         it 'calcular el equipo más goleador de una jornada' do
@@ -95,9 +94,10 @@ describe Jornada do
             @jornada.aniadePartido(@partido)
             @jornada.aniadePartido(@partido2)
             
-            team, num  = @jornada.equipoMasGoleador
+            equipo_goles  = @jornada.equipoMasGoleador
 
-            expect(team.nombre).to eq('Real Madrid')
+            expect(equipo_goles.equipo.nombre).to eq('Real Madrid')
+            expect(equipo_goles.goles).to eq(2)
         end
     end
 end
