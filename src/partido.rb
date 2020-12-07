@@ -18,7 +18,7 @@ class Partido
     #      - Goleadores
     #      - Resultado del partido
 
-    def initialize(local, visitante, fecha)
+    def initialize(local, visitante, fecha, resultado=nil)
         @local = local
         @visitante = visitante
         @fecha = fecha
@@ -113,7 +113,7 @@ class Partido
     # Método que calcula el número de días que quedan para el partido
     # Se corresponde con la HU3: consultar del tiempo que queda para que empiece un partido
     def diasPara_DesdeElPartido
-        return (@fecha - Date.today)
+        return (@fecha - Date.today).to_i
     end
 
     # Método que saca el nombre de los jugadores que han metido gol en el partido
