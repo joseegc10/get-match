@@ -141,4 +141,9 @@ class ManejaLiga
 
         return goles
     end
+
+    # HU14: Como usuario, quiero poder añadir un equipo a una liga
+    def aniadeEquipo(equipo)
+        @liga.aniadeEquipo(equipo)
+    end
 end

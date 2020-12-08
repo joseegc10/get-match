@@ -106,4 +106,12 @@ describe ManejaLiga do
             expect(@gestor.golesEquipo('Real Madrid')).to eq (1)
         end
     end
+
+    # HU14: Como usuario, quiero poder añadir un equipo a una liga
+    describe '#aniadeEquipo' do
+        it 'añadir un equipo en la liga' do
+            equipo = Equipo.new('Real Madrid')
+            expect{@gestor.aniadeEquipo(equipo)}.to raise_error(ArgumentError)
+        end
+    end
 end
