@@ -60,4 +60,29 @@ describe 'MyApp' do
             json({:status => e.message})
         end
     end
+
+    # HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue
+    describe "dias para un partido" do 
+        it 'jornada correcta' do
+            get '/partido/dias/Real%20Madrid/1'
+
+            fechaPartido = Date.parse "2020-12-1"
+            dias = (fechaPartido - Date.today).to_i
+            cuerpo = ({"dias":dias,"msg":"El partido fue hace #{-dias} días"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'jornada incorrecta' do
+            get '/partido/dias/Real%20Madrid/-1'
+
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
