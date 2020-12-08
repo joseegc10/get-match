@@ -28,4 +28,13 @@ describe ManejaLiga do
             expect(@gestor.goleadoresPartido(1,'Real Madrid')[0].nombre).to eq 'Sergio Ramos'
         end
     end
+
+    # HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue
+    describe '#diasPartido' do
+        it 'obtener los dias hasta un partido' do
+            fechaPartido = Date.parse "2020-12-1"
+            dias = (fechaPartido - Date.today).to_i
+            expect(@gestor.diasPartido(1,'Real Madrid')).to eq (dias)
+        end
+    end
 end

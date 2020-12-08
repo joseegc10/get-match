@@ -53,4 +53,16 @@ class ManejaLiga
 
         return goleadores
     end
+
+    # HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue
+    def diasPartido(numJornada, nombreEquipo)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        equipo = buscaEquipo(nombreEquipo)
+
+        dias = @liga.diasPartido(numJornada, equipo)
+
+        return dias
+    end
 end
