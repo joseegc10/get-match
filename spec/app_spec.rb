@@ -101,4 +101,27 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU6: Como usuario, me gustaría poder consultar los partidos de una jornada
+    describe "partidos de una jornada" do 
+        it 'jornada correcta' do
+            get '/jornada/partidos/1'
+
+            cuerpo = ({"Partido 1":{"local":"Real Madrid","visitante":"Sevilla FC","resultado":{"golesLocal":1,"golesVisitante":0}},"Partido 2":{"local":"FC Barcelona","visitante":"Atlético Madrid","resultado":{"golesLocal":1,"golesVisitante":2}}}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'jornada incorrecta' do
+            get '/jornada/partidos/-1'
+
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
