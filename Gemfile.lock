@@ -36,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   rack-test
   rspec
-  sinatra
+  sinatra (~> 2.1)
 
 BUNDLED WITH
    2.1.4
