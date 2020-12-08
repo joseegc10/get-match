@@ -92,4 +92,11 @@ describe ManejaLiga do
             expect(@gestor.rankingGoleadores()[0].goleador.nombre).to eq 'Joao Felix'
         end
     end
+
+    # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
+    describe '#clasificacionLiga' do
+        it 'obtener la clasificacion en la liga' do
+            expect(@gestor.clasificacionLiga()[0].equipo.nombre).to eq 'Atlético Madrid'
+        end
+    end
 end

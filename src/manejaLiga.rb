@@ -127,4 +127,9 @@ class ManejaLiga
     def rankingGoleadores()
         return @liga.rankingGoleadores
     end
+
+    # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
+    def clasificacionLiga()
+        return @liga.clasificacion
+    end
 end
