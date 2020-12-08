@@ -65,4 +65,16 @@ class ManejaLiga
 
         return dias
     end
+
+    # HU4: Como usuario, debo poder consultar el máximo goleador de un partido
+    def maximoGoleadorPartido(numJornada, nombreEquipo)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        equipo = buscaEquipo(nombreEquipo)
+
+        goleador_goles = @liga.maxGoleadorPartido(numJornada, equipo)
+
+        return goleador_goles
+    end
 end

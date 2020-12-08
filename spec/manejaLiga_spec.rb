@@ -37,4 +37,12 @@ describe ManejaLiga do
             expect(@gestor.diasPartido(1,'Real Madrid')).to eq (dias)
         end
     end
+
+    # HU4: Como usuario, debo poder consultar el máximo goleador de un partido
+    describe '#maximoGoleadorPartido' do
+        it 'obtener el maximo goleador de un partido' do
+            expect(@gestor.maximoGoleadorPartido(1,'Real Madrid').goleador.nombre).to eq 'Sergio Ramos'
+            expect(@gestor.maximoGoleadorPartido(1,'Real Madrid').goles).to eq (1)
+        end
+    end
 end
