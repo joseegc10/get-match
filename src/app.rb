@@ -306,4 +306,33 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
+    get '/ranking/clasificacion' do
+        begin
+            equipos_puntos_goles = @manejador.clasificacionLiga()
+
+            status 200
+            hash = Hash.new 
+
+            i = 1
+            for equipo_puntos_goles in equipos_puntos_goles
+                numero = "#{i}º"
+
+                hashEquipo = Hash.new
+                hashEquipo["equipo"] = equipo_puntos_goles.equipo.nombre
+                hashEquipo["puntos"] = equipo_puntos_goles.puntos
+                hashEquipo["goles"] = equipo_puntos_goles.goles
+
+                hash[numero] = hashEquipo
+
+                i += 1
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
