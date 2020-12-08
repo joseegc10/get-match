@@ -67,4 +67,31 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue
+    get '/partido/dias/:equipo/:jornada' do
+        numJornada = params['jornada'].to_i
+        nombreEquipo = params['equipo']
+
+        begin
+            dias = @manejador.diasPartido(numJornada, nombreEquipo)
+
+            status 200
+            hash = Hash.new 
+
+            hash["dias"] = dias
+            if dias > 0
+                hash["msg"] = "El partido es dentro de #{dias} días"
+            elsif dias < 0
+                hash["msg"] = "El partido fue hace #{-dias} días"
+            else
+                hash["msg"] = "El partido es hoy"
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
