@@ -208,4 +208,17 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (true)
         end
     end
+
+    # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
+    describe "ranking goleadores liga" do 
+        it 'ranking de goleadores de la liga' do
+            get '/ranking/goleadores'
+
+            cuerpo = ({"1º":{"nombre":"Joao Felix","equipo":"Atlético Madrid","goles":2},"2º":{"nombre":"Sergio Ramos","equipo":"Real Madrid","goles":1},"3º":{"nombre":"Leo Messi","equipo":"FC Barcelona","goles":1}}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+    end
 end
