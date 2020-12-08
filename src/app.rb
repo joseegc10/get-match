@@ -253,4 +253,28 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
+    get '/equipos' do
+        begin
+            equipos = @manejador.equiposLiga()
+
+            status 200
+            hash = Hash.new 
+
+            i = 1
+            for equipo in equipos
+                numEquipo = "Equipo #{i}"
+
+                hash[numEquipo] = equipo.nombre
+
+                i += 1
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
