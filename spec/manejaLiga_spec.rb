@@ -114,4 +114,16 @@ describe ManejaLiga do
             expect{@gestor.aniadeEquipo(equipo)}.to raise_error(ArgumentError)
         end
     end
+
+    # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
+    describe '#aniadePartido' do
+        it 'añadir un partido en una jornada de la liga' do
+            local = Equipo.new('Real Madrid')
+            visitante = Equipo.new('Granada') 
+            fecha = Date.today
+            partido = Partido.new(local, visitante, fecha)
+
+            expect{@gestor.aniadePartido(partido, 1)}.to raise_error(ArgumentError)
+        end
+    end
 end

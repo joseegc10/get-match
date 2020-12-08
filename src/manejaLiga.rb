@@ -146,4 +146,11 @@ class ManejaLiga
     def aniadeEquipo(equipo)
         @liga.aniadeEquipo(equipo)
     end
+
+    # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
+    def aniadePartido(partido, numJornada)
+        numJornada -= 1
+
+        @liga.aniadePartido(partido, numJornada)
+    end
 end
