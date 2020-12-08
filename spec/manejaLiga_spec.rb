@@ -45,4 +45,12 @@ describe ManejaLiga do
             expect(@gestor.maximoGoleadorPartido(1,'Real Madrid').goles).to eq (1)
         end
     end
+
+    # HU6: Como usuario, me gustaría poder consultar los partidos de una jornada
+    describe '#partidosJornada' do
+        it 'obtener los partidos de una jornada' do
+            expect(@gestor.partidosJornada(1)[0].local.nombre).to eq 'Real Madrid'
+            expect(@gestor.partidosJornada(1)[1].local.nombre).to eq 'FC Barcelona'
+        end
+    end
 end

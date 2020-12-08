@@ -77,4 +77,14 @@ class ManejaLiga
 
         return goleador_goles
     end
+
+    # HU6: Como usuario, me gustaría poder consultar los partidos de una jornada
+    def partidosJornada(numJornada)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        partidos = @liga.partidosJornada(numJornada)
+
+        return partidos
+    end
 end
