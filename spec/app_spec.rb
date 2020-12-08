@@ -354,4 +354,85 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU16: Como usuario, quiero poder añadir un partido a una jornada de la liga
+    describe "añadir partido a una jornada de la liga" do 
+        it 'jornada correcta' do
+            jornada = {
+                "name": "Primera División 2020/21",
+                "matches": [
+                    {
+                        "round": "Jornada 3",
+                        "date": "2020-12-8",
+                        "team1": "FC Barcelona",
+                        "team2": "Real Madrid"
+                    }
+                ]
+            }
+
+            post '/add/jornada', jornada.to_json
+
+            cuerpo = ({"status":"Jornada añadida correctamente"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'equipo que no está en liga' do
+            jornada = {
+                "name": "Primera División 2020/21",
+                "matches": [
+                    {
+                        "round": "Jornada 4",
+                        "date": "2020-12-8",
+                        "team1": "Valencia CF",
+                        "team2": "Real Madrid"
+                    }
+                ]
+            }
+
+            post '/add/jornada', jornada.to_json
+
+            cuerpo = ({"status":"Al menos un equipo del partido no participa en la liga"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+
+        it 'jornada incorrecta' do
+            jornada = {
+                "name": "Primera División 2020/21",
+                "matches": [
+                    {
+                        "round": "Jornada 4",
+                        "date": "2020-12-8",
+                        "team1": "FC Barcelona",
+                        "team2": "Real Madrid"
+                    }
+                ]
+            }
+
+            post '/add/jornada', jornada.to_json
+
+            cuerpo = ({"status":"Número de jornada incorrecta"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
+
+    describe "error 404" do
+        it 'ruta no encontrada' do
+            get '/ruta/que/no/existe'
+
+            cuerpo = ({"status":"Error: la ruta introducida no ha sido encontrada"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
