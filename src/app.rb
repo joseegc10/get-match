@@ -365,4 +365,20 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU14: Como usuario, quiero poder añadir un equipo a una liga
+    post '/add/equipo' do
+        # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
+        begin
+            jsonEquipo = JSON.parse(request.body.read)
+            equipo = @jsonify.jsonToEquipo(jsonEquipo)
+            @manejador.aniadeEquipo(equipo)
+
+            status 200
+            json({:status => "Equipo añadido correctamente"})
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
