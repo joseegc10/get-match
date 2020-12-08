@@ -234,4 +234,27 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (true)
         end
     end
+
+    # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
+    describe "goles equipo en liga" do 
+        it 'goles del Real Madrid en la liga' do
+            get '/equipo/goles/Real%20Madrid'
+
+            cuerpo = ({"equipo":"Real Madrid","goles":1,"msg":"El equipo Real Madrid ha metido 1 gol"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'equipo incorrecto' do
+            get '/equipo/goles/NoExisto'
+
+            cuerpo = ({"status":"Ese equipo no pertenece a la liga"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
