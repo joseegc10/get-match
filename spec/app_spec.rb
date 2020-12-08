@@ -124,4 +124,29 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU7: Como usuario, me gustaría consultar el tiempo que queda para que empiece una jornada o desde que empezó
+    describe "dias para una jornada" do 
+        it 'jornada correcta' do
+            get '/jornada/dias/1'
+
+            fechaPartido = Date.parse "2020-12-1"
+            dias = (fechaPartido - Date.today).to_i
+            cuerpo = ({"dias":dias,"msg":"La jornada 1 fue hace #{-dias} días"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'jornada incorrecta' do
+            get '/jornada/dias/-1'
+
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
