@@ -291,4 +291,16 @@ class Liga
 
         return jornada.partidos
     end
+
+    def diasJornada(numJornada)
+        if numJornada < @jornadas.size and numJornada >= 0
+            jornada = @jornadas[numJornada]
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
+
+        dias = jornada.diasPara_DesdeLaJornada
+
+        return dias
+    end
 end
