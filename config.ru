@@ -1,3 +1,6 @@
 require './src/app.rb'
- 
-run MyApp
+require './config/config.rb'
+
+vars = configuracion()
+
+Rack::Handler.default.run(MyApp, :Port => vars["PORT"])
