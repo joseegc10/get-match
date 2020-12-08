@@ -1,14 +1,21 @@
 require_relative "jsonify.rb"
+require_relative "../config/config.rb"
 
 # Clase que maneja una liga de futbol
 
 class ManejaLiga
 	# La clase para manejar la liga vendrá identificada por:
     #      - Liga creada
-	
+    
+    NUM_MAX_EQUIPOS = configuracion()["NUM_MAX_EQUIPOS"] 
+    
 	def initialize()
         @jsonify = Jsonify.new()
         @liga = @jsonify.jsonToLiga('../sampledata/partidos.json', '../sampledata/equipos.json')
+
+        if @liga.equipos.size > NUM_MAX_EQUIPOS
+            raise ArgumentError, 'Número de equipos demasiado alto'
+        end
     end
 
     attr_reader :liga
@@ -144,6 +151,10 @@ class ManejaLiga
 
     # HU14: Como usuario, quiero poder añadir un equipo a una liga
     def aniadeEquipo(equipo)
+        if @liga.equipos.size == NUM_MAX_EQUIPOS
+            raise ArgumentError, 'La liga tiene el número máximo de equipos'
+        end
+
         @liga.aniadeEquipo(equipo)
     end
 
