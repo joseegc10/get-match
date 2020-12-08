@@ -166,4 +166,30 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU7: Como usuario, me gustaría consultar el tiempo que queda para que empiece una jornada o desde que empezó
+    get '/jornada/dias/:jornada' do
+        numJornada = params['jornada'].to_i
+
+        begin
+            dias = @manejador.diasJornada(numJornada)
+
+            status 200
+            hash = Hash.new 
+
+            hash["dias"] = dias
+            if dias > 0
+                hash["msg"] = "La jornada #{numJornada} es dentro de #{dias} días"
+            elsif dias < 0
+                hash["msg"] = "La jornada #{numJornada} fue hace #{-dias} días"
+            else
+                hash["msg"] = "La jornada #{numJornada} es hoy"
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
