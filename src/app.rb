@@ -397,4 +397,24 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU16: Como usuario, quiero poder añadir una jornada a una liga 
+    post '/add/jornada' do
+        # curl --header "Content-Type: application/json" --request POST --data '{"name": "Primera División 2020/21","matches": [{"round": "Jornada 3","date": "2020-12-20","team1": "Real Madrid","team2": "FC Barcelona"},{"round": "Jornada 3","date": "2020-12-21","team1": "Sevilla FC","team2": "Atlético Madrid"}]}' http://localhost:9999/add/jornada
+        begin
+            jsonPartidos = JSON.parse(request.body.read)
+            jornada, numJornada = @jsonify.jsonToJornada(jsonPartidos, @manejador.liga.equipos)
+            @manejador.aniadeJornada(jornada, numJornada)
+
+            status 200
+            json({:status => "Jornada añadida correctamente"})
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
+
+    error 404 do
+		json({:status => 'Error: la ruta introducida no ha sido encontrada'})
+	end
 end
