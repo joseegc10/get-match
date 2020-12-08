@@ -85,4 +85,11 @@ describe ManejaLiga do
             expect(@gestor.equiposLiga().size).to eq (4)
         end
     end
+
+    # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
+    describe '#rankingGoleadores' do
+        it 'obtener el ranking de goleadores en la liga' do
+            expect(@gestor.rankingGoleadores()[0].goleador.nombre).to eq 'Joao Felix'
+        end
+    end
 end
