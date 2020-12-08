@@ -335,4 +335,34 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
+    get '/equipo/goles/:equipo' do
+        equipo = params['equipo']
+
+        begin
+            goles = @manejador.golesEquipo(equipo)
+
+            status 200
+            hash = Hash.new 
+
+            hash["equipo"] = equipo
+            hash["goles"] = goles
+
+            if goles > 0            
+                if goles == 1
+                    hash["msg"] = "El equipo #{equipo} ha metido #{goles} gol"
+                else
+                    hash["msg"] = "El equipo #{equipo} ha metido #{goles} goles"
+                end
+            else   
+                hash["msg"] = "El equipo #{equipo} no ha metido ningún gol"
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
