@@ -36,6 +36,35 @@ class MyApp < Sinatra::Base
             status 400
             json({:status => e.message})
         end
-        
+    end
+
+    # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
+    get '/partido/goleadores/:equipo/:jornada' do
+        numJornada = params['jornada'].to_i
+        nombreEquipo = params['equipo']
+
+        begin
+            goleadores = @manejador.goleadoresPartido(numJornada, nombreEquipo)
+
+            status 200
+            hash = Hash.new 
+
+            if goleadores.size > 0
+                for goleador in goleadores
+                    if hash[goleador.equipo.nombre]
+                        hash[goleador.equipo.nombre] += (", " + goleador.nombre)
+                    else
+                        hash[goleador.equipo.nombre] = goleador.nombre
+                    end
+                end
+            else
+                hash["msg"] = "Ese partido no ha tenido ningún gol"
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
     end
 end
