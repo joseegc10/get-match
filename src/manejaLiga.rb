@@ -87,4 +87,14 @@ class ManejaLiga
 
         return partidos
     end
+
+    # HU7: Como usuario, me gustaría consultar el tiempo que queda para que empiece una jornada o desde que empezó
+    def diasJornada(numJornada)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        dias = @liga.diasJornada(numJornada)
+
+        return dias
+    end
 end

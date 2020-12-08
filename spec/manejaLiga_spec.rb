@@ -53,4 +53,13 @@ describe ManejaLiga do
             expect(@gestor.partidosJornada(1)[1].local.nombre).to eq 'FC Barcelona'
         end
     end
+
+    # HU7: Como usuario, me gustaría consultar el tiempo que queda para que empiece una jornada o desde que empezó
+    describe '#diasJornada' do
+        it 'obtener los dias hasta una jornada' do
+            fechaJornada = Date.parse "2020-12-1"
+            dias = (fechaJornada - Date.today).to_i
+            expect(@gestor.diasJornada(1)).to eq (dias)
+        end
+    end
 end
