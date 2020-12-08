@@ -315,4 +315,16 @@ class Liga
 
         return goleador_goles
     end
+
+    def equipoMaxGoleadorJornada(numJornada)
+        if numJornada < @jornadas.size and numJornada >= 0
+            jornada = @jornadas[numJornada]
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
+
+        equipo_goles = jornada.equipoMasGoleador
+
+        return equipo_goles
+    end
 end
