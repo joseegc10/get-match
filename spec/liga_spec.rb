@@ -173,4 +173,27 @@ describe Liga do
             expect{@liga.aniadePartido(@partido, 0)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#aniadeJornada' do
+        it 'jornada correcta' do
+            nuevo1 = Equipo.new('Valencia')
+            nuevo2 = Equipo.new('Granada') 
+            @liga.aniadeEquipo(nuevo1)
+            @liga.aniadeEquipo(nuevo2)
+            @partidoNuevo = Partido.new(nuevo1, nuevo2, @fecha) 
+            expect{@liga.aniadeJornada(@jornada, 0)}.not_to raise_error
+        end
+
+        it 'partido de equipo no existente en liga' do
+            @outLiga = Equipo.new('No estoy en liga')
+            @outLiga2 = Equipo.new('No estoy en liga2')
+            @partidoNuevo = Partido.new(@outLiga, @outLiga2, @fecha)
+            @jornada.aniadePartido(@partidoNuevo)
+            expect{@liga.aniadeJornada(@jornada, 0)}.to raise_error(ArgumentError)
+        end
+
+        it 'numero de jornada incorrecta' do
+            expect{@liga.aniadeJornada(@jornada, 99)}.to raise_error(ArgumentError)
+        end
+    end
 end
