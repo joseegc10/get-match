@@ -303,4 +303,16 @@ class Liga
 
         return dias
     end
+
+    def maxGoleadorJornada(numJornada)
+        if numJornada < @jornadas.size and numJornada >= 0
+            jornada = @jornadas[numJornada]
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
+
+        goleador_goles = jornada.maximoGoleadorJornada
+
+        return goleador_goles
+    end
 end

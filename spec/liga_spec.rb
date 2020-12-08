@@ -132,4 +132,10 @@ describe Liga do
             expect{@liga.diasJornada(99)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#maxGoleadorJornada' do
+        it 'jornada no disputada' do
+            expect{@liga.maxGoleadorJornada(99)}.to raise_error(ArgumentError)
+        end
+    end
 end
