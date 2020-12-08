@@ -33,6 +33,12 @@ describe Liga do
         @liga = Liga.new(@equipos, "Liga prueba")
     end
 
+    describe 'liga' do
+        it 'nombreLiga' do
+            expect(@liga.nombreLiga).to eq('Liga prueba')
+        end
+    end
+
     describe 'equipos' do
         it 'num_equipos' do
             expect(@liga.equipos.length).to eq(2)
