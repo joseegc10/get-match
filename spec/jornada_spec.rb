@@ -121,4 +121,11 @@ describe Jornada do
             expect{@jornada.diasPartido(equipoNoJornada)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#maxGoleadorPartido' do
+        it 'equipo que no ha jugado la jornada' do
+            equipoNoJornada = Equipo.new('Equipo que no juega la jornada')
+            expect{@jornada.maxGoleadorPartido(equipoNoJornada)}.to raise_error(ArgumentError)
+        end
+    end
 end
