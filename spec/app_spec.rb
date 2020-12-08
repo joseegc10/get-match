@@ -300,4 +300,58 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
+    describe "añadir partido a una jornada de la liga" do 
+        it 'partido correcto' do
+            partido = {
+                "round"=>"Jornada 2",
+                "date"=>"2020-12-9",
+                "team1"=>"Sevilla FC",
+                "team2"=>"FC Barcelona"
+            }
+
+            post '/add/partido', partido.to_json
+
+            cuerpo = ({"status":"Partido añadido correctamente"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'partido con equipo ya existente' do
+            partido = {
+                "round"=>"Jornada 2",
+                "date"=>"2020-12-9",
+                "team1"=>"Real Madrid",
+                "team2"=>"FC Barcelona"
+            }
+
+            post '/add/partido', partido.to_json
+
+            cuerpo = ({"status":"El partido lo juega un equipo que ya juega otro partido en la jornada"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+
+        it 'jornada incorrecta' do
+            partido = {
+                "round"=>"Jornada 3",
+                "date"=>"2020-12-9",
+                "team1"=>"Sevilla FC",
+                "team2"=>"FC Barcelona"
+            }
+
+            post '/add/partido', partido.to_json
+
+            cuerpo = ({"status":"La jornada introducida no existe"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
