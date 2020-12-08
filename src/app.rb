@@ -126,4 +126,44 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU6: Como usuario, me gustaría poder consultar los partidos de una jornada
+    get '/jornada/partidos/:jornada' do
+        numJornada = params['jornada'].to_i
+
+        begin
+            partidos = @manejador.partidosJornada(numJornada)
+
+            status 200
+            hash = Hash.new 
+
+            i = 1
+            for partido in partidos
+                nuevoHash = Hash.new
+
+                nuevoHash["local"] = partido.local.nombre
+                nuevoHash["visitante"] = partido.visitante.nombre
+
+                begin
+                    resultado = partido.calculaResultado
+                    hashResultado = Hash.new
+                    hashResultado["golesLocal"] = resultado.golesLocal
+                    hashResultado["golesVisitante"] = resultado.golesVisitante
+                    nuevoHash["resultado"] = hashResultado
+                rescue
+                end
+
+                numPartido = "Partido #{i}"
+
+                hash[numPartido] = nuevoHash
+
+                i += 1
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
