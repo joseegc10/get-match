@@ -36,6 +36,7 @@ class MyApp < Sinatra::Base
             status 400
             json({:status => e.message})
         end
+        
     end
 
     # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
@@ -381,7 +382,7 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
-
+    
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
     post '/add/partido' do
         # curl --header "Content-Type: application/json" --request POST --data '{"round": "Jornada 1","date": "2020-12-1","team1": "Real Madrid","team2": "Sevilla FC","score": {"ft": [1,0],"scorers": [{"team": "Real Madrid","name": "Sergio Ramos"}]  }}' http://localhost:9999/add/partido
