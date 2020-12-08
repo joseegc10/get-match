@@ -195,4 +195,17 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
+    describe "equipos liga" do 
+        it 'lista de los equipos de la liga' do
+            get '/equipos'
+
+            cuerpo = ({"Equipo 1":"Real Madrid","Equipo 2":"FC Barcelona","Equipo 3":"Atlético Madrid","Equipo 4":"Sevilla FC"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+    end
 end
