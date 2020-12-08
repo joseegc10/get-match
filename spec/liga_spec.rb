@@ -144,4 +144,10 @@ describe Liga do
             expect{@liga.equipoMaxGoleadorJornada(99)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#aniadeEquipo' do
+        it 'equipo mal añadido' do
+            expect{@liga.aniadeEquipo(@local)}.to raise_error(ArgumentError)
+        end
+    end
 end

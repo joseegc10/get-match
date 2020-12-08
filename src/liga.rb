@@ -327,4 +327,14 @@ class Liga
 
         return equipo_goles
     end
+
+    def aniadeEquipo(nuevoEquipo)
+        for e in @equipos
+            if e.nombre == nuevoEquipo.nombre
+                raise ArgumentError, 'El equipo ya existe en la liga'
+            end
+        end
+
+        @equipos << nuevoEquipo
+    end
 end
