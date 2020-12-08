@@ -172,4 +172,27 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU9: Como usuario, me gustaría poder consultar el equipo más goleador de una jornada
+    describe "equipo mas goleador jornada" do 
+        it 'jornada correcta' do
+            get '/jornada/equipo/maximo-goleador/1'
+
+            cuerpo = ({"equipo":"Atlético Madrid","goles":2,"msg":"El equipo Atlético Madrid ha metido 2 goles"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'jornada incorrecta' do
+            get '/jornada/equipo/maximo-goleador/-1'
+
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
