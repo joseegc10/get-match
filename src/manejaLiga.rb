@@ -132,4 +132,13 @@ class ManejaLiga
     def clasificacionLiga()
         return @liga.clasificacion
     end
+
+    # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
+    def golesEquipo(nombreEquipo)
+        equipo = buscaEquipo(nombreEquipo)
+
+        goles = @liga.numGolesEquipo(equipo)
+
+        return goles
+    end
 end

@@ -99,4 +99,11 @@ describe ManejaLiga do
             expect(@gestor.clasificacionLiga()[0].equipo.nombre).to eq 'Atlético Madrid'
         end
     end
+
+    # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
+    describe '#golesEquipo' do
+        it 'obtener los goles de un equipo en la liga' do
+            expect(@gestor.golesEquipo('Real Madrid')).to eq (1)
+        end
+    end
 end
