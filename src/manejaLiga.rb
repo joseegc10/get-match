@@ -107,4 +107,14 @@ class ManejaLiga
 
         return goleador_goles
     end
+
+    # HU9: Como usuario, me gustaría poder consultar el equipo más goleador de una jornada
+    def equipoMaxGoleadorJornada(numJornada)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        equipo_goles = @liga.equipoMaxGoleadorJornada(numJornada)
+
+        return equipo_goles
+    end
 end

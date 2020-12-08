@@ -70,4 +70,12 @@ describe ManejaLiga do
             expect(@gestor.maxGoleadorJornada(1).goles).to eq (2)
         end
     end
+
+    # HU9: Como usuario, me gustaría poder consultar el equipo más goleador de una jornada
+    describe '#equipoMaxGoleadorJornada' do
+        it 'obtener el equipo más goleador de una jornada' do
+            expect(@gestor.equipoMaxGoleadorJornada(1).equipo.nombre).to eq 'Atlético Madrid'
+            expect(@gestor.equipoMaxGoleadorJornada(1).goles).to eq (2)
+        end
+    end
 end
