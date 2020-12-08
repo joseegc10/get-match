@@ -78,4 +78,11 @@ describe ManejaLiga do
             expect(@gestor.equipoMaxGoleadorJornada(1).goles).to eq (2)
         end
     end
+
+    # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
+    describe '#equiposLiga' do
+        it 'obtener los equipos que participan en la liga' do
+            expect(@gestor.equiposLiga().size).to eq (4)
+        end
+    end
 end

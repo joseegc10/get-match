@@ -117,4 +117,9 @@ class ManejaLiga
 
         return equipo_goles
     end
+
+    # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
+    def equiposLiga()
+        return @liga.equipos
+    end
 end
