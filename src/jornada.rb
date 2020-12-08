@@ -38,7 +38,7 @@ class Jornada
     # Método que calcula el número de días que quedan para la jornada
     # Se corresponde con la HU7: consultar el tiempo que queda para que empiece una jornada o desde que empezó
     def diasPara_DesdeLaJornada
-        return (@fechaInicio - Date.today)
+        return (@fechaInicio - Date.today).to_i
     end
 
     def maximoGoleadorJornada
@@ -62,27 +62,6 @@ class Jornada
         else
             raise ArgumentError, 'La jornada introducida no se ha jugado'
         end
-    end
-
-    def equipoMasGoleador
-        maxGoles = 0
-        maxEquipo = ""
-
-        for partido in @partidos
-            golesLocal, golesVisitante = partido.calculaResultado()
-
-            if golesLocal > maxGoles
-                maxGoles = golesLocal
-                maxEquipo = partido.local
-            end
-
-            if golesVisitante > maxGoles
-                maxGoles = golesVisitante
-                maxEquipo = partido.visitante
-            end
-        end
-
-        return [maxEquipo, maxGoles]
     end
 
     def equipoMasGoleador
