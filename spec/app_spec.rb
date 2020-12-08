@@ -257,4 +257,47 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU14: Como usuario, quiero poder añadir un equipo a una liga
+    describe "añadir equipo a la liga" do 
+        it 'equipo correcto' do
+            equipo = {
+                "name"=>"Valencia CF", 
+                "code"=>"VAL", 
+                "country"=>"Spain", 
+                "players"=>[
+                    "Gaya", 
+                    "Maxi Gomez"
+                ]
+            }
+
+            post '/add/equipo', equipo.to_json
+
+            cuerpo = ({"status":"Equipo añadido correctamente"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'equipo ya existente' do
+            equipo = {
+                "name"=>"Real Madrid", 
+                "code"=>"VAL", 
+                "country"=>"Spain", 
+                "players"=>[
+                    "Gaya", 
+                    "Maxi Gomez"
+                ]
+            }
+
+            post '/add/equipo', equipo.to_json
+
+            cuerpo = ({"status":"El equipo ya existe en la liga"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
