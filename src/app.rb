@@ -223,4 +223,34 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU9: Como usuario, me gustaría poder consultar el equipo más goleador de una jornada
+    get '/jornada/equipo/maximo-goleador/:jornada' do
+        numJornada = params['jornada'].to_i
+
+        begin
+            equipo_goles = @manejador.equipoMaxGoleadorJornada(numJornada)
+
+            status 200
+            hash = Hash.new 
+
+            if equipo_goles.goles > 0
+                hash["equipo"] = equipo_goles.equipo.nombre
+                hash["goles"] = equipo_goles.goles
+                
+                if equipo_goles.goles == 1
+                    hash["msg"] = "El equipo #{equipo_goles.equipo.nombre} ha metido #{equipo_goles.goles} gol"
+                else
+                    hash["msg"] = "El equipo #{equipo_goles.equipo.nombre} ha metido #{equipo_goles.goles} goles"
+                end
+            else
+                hash["msg"] = "En la jornada #{numJornada} no hubo ningún gol"
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
