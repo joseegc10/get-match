@@ -281,4 +281,14 @@ class Liga
 
         return goleador_goles
     end
+
+    def partidosJornada(numJornada)
+        if numJornada < @jornadas.size and numJornada >= 0
+            jornada = @jornadas[numJornada]
+        else
+            raise ArgumentError, 'La jornada introducida no se ha jugado'
+        end
+
+        return jornada.partidos
+    end
 end
