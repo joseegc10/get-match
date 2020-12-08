@@ -32,32 +32,25 @@ describe 'MyApp' do
     end
 
     # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
-    get '/partido/goleadores/:equipo/:jornada' do
-        numJornada = params['jornada'].to_i
-        nombreEquipo = params['equipo']
+    describe "goleadores de un partido" do 
+        it 'jornada correcta' do
+            get '/partido/goleadores/Real%20Madrid/1'
 
-        begin
-            goleadores = @manejador.goleadoresPartido(numJornada, nombreEquipo)
+            cuerpo = ({"Real Madrid":"Sergio Ramos"}).to_json
 
-            status 200
-            hash = Hash.new 
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
 
-            if goleadores.size > 0
-                for goleador in goleadores
-                    if hash[goleador.equipo.nombre]
-                        hash[goleador.equipo.nombre] += (", " + goleador.nombre)
-                    else
-                        hash[goleador.equipo.nombre] = goleador.nombre
-                    end
-                end
-            else
-                hash["msg"] = "Ese partido no ha tenido ningún gol"
-            end
+        it 'jornada incorrecta' do
+            get '/partido/goleadores/Real%20Madrid/-1'
 
-            json(hash)
-        rescue => e
-            status 400
-            json({:status => e.message})
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
         end
     end
 
