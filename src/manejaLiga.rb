@@ -97,4 +97,14 @@ class ManejaLiga
 
         return dias
     end
+
+    # HU8: Como usuario, me gustaría poder consultar el máximo goleador de una jornada
+    def maxGoleadorJornada(numJornada)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        goleador_goles = @liga.maxGoleadorJornada(numJornada)
+
+        return goleador_goles
+    end
 end
