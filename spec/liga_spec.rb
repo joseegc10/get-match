@@ -150,4 +150,27 @@ describe Liga do
             expect{@liga.aniadeEquipo(@local)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#aniadePartido' do
+        it 'partido correcto' do
+            nuevo1 = Equipo.new('Valencia')
+            nuevo2 = Equipo.new('Granada') 
+            @liga.aniadeEquipo(nuevo1)
+            @liga.aniadeEquipo(nuevo2)
+            @partidoNuevo = Partido.new(nuevo1, nuevo2, @fecha) 
+            @liga.aniadeJornada(@jornada, 0)
+            expect{@liga.aniadePartido(@partidoNuevo, 0)}.not_to raise_error
+        end
+
+        it 'partido de equipo no existente en liga' do
+            @outLiga = Equipo.new('No estoy en liga')
+            @outLiga2 = Equipo.new('No estoy en liga2')
+            @partidoNuevo = Partido.new(@outLiga, @outLiga2, @fecha) 
+            expect{@liga.aniadePartido(@partidoNuevo, 0)}.to raise_error(ArgumentError)
+        end
+
+        it 'partido de equipo ya participante en jornada' do
+            expect{@liga.aniadePartido(@partido, 0)}.to raise_error(ArgumentError)
+        end
+    end
 end

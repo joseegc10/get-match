@@ -337,4 +337,36 @@ class Liga
 
         @equipos << nuevoEquipo
     end
+
+    def aniadePartido(nuevoPartido, numJornada)
+        existeLocal = false
+        existeVisitante = false
+
+        local = buscaEquipo(nuevoPartido.local.nombre)
+        visitante = buscaEquipo(nuevoPartido.visitante.nombre)
+
+        if !local or !visitante
+            raise ArgumentError, 'El partido lo juega un equipo que no participa en la liga'
+        end
+
+        if numJornada < @jornadas.size and numJornada >= 0
+            for partido in @jornadas[numJornada].partidos
+                if partido.local.nombre == nuevoPartido.local.nombre or 
+                    partido.local.nombre == nuevoPartido.visitante.nombre or 
+                    partido.visitante.nombre == nuevoPartido.local.nombre or 
+                    partido.visitante.nombre == nuevoPartido.visitante.nombre
+
+                    raise ArgumentError, 'El partido lo juega un equipo que ya juega otro partido en la jornada'
+                end
+            end
+
+            @jornadas[numJornada].aniadePartido(nuevoPartido)
+            partidos = []
+            partidos << nuevoPartido
+            actualizaRanking(partidos)
+            actualizaClasificacion(partidos)
+        else
+            raise ArgumentError, 'La jornada introducida no existe'
+        end
+    end
 end
