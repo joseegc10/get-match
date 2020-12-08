@@ -41,4 +41,16 @@ class ManejaLiga
 
         return resultado
     end
+
+    # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
+    def goleadoresPartido(numJornada, nombreEquipo)
+        # Jornada: 0..numJornadas
+        numJornada -= 1
+
+        equipo = buscaEquipo(nombreEquipo)
+
+        goleadores = @liga.goleadoresPartido(numJornada, equipo)
+
+        return goleadores
+    end
 end

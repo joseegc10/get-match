@@ -21,4 +21,11 @@ describe ManejaLiga do
             expect(@gestor.resultadoPartido(1,'Real Madrid').golesLocal).to eq (1)
         end
     end
+
+    # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
+    describe '#goleadoresPartido' do
+        it 'obtener los goleadores de un partido' do
+            expect(@gestor.goleadoresPartido(1,'Real Madrid')[0].nombre).to eq 'Sergio Ramos'
+        end
+    end
 end
