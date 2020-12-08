@@ -149,4 +149,27 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (false)
         end
     end
+
+    # HU8: Como usuario, me gustaría poder consultar el máximo goleador de una jornada
+    describe "maximo goleador jornada" do 
+        it 'jornada correcta' do
+            get '/jornada/maximo-goleador/1'
+
+            cuerpo = ({"maximoGoleador":"Joao Felix","equipo":"Atlético Madrid","goles":2,"msg":"El jugador Joao Felix ha metido 2 goles"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+
+        it 'jornada incorrecta' do
+            get '/jornada/maximo-goleador/-1'
+
+            cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+    end
 end
