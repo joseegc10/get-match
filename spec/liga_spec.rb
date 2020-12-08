@@ -108,4 +108,10 @@ describe Liga do
             expect{@liga.goleadoresPartido(99, @local)}.to raise_error(ArgumentError)
         end
     end
+
+    describe '#diasPartido' do
+        it 'jornada no disputada' do
+            expect{@liga.diasPartido(99, @local)}.to raise_error(ArgumentError)
+        end
+    end
 end
