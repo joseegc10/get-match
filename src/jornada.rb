@@ -129,4 +129,18 @@ class Jornada
 
         raise ArgumentError, 'Ese equipo no ha jugado dicha jornada'
     end
+
+    def goleadoresPartido(equipo)
+        raise ArgumentError, 'El parámetro no es un equipo' unless equipo.is_a? Equipo
+
+        for partido in @partidos
+            if partido.local.nombre == equipo.nombre or partido.visitante.nombre == equipo.nombre
+                goleadores = partido.goleadores
+
+                return goleadores
+            end
+        end
+
+        raise ArgumentError, 'Ese equipo no ha jugado dicha jornada'
+    end
 end
