@@ -221,4 +221,17 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (true)
         end
     end
+
+    # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
+    describe "clasificacion de la liga" do 
+        it 'clasificacion de la liga' do
+            get '/ranking/clasificacion'
+
+            cuerpo = ({"1º":{"equipo":"Atlético Madrid","puntos":3,"goles":2},"2º":{"equipo":"Real Madrid","puntos":3,"goles":1},"3º":{"equipo":"FC Barcelona","puntos":0,"goles":1},"4º":{"equipo":"Sevilla FC","puntos":0,"goles":0}}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+    end
 end
