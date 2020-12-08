@@ -277,4 +277,33 @@ class MyApp < Sinatra::Base
             json({:status => e.message})
         end
     end
+
+    # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
+    get '/ranking/goleadores' do
+        begin
+            goleadores_goles = @manejador.rankingGoleadores()
+
+            status 200
+            hash = Hash.new 
+
+            i = 1
+            for goleador_goles in goleadores_goles
+                numero = "#{i}º"
+
+                hashJugador = Hash.new
+                hashJugador["nombre"] = goleador_goles.goleador.nombre
+                hashJugador["equipo"] = goleador_goles.goleador.equipo.nombre
+                hashJugador["goles"] = goleador_goles.goles
+
+                hash[numero] = hashJugador
+
+                i += 1
+            end
+
+            json(hash)
+        rescue => e
+            status 400
+            json({:status => e.message})
+        end
+    end
 end
