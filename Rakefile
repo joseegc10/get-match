@@ -19,6 +19,10 @@ RSpec::Core::RakeTask.new(:test) do |t|
     t.pattern = 'spec/*_spec.rb'
 end
 
+RSpec::Core::RakeTask.new(:vercel_test) do |t|
+    t.pattern = 'spec/vercel/*_spec.rb'
+end
+
 RSpec::Core::RakeTask.new(:equipo) do |t|
     t.pattern = 'spec/equipo_spec.rb'
 end

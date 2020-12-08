@@ -1,4 +1,4 @@
-require_relative "../api/index.rb"
+require_relative "../../api/index.rb"
 
 describe 'carga datos vercel' do
     it 'datos correctos vercel' do
