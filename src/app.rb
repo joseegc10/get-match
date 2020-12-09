@@ -1,8 +1,25 @@
 require 'sinatra/base'
 require 'json'
 require_relative 'manejaLiga.rb'
+require 'logger'
+require_relative '../config/config.rb'
+require_relative 'myLogger.rb'
 
 class MyApp < Sinatra::Base
+    set :environment, configuracion()["APP_ENV"]
+
+    configure :production do
+        myLogger = MyLogger.new('output.log')
+        @@logger = myLogger._logger
+        set :logger, @@logger
+    end
+    
+    configure :development do
+        myLogger = MyLogger.new()
+        @@logger = myLogger._logger
+        set :logger, @@logger
+    end
+    
     before do
         @manejador = ManejaLiga.new()
         @jsonify = Jsonify.new()
@@ -32,11 +49,10 @@ class MyApp < Sinatra::Base
                     }
                 }
             )
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
-        
     end
 
     # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
@@ -63,9 +79,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -90,9 +106,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -122,9 +138,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -162,9 +178,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -188,9 +204,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -219,9 +235,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -249,9 +265,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -273,9 +289,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -302,9 +318,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -331,9 +347,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -361,9 +377,9 @@ class MyApp < Sinatra::Base
             end
 
             json(hash)
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -377,9 +393,9 @@ class MyApp < Sinatra::Base
 
             status 200
             json({:status => "Equipo añadido correctamente"})
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
     
@@ -393,9 +409,9 @@ class MyApp < Sinatra::Base
 
             status 200
             json({:status => "Partido añadido correctamente"})
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
@@ -409,13 +425,21 @@ class MyApp < Sinatra::Base
 
             status 200
             json({:status => "Jornada añadida correctamente"})
-        rescue => e
+        rescue => $error
             status 400
-            json({:status => e.message})
+            json({:status => $error.message})
         end
     end
 
     error 404 do
+        @@logger.error("La ruta introducida no ha sido encontrada")
 		json({:status => 'Error: la ruta introducida no ha sido encontrada'})
-	end
+    end
+    
+    after do
+        if $error
+            @@logger.error($error.message)
+            $error = nil
+        end
+    end
 end

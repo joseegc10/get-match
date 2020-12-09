@@ -47,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   etcdv3
   figaro
+  rack
   rack-test
   rspec
   sinatra (~> 2.1)

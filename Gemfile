@@ -9,3 +9,4 @@ gem 'sinatra', "~> 2.1"
 gem 'rack-test'
 gem 'etcdv3'
 gem 'figaro'
+gem 'rack'
