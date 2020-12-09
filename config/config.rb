@@ -1,7 +1,7 @@
 require 'etcdv3'
 require 'figaro'
-
-PORT_DEFECTO = 9999
+ 
+PORT_DEFECTO = 8888
 NUM_MAX_EQUIPOS_DEFECTO = 10
 APP_ENV_DEFECTO = 'development'
 
