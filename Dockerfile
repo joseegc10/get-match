@@ -40,6 +40,10 @@ USER root
 # Añadimos la imagen final
 FROM base as final
 
+# Arreglamos dependencia de alpine con una gema de ruby
+RUN apk add libc6-compat &&\
+    ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
+
 # Creamos un nuevo usuario
 RUN adduser -D testuser
 
