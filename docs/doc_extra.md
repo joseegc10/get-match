@@ -29,3 +29,19 @@ Para consultar las herramientas que se usan en el proyecto seguir el siguiente [
   - [Clase partido](https://github.com/joseegc10/get-match/blob/master/spec/partido_spec.rb)
   - [Clase jugador](https://github.com/joseegc10/get-match/blob/master/spec/jugador_spec.rb)
   - [Clase equipo](https://github.com/joseegc10/get-match/blob/master/spec/equipo_spec.rb)
+
+## Integración continua
+
+### Travis-CI
+
+- La documentación sobre el proceso seguido para enlazar este repositorio con Travis se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/config_travis.md).
+- Para consultar una explicación de Travis-CI, incluyendo sus ventajas, como se ha hecho la construcción del fichero .travis.yml y la justificación de las versiones de ruby utilizadas y pruebas realizadas, seguir el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/travis/travis.md).
+
+### Circle-CI
+
+- La documentación sobre el proceso seguido para enlazar este repositorio con CircleCI se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/config_circleci.md).
+- Para consultar una explicación de CircleCI, incluyendo sus ventajas, como se ha construido el fichero config.yml y una comparación con Travis, consultar el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/circleci/circleci.md).
+
+### Github Action
+
+He creado una github action para la publicación automática de la imagen en GitHub Container Registry. La explicación del fichero se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/ghact.md).
