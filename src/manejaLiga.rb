@@ -1,174 +1,87 @@
-require_relative "jsonify.rb"
 require_relative "../config/config.rb"
 
 # Clase que maneja una liga de futbol
 
 class ManejaLiga
 	# La clase para manejar la liga vendrá identificada por:
-    #      - Liga creada
-    
-    NUM_MAX_EQUIPOS = configuracion()["NUM_MAX_EQUIPOS"] 
-    
-	def initialize()
-        @jsonify = Jsonify.new()
-        @liga = @jsonify.jsonToLiga('../sampledata/partidos.json', '../sampledata/equipos.json')
+    #      - Dator donde se contiene la liga
 
-        if @liga.equipos.size > NUM_MAX_EQUIPOS
-            raise ArgumentError, 'Número de equipos demasiado alto'
-        end
-    end
-
-    attr_reader :liga
-
-    def buscaEquipo(nombreEquipo)
-        equipos = @liga.equipos
-
-        equipo = nil
-        for e in equipos
-            if e.nombre == nombreEquipo
-                equipo = e
-            end
-        end
-
-        if equipo
-            return equipo
-        else
-            raise ArgumentError, 'Ese equipo no pertenece a la liga'
-        end
+	def initialize(dator)
+        @dator = dator
     end
 
     # HU1: Como usuario, quiero poder consultar el resultado de un partido
     def resultadoPartido(numJornada, nombreEquipo)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        equipo = buscaEquipo(nombreEquipo)
-        
-        resultado = @liga.resultadoPartido(numJornada, equipo)
-
-        return resultado
+        return @dator.resultadoPartido(numJornada, nombreEquipo)
     end
 
     # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
     def goleadoresPartido(numJornada, nombreEquipo)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        equipo = buscaEquipo(nombreEquipo)
-
-        goleadores = @liga.goleadoresPartido(numJornada, equipo)
-
-        return goleadores
+        return @dator.goleadoresPartido(numJornada, nombreEquipo)
     end
 
     # HU3: Como usuario, me gustaría poder consultar los días que hace que se jugó un partido o los días que quedan para que se juegue
     def diasPartido(numJornada, nombreEquipo)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        equipo = buscaEquipo(nombreEquipo)
-
-        dias = @liga.diasPartido(numJornada, equipo)
-
-        return dias
+        return @dator.diasPartido(numJornada, nombreEquipo)
     end
 
     # HU4: Como usuario, debo poder consultar el máximo goleador de un partido
     def maximoGoleadorPartido(numJornada, nombreEquipo)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        equipo = buscaEquipo(nombreEquipo)
-
-        goleador_goles = @liga.maxGoleadorPartido(numJornada, equipo)
-
-        return goleador_goles
+        return @dator.maximoGoleadorPartido(numJornada, nombreEquipo)
     end
 
     # HU6: Como usuario, me gustaría poder consultar los partidos de una jornada
     def partidosJornada(numJornada)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        partidos = @liga.partidosJornada(numJornada)
-
-        return partidos
+        return @dator.partidosJornada(numJornada)
     end
 
     # HU7: Como usuario, me gustaría consultar el tiempo que queda para que empiece una jornada o desde que empezó
     def diasJornada(numJornada)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        dias = @liga.diasJornada(numJornada)
-
-        return dias
+        return @dator.diasJornada(numJornada)
     end
 
     # HU8: Como usuario, me gustaría poder consultar el máximo goleador de una jornada
     def maxGoleadorJornada(numJornada)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        goleador_goles = @liga.maxGoleadorJornada(numJornada)
-
-        return goleador_goles
+        return @dator.maxGoleadorJornada(numJornada)
     end
 
     # HU9: Como usuario, me gustaría poder consultar el equipo más goleador de una jornada
     def equipoMaxGoleadorJornada(numJornada)
-        # Jornada: 0..numJornadas
-        numJornada -= 1
-
-        equipo_goles = @liga.equipoMaxGoleadorJornada(numJornada)
-
-        return equipo_goles
+        return @dator.equipoMaxGoleadorJornada(numJornada)
     end
 
     # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
     def equiposLiga()
-        return @liga.equipos
+        return @dator.equiposLiga()
     end
 
     # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
     def rankingGoleadores()
-        return @liga.rankingGoleadores
+        return @dator.rankingGoleadores()
     end
 
     # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
     def clasificacionLiga()
-        return @liga.clasificacion
+        return @dator.clasificacionLiga()
     end
 
     # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
     def golesEquipo(nombreEquipo)
-        equipo = buscaEquipo(nombreEquipo)
-
-        goles = @liga.numGolesEquipo(equipo)
-
-        return goles
+        return @dator.golesEquipo(nombreEquipo)
     end
 
     # HU14: Como usuario, quiero poder añadir un equipo a una liga
     def aniadeEquipo(equipo)
-        if @liga.equipos.size == NUM_MAX_EQUIPOS
-            raise ArgumentError, 'La liga tiene el número máximo de equipos'
-        end
-
-        @liga.aniadeEquipo(equipo)
+        return @dator.aniadeEquipo(equipo)
     end
 
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
     def aniadePartido(partido, numJornada)
-        numJornada -= 1
-
-        @liga.aniadePartido(partido, numJornada)
+        return @dator.aniadePartido(partido, numJornada)
     end
 
     # HU16: Como usuario, quiero poder añadir una jornada a una liga 
     def aniadeJornada(jornada, numJornada)
-        numJornada -= 1
-
-        @liga.aniadeJornada(jornada, numJornada)
+        return @dator.aniadeJornada(jornada, numJornada)
     end
 end
