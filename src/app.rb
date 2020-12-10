@@ -25,10 +25,6 @@ class MyApp < Sinatra::Base
         @@manejador = ManejaLiga.new()
         @@jsonify = Jsonify.new()
     end
-    
-    before do
-        
-    end
 
     def json(data_object)
         content_type :json
