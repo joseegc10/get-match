@@ -1,9 +1,9 @@
 require 'sinatra/base'
 require 'json'
-require_relative 'manejaLiga.rb'
+require_relative './manejaLiga'
 require 'logger'
 require_relative '../config/config.rb'
-require_relative 'myLogger.rb'
+require_relative './myLogger'
 
 class MyApp < Sinatra::Base
     set :environment, configuracion()["APP_ENV"]
@@ -12,17 +12,22 @@ class MyApp < Sinatra::Base
         myLogger = MyLogger.new('output.log')
         @@logger = myLogger._logger
         set :logger, @@logger
+
+        @@manejador = ManejaLiga.new()
+        @@jsonify = Jsonify.new()
     end
     
     configure :development do
         myLogger = MyLogger.new()
         @@logger = myLogger._logger
         set :logger, @@logger
+
+        @@manejador = ManejaLiga.new()
+        @@jsonify = Jsonify.new()
     end
     
     before do
-        @manejador = ManejaLiga.new()
-        @jsonify = Jsonify.new()
+        
     end
 
     def json(data_object)
@@ -36,7 +41,7 @@ class MyApp < Sinatra::Base
         nombreEquipo = params['equipo']
 
         begin
-            resultado = @manejador.resultadoPartido(numJornada, nombreEquipo)
+            resultado = @@manejador.resultadoPartido(numJornada, nombreEquipo)
 
             status 200
             json(
@@ -61,7 +66,7 @@ class MyApp < Sinatra::Base
         nombreEquipo = params['equipo']
 
         begin
-            goleadores = @manejador.goleadoresPartido(numJornada, nombreEquipo)
+            goleadores = @@manejador.goleadoresPartido(numJornada, nombreEquipo)
 
             status 200
             hash = Hash.new 
@@ -91,7 +96,7 @@ class MyApp < Sinatra::Base
         nombreEquipo = params['equipo']
 
         begin
-            dias = @manejador.diasPartido(numJornada, nombreEquipo)
+            dias = @@manejador.diasPartido(numJornada, nombreEquipo)
 
             status 200
             hash = Hash.new 
@@ -118,7 +123,7 @@ class MyApp < Sinatra::Base
         nombreEquipo = params['equipo']
 
         begin
-            goleador_goles = @manejador.maximoGoleadorPartido(numJornada, nombreEquipo)
+            goleador_goles = @@manejador.maximoGoleadorPartido(numJornada, nombreEquipo)
 
             status 200
             hash = Hash.new 
@@ -149,7 +154,7 @@ class MyApp < Sinatra::Base
         numJornada = params['jornada'].to_i
 
         begin
-            partidos = @manejador.partidosJornada(numJornada)
+            partidos = @@manejador.partidosJornada(numJornada)
 
             status 200
             hash = Hash.new 
@@ -189,7 +194,7 @@ class MyApp < Sinatra::Base
         numJornada = params['jornada'].to_i
 
         begin
-            dias = @manejador.diasJornada(numJornada)
+            dias = @@manejador.diasJornada(numJornada)
 
             status 200
             hash = Hash.new 
@@ -215,7 +220,7 @@ class MyApp < Sinatra::Base
         numJornada = params['jornada'].to_i
 
         begin
-            goleador_goles = @manejador.maxGoleadorJornada(numJornada)
+            goleador_goles = @@manejador.maxGoleadorJornada(numJornada)
 
             status 200
             hash = Hash.new 
@@ -246,7 +251,7 @@ class MyApp < Sinatra::Base
         numJornada = params['jornada'].to_i
 
         begin
-            equipo_goles = @manejador.equipoMaxGoleadorJornada(numJornada)
+            equipo_goles = @@manejador.equipoMaxGoleadorJornada(numJornada)
 
             status 200
             hash = Hash.new 
@@ -274,7 +279,7 @@ class MyApp < Sinatra::Base
     # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
     get '/equipos' do
         begin
-            equipos = @manejador.equiposLiga()
+            equipos = @@manejador.equiposLiga()
 
             status 200
             hash = Hash.new 
@@ -298,7 +303,7 @@ class MyApp < Sinatra::Base
     # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
     get '/ranking/goleadores' do
         begin
-            goleadores_goles = @manejador.rankingGoleadores()
+            goleadores_goles = @@manejador.rankingGoleadores()
 
             status 200
             hash = Hash.new 
@@ -327,7 +332,7 @@ class MyApp < Sinatra::Base
     # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
     get '/ranking/clasificacion' do
         begin
-            equipos_puntos_goles = @manejador.clasificacionLiga()
+            equipos_puntos_goles = @@manejador.clasificacionLiga()
 
             status 200
             hash = Hash.new 
@@ -358,7 +363,7 @@ class MyApp < Sinatra::Base
         equipo = params['equipo']
 
         begin
-            goles = @manejador.golesEquipo(equipo)
+            goles = @@manejador.golesEquipo(equipo)
 
             status 200
             hash = Hash.new 
@@ -383,13 +388,13 @@ class MyApp < Sinatra::Base
         end
     end
 
-    # HU14: Como usuario, quiero poder añadir un equipo a una liga
+    # HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
     post '/add/equipo' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
             jsonEquipo = JSON.parse(request.body.read)
-            equipo = @jsonify.jsonToEquipo(jsonEquipo)
-            @manejador.aniadeEquipo(equipo)
+            equipo = @@jsonify.jsonToEquipo(jsonEquipo)
+            @@manejador.aniadeEquipo(equipo)
 
             status 200
             json({:status => "Equipo añadido correctamente"})
@@ -404,8 +409,8 @@ class MyApp < Sinatra::Base
         # curl --header "Content-Type: application/json" --request POST --data '{"round": "Jornada 1","date": "2020-12-1","team1": "Real Madrid","team2": "Sevilla FC","score": {"ft": [1,0],"scorers": [{"team": "Real Madrid","name": "Sergio Ramos"}]  }}' http://localhost:9999/add/partido
         begin
             jsonPartido = JSON.parse(request.body.read)
-            partido, numJornada = @jsonify.jsonToPartido(jsonPartido, @manejador.liga.equipos)
-            @manejador.aniadePartido(partido, numJornada)
+            partido, numJornada = @@jsonify.jsonToPartido(jsonPartido, @@manejador.liga.equipos)
+            @@manejador.aniadePartido(partido, numJornada)
 
             status 200
             json({:status => "Partido añadido correctamente"})
@@ -420,8 +425,8 @@ class MyApp < Sinatra::Base
         # curl --header "Content-Type: application/json" --request POST --data '{"name": "Primera División 2020/21","matches": [{"round": "Jornada 3","date": "2020-12-20","team1": "Real Madrid","team2": "FC Barcelona"},{"round": "Jornada 3","date": "2020-12-21","team1": "Sevilla FC","team2": "Atlético Madrid"}]}' http://localhost:9999/add/jornada
         begin
             jsonPartidos = JSON.parse(request.body.read)
-            jornada, numJornada = @jsonify.jsonToJornada(jsonPartidos, @manejador.liga.equipos)
-            @manejador.aniadeJornada(jornada, numJornada)
+            jornada, numJornada = @@jsonify.jsonToJornada(jsonPartidos, @@manejador.liga.equipos)
+            @@manejador.aniadeJornada(jornada, numJornada)
 
             status 200
             json({:status => "Jornada añadida correctamente"})
@@ -438,7 +443,7 @@ class MyApp < Sinatra::Base
     
     after do
         if $error
-            @@logger.error($error.message)
+            @@logger.info($error.message)
             $error = nil
         end
     end

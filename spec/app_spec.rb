@@ -1,4 +1,4 @@
-require '../src/app.rb'
+require_relative '../src/app'
 require 'rack/test'
 
 describe 'MyApp' do
@@ -386,7 +386,7 @@ describe 'MyApp' do
                     {
                         "round": "Jornada 4",
                         "date": "2020-12-8",
-                        "team1": "Valencia CF",
+                        "team1": "No estoy en liga",
                         "team2": "Real Madrid"
                     }
                 ]
@@ -406,7 +406,7 @@ describe 'MyApp' do
                 "name": "Primera División 2020/21",
                 "matches": [
                     {
-                        "round": "Jornada 4",
+                        "round": "Jornada 999",
                         "date": "2020-12-8",
                         "team1": "FC Barcelona",
                         "team2": "Real Madrid"
