@@ -12,16 +12,15 @@ class MyApp < Sinatra::Base
         myLogger = MyLogger.new('output.log')
         @@logger = myLogger._logger
         set :logger, @@logger
-
-        @@manejador = ManejaLiga.new()
-        @@jsonify = Jsonify.new()
     end
     
     configure :development do
         myLogger = MyLogger.new()
         @@logger = myLogger._logger
         set :logger, @@logger
+    end
 
+    configure do
         @@manejador = ManejaLiga.new()
         @@jsonify = Jsonify.new()
     end

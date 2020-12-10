@@ -1,9 +1,11 @@
 require 'etcdv3'
 require 'figaro'
  
-PORT_DEFECTO = 8888
+PORT_DEFECTO = 8080
 NUM_MAX_EQUIPOS_DEFECTO = 10
 APP_ENV_DEFECTO = 'development'
+
+VARIABLES = ["PORT", "NUM_MAX_EQUIPOS", "APP_ENV"]
 
 def configuracion_etcd
     vars = Hash.new
@@ -43,15 +45,25 @@ def configuracion_os
     return vars
 end
 
+def existenVariables(vars)
+    for variable in VARIABLES
+        if !vars[variable]
+            return false
+        end
+    end
+
+    return true
+end
+
 def configuracion
-    vars_ectd = configuracion_etcd()
+    vars_etcd = configuracion_etcd()
     
-    if !vars_ectd["PORT"] or !vars_ectd["NUM_MAX_EQUIPOS"] or !vars_ectd["APP_ENV"]
+    if !existenVariables(vars_etcd)
         vars_os = configuracion_os()
         vars_figaro = configuracion_figaro()
         
-        if !vars_figaro["PORT"] or !vars_figaro["NUM_MAX_EQUIPOS"] or !vars_figaro["APP_ENV"]
-            if !vars_os["PORT"] or !vars_os["NUM_MAX_EQUIPOS"] or !vars_figaro["APP_ENV"]
+        if !existenVariables(vars_figaro)
+            if !existenVariables(vars_os)
                 vars = Hash.new
                 vars["PORT"] = PORT_DEFECTO
                 vars["NUM_MAX_EQUIPOS"] = NUM_MAX_EQUIPOS_DEFECTO
@@ -59,7 +71,6 @@ def configuracion
                 
                 return vars
             else
-                
                 return vars_os
             end
         else
