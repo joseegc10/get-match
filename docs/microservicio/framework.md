@@ -51,13 +51,17 @@ end
 
 Mediante el comando `on` divide una rama del arbol y usa `is` para indicar que la ruta finaliza. Todo esto pienso que proporciona una excesiva complejidad en comparación a Sinatra o Hanami. Por ejemplo, en Hanami podemos conseguir una ruta con el siguiente código, a mi parecer más sencillo:
 
-`get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }`
+```ruby
+get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
+```
 
 Además, con sinatra se haría así:
 
+```ruby
 get '/' do
   'Hello world!'
 end
+```
 
 Por esta razón y por lo explicado en el apartado de documentación, **he decidido descartar Roda**.
 
