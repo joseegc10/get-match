@@ -152,7 +152,7 @@ Como vemos, además de devolver un json con el mensaje de error, sacamos este me
 
 ## Diseño por capas
 
-1. **Capa de persistencia**. En este momento de desarrollo del proyecto, no he implementado una persistencia como tal, ya que no almaceno los nuevos datos en un archivo concreto o una base de datos. Sin embargo, en este momento estoy leyendo unos datos desde un archivo json de ejemplo para crear la liga, por lo que es necesaria la separación de esta capa.
+- **Capa de persistencia**. En este momento de desarrollo del proyecto, no he implementado una persistencia ante reinicios, ya que no almaceno los nuevos datos en un archivo concreto o una base de datos. Sin embargo, en este momento estoy leyendo unos datos desde un archivo json de ejemplo para crear la liga, por lo que es necesaria la separación de esta capa.
 
 En este caso, he creado una clase [Dator](../../src/dator.rb), la cual no es instanciable y contiene los métodos que se corresponden con cada una de las HUs pero sin implementar.
 
@@ -160,7 +160,7 @@ Además, para poder leer los datos de un archivo JSON, he creado la clase [MyDat
 
 Esta capa se ha diseñado siguiente los principios de inyección de dependencias y "single source of truth". Esto será explicado en la siguiente capa, cuando explique la clase manejadora.
 
-2. **Capa de la lógica**. En esta están todas las entidades que he ido creando a lo largo del proyecto, aunque he tenido que hacer reestructuraciones en algunas clases al pensar en su unión con el resto de capas. Por ejemplo, en la clase Partido, ahora el resultado es una variable más de la clase y no se calcula a partir del array de goleadores. Este cambio concreto lo he hecho porque no tiene mucho sentido añadir un partido a una jornada sin indicar su resultado, además de que en ligas comarcales por ejemplo puede que no se almacenen los goleadores y si únicamente los resultados. Las entidades que se recogen, ordenadas de forma jerárquica, son:
+- **Capa de la lógica**. En esta están todas las entidades que he ido creando a lo largo del proyecto, aunque he tenido que hacer reestructuraciones en algunas clases al pensar en su unión con el resto de capas. Por ejemplo, en la clase Partido, ahora el resultado es una variable más de la clase y no se calcula a partir del array de goleadores. Este cambio concreto lo he hecho porque no tiene mucho sentido añadir un partido a una jornada sin indicar su resultado, además de que en ligas comarcales por ejemplo puede que no se almacenen los goleadores y si únicamente los resultados. Las entidades que se recogen, ordenadas de forma jerárquica, son:
 
 `jugador < equipo < partido < jornada < liga`
 
@@ -173,7 +173,7 @@ Además, en esta capa encontramos la clase que nos permite la conexión con la c
 
 La clase ManejaLiga nos permite separar las funciones propias del API de las funciones propias de la lógica de negocio, pues está contendrá todos los métodos necesarios para cubrir todas las HUs y permiten que en el API solo se requiera hacer una llamada al objeto de esta clase para realizar la operación solicitada por el usuario.
 
-3. **Capa de aplicación**. Esta capa se recoge en la clase [MyApp](../../src/app.rb) y se encarga de recibir las peticiones a través de las diferentes rutas, hacer la llamada al método correspondiente de la clase manejadora, construir el objeto devuelto junto con el código http a devolver y devolver todo.
+- **Capa de aplicación**. Esta capa se recoge en la clase [MyApp](../../src/app.rb) y se encarga de recibir las peticiones a través de las diferentes rutas, hacer la llamada al método correspondiente de la clase manejadora, construir el objeto devuelto junto con el código http a devolver y devolver todo.
 
 En esta capa también estaría recogida la clase [MyLogger](../../src/myLogger.rb) que será explicada en el archivo sobre logs y configuración distribuida.
 
@@ -181,7 +181,7 @@ En esta capa también estaría recogida la clase [MyLogger](../../src/myLogger.r
 
 En primer lugar, tal y como hemos venido haciendo a lo largo del proyecto, hemos realizado los test del código que íbamos creando. En este caso, hemos hecho los test de las clases [Dator](../../spec/dator_spec.rb), [MyDator](../../spec/myDator_spec.rb), [ManejaLiga](../../spec/manejaLiga_spec.rb) y [Jsonify](../../spec/jsonifdatory_spec.rb)
 
-Además, es necesario realizar los tests de integración. Para ello, dado que en mi proyecto se ha usado rspec para los tests, he buscado una gema que me permita hacerlos con rspec. Esta gema es **rack-test** y podemos conseguir realizar los test de forma muy similar a como ya los veníamos haciendo. Los test de integración se pueden consultar en el siguiente [enlace](../../specdator/app_spec.rb)
+Además, es necesario realizar los tests de integración. Para ello, dado que en mi proyecto se ha usado rspec para los tests, he buscado una gema que me permita hacerlos con rspec. Esta gema es **rack-test** y podemos conseguir realizar los test de forma muy similar a como ya los veníamos haciendo. Los test de integración se pueden consultar en el siguiente [enlace](../../specdator/app_spec.rb).
 
 Simplemente dentro de nuestro `describe do` general tenemos que incluir lo siguiente:
 
@@ -273,8 +273,8 @@ También podemos ver un ejemplo de método post:
     end
 ```
 
-En una liga no se permite que haya más de un equipo con el mismo nombre. En el código anterior, vemos que hacemos lo mismo que ya expliqué para el método get, con la excepción de que haría tenemos que construir el objeto que le pasamos con el post. Si se trata de un equipo que no existe en la liga, como el Valencia, vemos que no tiene que dar error, y en el caso de un equipo que ya existe en la liga, como el Real Madrid, vemos que da un error de que el equipo ya existe en la liga.
+En una liga no se permite que haya más de un equipo con el mismo nombre. En el código anterior, vemos que hacemos lo mismo que ya expliqué para el método get, con la excepción de que ahora tenemos que construir el objeto que le pasamos con el post. Si se trata de un equipo que no existe en la liga, como el Valencia, vemos que no tiene que dar error, y en el caso de un equipo que ya existe en la liga, como el Real Madrid, vemos que da un error de que el equipo ya existe en la liga.
 
 ## Ejecución de la app
 
-Por último, aunque no era necesario en este momento, se ha creado una tarea en nuestro [Rakefile](../../Rake de la jornada 1 en este casofile), `rake start` que nos permite arrancar la aplicación. Esta tarea hace uso de rackup, que es una herramienta que ejecuta lo que haya en el archivo [config.ru](../../config.ru).
+Por último, aunque no era necesario en este momento, se ha creado una tarea en nuestro [Rakefile](../../Rakefile), `rake start` que nos permite arrancar la aplicación. Esta tarea hace uso de rackup, que es una herramienta que ejecuta lo que haya en el archivo [config.ru](../../config.ru).

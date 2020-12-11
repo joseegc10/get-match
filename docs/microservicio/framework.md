@@ -26,7 +26,7 @@ La primera variable que he considerado para la elección del framework ha sido e
 
 [Rack](https://github.com/rack/rack), como ellos mismos dicen, "proporciona una interfaz mínima, modular y adaptable para desarrollar aplicaciones web en Ruby. Al empaquetar las solicitudes y respuestas HTTP de la manera más simple posible, unifica y destila la API para servidores web, marcos web y software intermedio (el llamado middleware) en una única llamada a método."
 
-En mi caso, he considerado elegir Rack para la construcción de los middlewares de mi aplicación por la sencillez que aporta. Por ello, es importante saber con cuáles de los framework anteriores rack está soportado. Si nos vamos a la [página oficial](https://github.com/rack/rack) de rack, **vemos que Grape no está soportado, por lo que es el siguiente framework que queda descartado**.
+En mi caso, he considerado elegir Rack para algunos aspectos de mi aplicación por la sencillez que aporta. Por ello, es importante saber con cuáles de los framework anteriores rack está soportado. Si nos vamos a la [página oficial](https://github.com/rack/rack) de rack, **vemos que Grape no está soportado, por lo que es el siguiente framework que queda descartado**.
 
 ### Documentación
 
