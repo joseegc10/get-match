@@ -11,6 +11,9 @@ Con get-match se pretende ofrecer la posibilidad al usuario de saber el resultad
 ## Microservicio
 
 - La documentación sobre la elección y justificación del framework elegido se puede encontrar en el siguiente [enlace](./docs/microservicio/framework.md).
+- La documentación sobre el diseño del API, rutas, tipos devuelvos, estados, tests y justificación de como se ajustan a las historias de usuario se puede encontrar en el siguiente [enlace](./docs/microservicio/api.md).
+- La documentación sobre el uso de configuración distribuida, logs y uso de middleware se puede encontrar en el siguiente [enlace](./docs/microservicio/conf_logs.md).
+- He tenido que solucionar algunos fallos surgidos debido al aumento del código y de las nuevas gemas usadas. La documentación sobre esto se puede encontrar [aquí](./docs/microservicio/fallos.md).
 
 ## Serverless
 
