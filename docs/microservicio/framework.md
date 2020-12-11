@@ -8,7 +8,7 @@ Existen numerosos framework que nos van a permitir conseguir esto en ruby. Tras 
 - Sinatra: es considerado un Rails más ligero y sencillo.
 - Roda: dispone de una gran cantidad de plugins.
 - Hanami: asegura que usa un 60% menos de memoria que otros frameworks.
-- Grape: hace más sencilla la sintaxis de la API.
+- Grape: hace más sencilla la sintaxis del api.
 
 ## Rails
 

@@ -7,7 +7,7 @@
 He visto adecuado establecer una serie de variables de las que va a depender mi aplicación. Estas son las siguientes:
 
 - PORT: nos indica el puerto por el que se va a iniciar mi aplicación mediante rackup.
-- APP_ENV: nos indica el modo en el que se ejecuta la aplicación, es decir, si se ejecuta en desarrollo o en producción.
+- APP_ENV: nos indica el modo en el que se ejecuta la aplicación, es decir, si se ejecuta en desarrollo o en producción. Los valores posibles son 'development' y 'production'.
 - NUM_MAX_EQUIPOS: es importante indicar en mi aplicación el número de equipos que van a formar la liga, pues puede existir mucha variedad en este número y no veo adecuado establecer un número a priori.
 
 ### Archivo para obtener las variables
@@ -114,7 +114,7 @@ def configuracion_os
 end
 ```
 
-4. Por último, en el caso de que tampoco las podamos obtener de la forma anterior, las obtenemos mediante los valores por defecto que hay en el archivo config.ru.
+4. Por último, en el caso de que tampoco las podamos obtener de la forma anterior, las obtenemos mediante los valores por defecto que hay en el archivo config.rb.
 
 ```ruby
 PORT_DEFECTO = 8080 # Puerto por defecto que proporciona rackup
@@ -186,7 +186,7 @@ Un middleware se ejecuta antes o después de la activación de una ruta. En mi c
 
 Primero indicamos el nivel de información que va a sacar este logger, pudiendo ser de info como en mi caso, o de error, debug, etc. Además, en mi caso he decidido cambiar un poco el formato de la fecha que saca, pues me parece más intuitiva de esta forma.
 
-La instancia de MyLogger se va a crear en la clase Sinatra en función del modo en el que nos encontremos, como ya explicamos en el documento de la api.
+La instancia de MyLogger se va a crear en la clase Sinatra en función del modo en el que nos encontremos, como ya explicamos en el documento del api.
 
 **Otro uso del logger:**
 
@@ -201,4 +201,4 @@ after do
 end
 ```
 
-El bloque after do me permite ejecutar algo después de la activación de una ruta. En este caso, como ya explicamos en el documento de la api, cuando activamos una ruta y se produce un error, se crea la variable $error que almacena el error producido en la excepción. Por ello, en el caso de que se produzca una excepción, después de la activación de este ruta le decimos al logger que muestre la información que explica por qué se ha producido dicha excepción.
+El bloque after do me permite ejecutar algo después de la activación de una ruta. En este caso, como ya explicamos en el documento del api, cuando activamos una ruta y se produce un error, se crea la variable $error que almacena el error producido en la excepción. Por ello, en el caso de que se produzca una excepción, después de la activación de este ruta le decimos al logger que muestre la información que explica por qué se ha producido dicha excepción.
