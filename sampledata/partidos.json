@@ -52,6 +52,13 @@
             "date": "2020-12-8",
             "team1": "Atlético Madrid",
             "team2": "Real Madrid"
+        },
+
+        {
+            "round": "Jornada 2",
+            "date": "2020-12-9",
+            "team1": "Sevilla FC",
+            "team2": "FC Barcelona"
         }
     ]
 }

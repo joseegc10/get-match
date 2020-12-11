@@ -304,11 +304,24 @@ describe 'MyApp' do
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
     describe "añadir partido a una jornada de la liga" do 
         it 'partido correcto' do
+            # Añado otro equipo además del Valencia
+            equipo = {
+                "name"=>"Granada CF", 
+                "code"=>"GRA", 
+                "country"=>"Spain", 
+                "players"=>[
+                    "Soldado", 
+                    "Yangel Herrera"
+                ]
+            }
+
+            post '/add/equipo', equipo.to_json
+
             partido = {
                 "round"=>"Jornada 2",
                 "date"=>"2020-12-9",
-                "team1"=>"Sevilla FC",
-                "team2"=>"FC Barcelona"
+                "team1"=>"Valencia CF",
+                "team2"=>"Granada CF"
             }
 
             post '/add/partido', partido.to_json
@@ -355,8 +368,8 @@ describe 'MyApp' do
         end
     end
 
-    # HU16: Como usuario, quiero poder añadir un partido a una jornada de la liga
-    describe "añadir partido a una jornada de la liga" do 
+    # HU16: Como usuario, quiero poder añadir una jornada a una liga
+    describe "añadir jornada de la liga" do 
         it 'jornada correcta' do
             jornada = {
                 "name": "Primera División 2020/21",
