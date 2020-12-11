@@ -147,7 +147,7 @@ NUM_MAX_EQUIPOS = configuracion()["NUM_MAX_EQUIPOS"]
 
 ## Logs y middleware
 
-En mi caso he decidido "crear" un middleware para la gestión de los logs. Realmente, he pensado que no era adecuado crear un middleware como tal propio, pues pienso que el que viene por defecto en sinatra proporciona la información necesaria, más que si lo construyera por mi cuenta. Por ello, lo que he hecho es crear una clase Logger, [MyLogger](../../src/myLogger.rb), que hace uso del middleware por defecto de sinatra pero con modificaciones. Esta clase es la siguiente:
+En mi caso he decidido "crear" un middleware para la gestión de los logs. Realmente, he pensado que no era adecuado crear un middleware como tal propio, pues pienso que el que viene por defecto en sinatra proporciona la información necesaria, más que si lo construyera por mi cuenta. Por ello, lo que he hecho es crear una clase Logger, [MyLogger](../../src/myLogger.rb), que hace uso del logger por defecto de sinatra pero con modificaciones. Esta clase es la siguiente:
 
 ```ruby
 class MyLogger
