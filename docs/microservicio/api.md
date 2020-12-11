@@ -154,28 +154,28 @@ Como vemos, además de devolver un json con el mensaje de error, sacamos este me
 
 - **Capa de persistencia**. En este momento de desarrollo del proyecto, no he implementado una persistencia ante reinicios, ya que no almaceno los nuevos datos en un archivo concreto o una base de datos. Sin embargo, en este momento estoy leyendo unos datos desde un archivo json de ejemplo para crear la liga, por lo que es necesaria la separación de esta capa.
 
-En este caso, he creado una clase [Dator](../../src/dator.rb), la cual no es instanciable y contiene los métodos que se corresponden con cada una de las HUs pero sin implementar.
+  En este caso, he creado una clase [Dator](../../src/dator.rb), la cual no es instanciable y contiene los métodos que se corresponden con cada una de las HUs pero sin implementar.
 
-Además, para poder leer los datos de un archivo JSON, he creado la clase [MyDator](../../src/myDator.rb). Esta clase hace uso de una clase auxiliar que he creado, [Jsonify](../../src/jsonify.rb), la cual me permite pasar de las instancias liga, jornada, partido o equipo en formato JSON, a instancias de mis propias clases. Esta clase también será usada por la capa de la aplicación para pasar a instancias de mis clases los objetos recibidos por post en las 3 últimas rutas.
+  Además, para poder leer los datos de un archivo JSON, he creado la clase [MyDator](../../src/myDator.rb). Esta clase hace uso de una clase auxiliar que he creado, [Jsonify](../../src/jsonify.rb), la cual me permite pasar de las instancias liga, jornada, partido o equipo en formato JSON, a instancias de mis propias clases. Esta clase también será usada por la capa de la aplicación para pasar a instancias de mis clases los objetos recibidos por post en las 3 últimas rutas.
 
-Esta capa se ha diseñado siguiente los principios de inyección de dependencias y "single source of truth". Esto será explicado en la siguiente capa, cuando explique la clase manejadora.
+  Esta capa se ha diseñado siguiente los principios de inyección de dependencias y "single source of truth". Esto será explicado en la siguiente capa, cuando explique la clase manejadora.
 
 - **Capa de la lógica**. En esta están todas las entidades que he ido creando a lo largo del proyecto, aunque he tenido que hacer reestructuraciones en algunas clases al pensar en su unión con el resto de capas. Por ejemplo, en la clase Partido, ahora el resultado es una variable más de la clase y no se calcula a partir del array de goleadores. Este cambio concreto lo he hecho porque no tiene mucho sentido añadir un partido a una jornada sin indicar su resultado, además de que en ligas comarcales por ejemplo puede que no se almacenen los goleadores y si únicamente los resultados. Las entidades que se recogen, ordenadas de forma jerárquica, son:
 
-`jugador < equipo < partido < jornada < liga`
+  `jugador < equipo < partido < jornada < liga`
 
-Cada una de las entidades usa a su vez las entidades que se encuentran a su izquierda, es decir, si por ejemplo se solicita a la clase Liga el resultado de un determinado partido, esta clase hará una llamada a la clase jornada, que a su vez hará una llamada a la clase partido, devolviendo el resultado de dicho partido.
+  Cada una de las entidades usa a su vez las entidades que se encuentran a su izquierda, es decir, si por ejemplo se solicita a la clase Liga el resultado de un determinado partido, esta clase hará una llamada a la clase jornada, que a su vez hará una llamada a la clase partido, devolviendo el resultado de dicho partido.
 
-Además, en esta capa encontramos la clase que nos permite la conexión con la capa de persistencia, la clase manejadora. En mi caso, esta es la clase [ManejaLiga](../../src/manejaLiga.rb) y se ha diseñado siguiente los dos principios explicados en la capa de persistencia:
+  Además, en esta capa encontramos la clase que nos permite la conexión con la capa de persistencia, la clase manejadora. En mi caso, esta es la clase [ManejaLiga](../../src/manejaLiga.rb) y se ha diseñado siguiente los dos principios explicados en la capa de persistencia:
 
-- Inyección de dependencias: Esto se ha hecho, ya que cuando creamos un objeto de la clase manejadora, en el constructor se requiere pasarle (inyectarle) el objeto de la clase Dator que accede a nuestros datos.
-- Single source of truth: Esto también se hace, pues el objeto de la clase Dator que hemos recibido como parámetro en el constructor de la clase manejadora es el único que accede a los datos.
+  - Inyección de dependencias: Esto se ha hecho, ya que cuando creamos un objeto de la clase manejadora, en el constructor se requiere pasarle (inyectarle) el objeto de la clase Dator que accede a nuestros datos.
+  - Single source of truth: Esto también se hace, pues el objeto de la clase Dator que hemos recibido como parámetro en el constructor de la clase manejadora es el único que accede a los datos.
 
-La clase ManejaLiga nos permite separar las funciones propias del API de las funciones propias de la lógica de negocio, pues está contendrá todos los métodos necesarios para cubrir todas las HUs y permiten que en el API solo se requiera hacer una llamada al objeto de esta clase para realizar la operación solicitada por el usuario.
+  La clase ManejaLiga nos permite separar las funciones propias del API de las funciones propias de la lógica de negocio, pues está contendrá todos los métodos necesarios para cubrir todas las HUs y permiten que en el API solo se requiera hacer una llamada al objeto de esta clase para realizar la operación solicitada por el usuario.
 
 - **Capa de aplicación**. Esta capa se recoge en la clase [MyApp](../../src/app.rb) y se encarga de recibir las peticiones a través de las diferentes rutas, hacer la llamada al método correspondiente de la clase manejadora, construir el objeto devuelto junto con el código http a devolver y devolver todo.
 
-En esta capa también estaría recogida la clase [MyLogger](../../src/myLogger.rb) que será explicada en el archivo sobre logs y configuración distribuida.
+  En esta capa también estaría recogida la clase [MyLogger](../../src/myLogger.rb) que será explicada en el archivo sobre logs y configuración distribuida.
 
 ## Test del código creado y test de integración
 

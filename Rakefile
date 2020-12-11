@@ -15,6 +15,9 @@ task :stop do
 	exec "pkill -f rackup"
 end
 
+task :build do
+end
+
 RSpec::Core::RakeTask.new(:test) do |t|
     t.pattern = 'spec/*_spec.rb'
 end

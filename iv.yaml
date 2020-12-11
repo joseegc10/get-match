@@ -9,3 +9,4 @@ test:
   - spec/equipo_spec.rb
   - spec/jugador_spec.rb
 URL: https://get-match.joseegc10.vercel.app/api?equipo=Real%20Madrid
+make: rake
