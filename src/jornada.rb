@@ -9,7 +9,7 @@ class Jornada
 	# Una jornada vendrá identificado por:
     #      - Fecha en la que comienza
     #      - Lista de partidos que se juegan en la jornada
-	
+
 	def initialize(fechaInicio)
         @fechaInicio = fechaInicio
         @partidos = Array.new
