@@ -29,6 +29,16 @@ describe 'MyApp' do
             expect(last_response.content_type).to eq ('application/json')
             expect(last_response.ok?).to eq (false)
         end
+
+        it 'equipo inexistente' do
+            get '/partido/resultado/NoExisto/1'
+
+            cuerpo = ({"status":"Ese equipo no pertenece a la liga"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
     end
 
     # HU2: Como usuario, me gustaría poder consultar los goleadores de un partido
@@ -47,6 +57,16 @@ describe 'MyApp' do
             get '/partido/goleadores/Real%20Madrid/-1'
 
             cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+
+        it 'equipo inexistente' do
+            get '/partido/goleadores/NoExisto/1'
+
+            cuerpo = ({"status":"Ese equipo no pertenece a la liga"}).to_json
 
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.content_type).to eq ('application/json')
@@ -77,6 +97,16 @@ describe 'MyApp' do
             expect(last_response.content_type).to eq ('application/json')
             expect(last_response.ok?).to eq (false)
         end
+
+        it 'equipo inexistente' do
+            get '/partido/dias/NoExisto/1'
+
+            cuerpo = ({"status":"Ese equipo no pertenece a la liga"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
     end
 
     # HU4: Como usuario, debo poder consultar el máximo goleador de un partido
@@ -95,6 +125,16 @@ describe 'MyApp' do
             get '/partido/maximo-goleador/Real%20Madrid/-1'
 
             cuerpo = ({"status":"La jornada introducida no se ha jugado"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (false)
+        end
+
+        it 'equipo inexistente' do
+            get '/partido/maximo-goleador/NoExisto/1'
+
+            cuerpo = ({"status":"Ese equipo no pertenece a la liga"}).to_json
 
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.content_type).to eq ('application/json')
