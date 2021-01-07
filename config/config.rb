@@ -1,11 +1,10 @@
 require 'etcdv3'
 require 'figaro'
  
-PORT_DEFECTO = 8080
 NUM_MAX_EQUIPOS_DEFECTO = 10
 APP_ENV_DEFECTO = 'development'
 
-VARIABLES = ["PORT", "NUM_MAX_EQUIPOS", "APP_ENV"]
+VARIABLES = ["NUM_MAX_EQUIPOS", "APP_ENV"]
 
 def configuracion_etcd
     vars = Hash.new
@@ -14,7 +13,6 @@ def configuracion_etcd
         endpoint = "https://" + ENV["HOSTNAME_ETCD"] + ":" + ENV["PORT_ETCD"]
         etcd = Etcdv3.new(endpoints: endpoint)
 
-        vars["PORT"] = etcd.get('PORT')
         vars["NUM_MAX_EQUIPOS"] = etcd.get('NUM_MAX_EQUIPOS')
         vars["APP_ENV"] = etcd.get('APP_ENV')
     end
@@ -29,7 +27,6 @@ def configuracion_figaro
     Figaro.load
 
     vars = Hash.new
-    vars["PORT"] = (Figaro.env.PORT).to_i
     vars["NUM_MAX_EQUIPOS"] = (Figaro.env.NUM_MAX_EQUIPOS).to_i
     vars["APP_ENV"] = Figaro.env.APP_ENV
 
@@ -38,7 +35,6 @@ end
 
 def configuracion_os
     vars = Hash.new
-    vars["PORT"] = ENV["PORT"]
     vars["NUM_MAX_EQUIPOS"] = ENV["NUM_MAX_EQUIPOS"]
     vars["APP_ENV"] = ENV["APP_ENV"]
 
@@ -65,7 +61,6 @@ def configuracion
         if !existenVariables(vars_figaro)
             if !existenVariables(vars_os)
                 vars = Hash.new
-                vars["PORT"] = PORT_DEFECTO
                 vars["NUM_MAX_EQUIPOS"] = NUM_MAX_EQUIPOS_DEFECTO
                 vars["APP_ENV"] = APP_ENV_DEFECTO
                 
