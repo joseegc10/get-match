@@ -386,7 +386,7 @@ class MyApp < Sinatra::Base
     end
 
     # HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
-    post '/add/equipo' do
+    post '/equipos' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
             jsonEquipo = JSON.parse(request.body.read)
@@ -402,7 +402,7 @@ class MyApp < Sinatra::Base
     end
     
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
-    post '/add/partido' do
+    post '/partidos' do
         # curl --header "Content-Type: application/json" --request POST --data '{"round": "Jornada 1","date": "2020-12-1","team1": "Real Madrid","team2": "Sevilla FC","score": {"ft": [1,0],"scorers": [{"team": "Real Madrid","name": "Sergio Ramos"}]  }}' http://localhost:9999/add/partido
         begin
             jsonPartido = JSON.parse(request.body.read)
@@ -418,7 +418,7 @@ class MyApp < Sinatra::Base
     end
 
     # HU16: Como usuario, quiero poder añadir una jornada a una liga 
-    post '/add/jornada' do
+    post '/jornadas' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name": "Primera División 2020/21","matches": [{"round": "Jornada 3","date": "2020-12-20","team1": "Real Madrid","team2": "FC Barcelona"},{"round": "Jornada 3","date": "2020-12-21","team1": "Sevilla FC","team2": "Atlético Madrid"}]}' http://localhost:9999/add/jornada
         begin
             jsonPartidos = JSON.parse(request.body.read)

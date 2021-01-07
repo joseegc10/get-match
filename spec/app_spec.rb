@@ -311,7 +311,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/equipo', equipo.to_json
+            post '/equipos', equipo.to_json
 
             cuerpo = ({"status":"Equipo añadido correctamente"}).to_json
 
@@ -331,7 +331,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/equipo', equipo.to_json
+            post '/equipos', equipo.to_json
 
             cuerpo = ({"status":"El equipo ya existe en la liga"}).to_json
 
@@ -355,7 +355,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/equipo', equipo.to_json
+            post '/equipos', equipo.to_json
 
             partido = {
                 "round"=>"Jornada 2",
@@ -364,7 +364,7 @@ describe 'MyApp' do
                 "team2"=>"Granada CF"
             }
 
-            post '/add/partido', partido.to_json
+            post '/partidos', partido.to_json
 
             cuerpo = ({"status":"Partido añadido correctamente"}).to_json
 
@@ -381,7 +381,7 @@ describe 'MyApp' do
                 "team2"=>"FC Barcelona"
             }
 
-            post '/add/partido', partido.to_json
+            post '/partidos', partido.to_json
 
             cuerpo = ({"status":"El partido lo juega un equipo que ya juega otro partido en la jornada"}).to_json
 
@@ -398,7 +398,7 @@ describe 'MyApp' do
                 "team2"=>"FC Barcelona"
             }
 
-            post '/add/partido', partido.to_json
+            post '/partidos', partido.to_json
 
             cuerpo = ({"status":"La jornada introducida no existe"}).to_json
 
@@ -423,7 +423,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/jornada', jornada.to_json
+            post '/jornadas', jornada.to_json
 
             cuerpo = ({"status":"Jornada añadida correctamente"}).to_json
 
@@ -445,7 +445,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/jornada', jornada.to_json
+            post '/jornadas', jornada.to_json
 
             cuerpo = ({"status":"Al menos un equipo del partido no participa en la liga"}).to_json
 
@@ -467,7 +467,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/add/jornada', jornada.to_json
+            post '/jornadas', jornada.to_json
 
             cuerpo = ({"status":"Número de jornada incorrecta"}).to_json
 
