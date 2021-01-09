@@ -4,7 +4,7 @@ require_relative './manejaLiga'
 require 'logger'
 require_relative '../config/config.rb'
 require_relative './myLogger'
-require_relative './myDator'
+require_relative './firebaseDator'
 
 class MyApp < Sinatra::Base
     set :environment, configuracion()["APP_ENV"]
@@ -22,7 +22,7 @@ class MyApp < Sinatra::Base
     end
 
     configure do
-        dator = MyDator.new()
+        dator = FirebaseDator.new()
         @@manejador = ManejaLiga.new(dator)
         @@jsonify = Jsonify.new()
     end
@@ -390,8 +390,12 @@ class MyApp < Sinatra::Base
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
             jsonEquipo = JSON.parse(request.body.read)
+
+            ## Comprobamos que la estructura es correcta y se podría formar un equipo
             equipo = @@jsonify.jsonToEquipo(jsonEquipo)
-            @@manejador.aniadeEquipo(equipo)
+
+            
+            @@manejador.aniadeEquipo(jsonEquipo)
 
             status 200
             json({:status => "Equipo añadido correctamente"})
