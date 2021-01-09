@@ -15,6 +15,10 @@ class Jsonify
     ##################################################################################
 
     def jsonToEquipo(json)
+        if json.keys.size != 2
+            raise ArgumentError, 'La estructura del equipo es incorrecta (nombre y jugadores)'
+        end
+
         nombre = json["name"]
 
         nombreJugadores = []
@@ -31,7 +35,25 @@ class Jsonify
 
     ##################################################################################
 
+    def jsonToEquipos(json)
+        equipos = []
+        keys = json.keys
+
+        for k in keys
+            equipo = jsonToEquipo(json[k])
+            equipos << equipo
+        end
+
+        return equipos
+    end
+
+    ##################################################################################
+
     def jsonToPartido(json, equipos)
+        if json.keys.size != 5
+            raise ArgumentError, 'La estructura del partido es incorrecta'
+        end
+
         jornada = ((json["round"].split(' '))[1]).to_i
        
         fecha = Date.parse json["date"]
@@ -77,6 +99,10 @@ class Jsonify
     ##################################################################################
 
     def jsonToJornada(json, equipos)
+        if json.keys.size != 1
+            raise ArgumentError, 'La estructura del equipo es incorrecta (nombre y jugadores)'
+        end
+
         jsonPartidos = json["matches"]
 
         if jsonPartidos.size == 0
@@ -88,6 +114,10 @@ class Jsonify
 
         partidos = []
         for jsonPartido in jsonPartidos
+            if jsonPartidos.keys.size != 5
+                raise ArgumentError, 'La estructura del partido es incorrecta'
+            end
+
             nuevoPartido, numJornadaPartido = jsonToPartido(jsonPartido, equipos)
 
             if numJornadaPartido != numJornada
