@@ -43,8 +43,8 @@ class MyApp < Sinatra::Base
             status 200
             json(
                 {
-                    :Local => resultado.equipoLocal, 
-                    :Visitante => resultado.equipoVisitante, 
+                    :Local => resultado.equipoLocal.nombre, 
+                    :Visitante => resultado.equipoVisitante.nombre, 
                     :resultado => {
                         :golesLocal => resultado.golesLocal,
                         :golesVisitante => resultado.golesVisitante
@@ -411,7 +411,7 @@ class MyApp < Sinatra::Base
         begin
             jsonPartido = JSON.parse(request.body.read)
             partido, numJornada = @@jsonify.jsonToPartido(jsonPartido, @@manejador.equiposLiga)
-            @@manejador.aniadePartido(partido, numJornada)
+            @@manejador.aniadePartido(jsonPartido, numJornada)
 
             status 200
             json({:status => "Partido añadido correctamente"})
@@ -427,10 +427,10 @@ class MyApp < Sinatra::Base
         begin
             jsonPartidos = JSON.parse(request.body.read)
             jornada, numJornada = @@jsonify.jsonToJornada(jsonPartidos, @@manejador.equiposLiga)
-            @@manejador.aniadeJornada(jornada, numJornada)
+            @@manejador.aniadeJornada(jsonPartidos, numJornada)
 
             status 200
-            json({:status => "Jornada añadida correctamente"})
+            json({:status => "Jornada #{numJornada} añadida correctamente"})
         rescue => $error
             status 400
             json({:status => $error.message})

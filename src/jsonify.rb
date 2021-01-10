@@ -87,8 +87,12 @@ class Jsonify
                 end
             end
 
-            partido = Partido.new(equipoLocal, equipoVisitante, fecha, resultado)
+            partido = Partido.new(equipoLocal, equipoVisitante, fecha)
             partido.aniadeGoleadores(goleadores)
+
+            if resultado.golesLocal != partido.calculaResultado.golesLocal or resultado.golesVisitante != partido.calculaResultado.golesVisitante
+                raise ArgumentError, 'Incompatibilidad entre el resultado y el numero de goleadores'
+            end
         else
             partido = Partido.new(equipoLocal, equipoVisitante, fecha)
         end
@@ -98,13 +102,7 @@ class Jsonify
 
     ##################################################################################
 
-    def jsonToJornada(json, equipos)
-        if json.keys.size != 1
-            raise ArgumentError, 'La estructura del equipo es incorrecta (nombre y jugadores)'
-        end
-
-        jsonPartidos = json["matches"]
-
+    def jsonToJornada(jsonPartidos, equipos)
         if jsonPartidos.size == 0
             raise ArgumentError, 'La jornada no tiene ningún partido'
         end
@@ -114,7 +112,7 @@ class Jsonify
 
         partidos = []
         for jsonPartido in jsonPartidos
-            if jsonPartidos.keys.size != 5
+            if jsonPartido.keys.size != 5
                 raise ArgumentError, 'La estructura del partido es incorrecta'
             end
 
