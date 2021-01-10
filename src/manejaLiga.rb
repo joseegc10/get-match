@@ -76,12 +76,17 @@ class ManejaLiga
     end
 
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
-    def aniadePartido(partido, numJornada)
-        return @dator.aniadePartido(partido, numJornada)
+    def aniadePartido(partido, partidoJSON, numJornada)
+        return @dator.aniadePartido(partido, partidoJSON, numJornada)
     end
 
     # HU16: Como usuario, quiero poder añadir una jornada a una liga 
-    def aniadeJornada(jornada, numJornada)
-        return @dator.aniadeJornada(jornada, numJornada)
+    def aniadeJornada(jornada, jornadaJSON, numJornada)
+        return @dator.aniadeJornada(jornada, jornadaJSON, numJornada)
+    end
+
+    # HU17: Como usuario, quiero poder resetear la liga 
+    def reseteaLiga()
+        return @dator.reseteaLiga()
     end
 end

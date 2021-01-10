@@ -411,7 +411,7 @@ class MyApp < Sinatra::Base
         begin
             jsonPartido = JSON.parse(request.body.read)
             partido, numJornada = @@jsonify.jsonToPartido(jsonPartido, @@manejador.equiposLiga)
-            @@manejador.aniadePartido(jsonPartido, numJornada)
+            @@manejador.aniadePartido(partido, jsonPartido, numJornada)
 
             status 200
             json({:status => "Partido añadido correctamente"})
@@ -427,10 +427,23 @@ class MyApp < Sinatra::Base
         begin
             jsonPartidos = JSON.parse(request.body.read)
             jornada, numJornada = @@jsonify.jsonToJornada(jsonPartidos, @@manejador.equiposLiga)
-            @@manejador.aniadeJornada(jsonPartidos, numJornada)
+            @@manejador.aniadeJornada(jornada, jsonPartidos, numJornada)
 
             status 200
             json({:status => "Jornada #{numJornada} añadida correctamente"})
+        rescue => $error
+            status 400
+            json({:status => $error.message})
+        end
+    end
+
+    # HU17: Como usuario, quiero poder resetear la liga 
+    delete '/nuevaLiga' do
+        begin
+            @@manejador.reseteaLiga()
+
+            status 200
+            json({:status => "Liga reseteada correctamente"})
         rescue => $error
             status 400
             json({:status => $error.message})

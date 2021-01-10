@@ -115,6 +115,7 @@ class Jsonify
             if jsonPartido.keys.size != 5
                 raise ArgumentError, 'La estructura del partido es incorrecta'
             end
+            p jsonPartido
 
             nuevoPartido, numJornadaPartido = jsonToPartido(jsonPartido, equipos)
 
@@ -133,8 +134,7 @@ class Jsonify
 
     ##################################################################################
 
-    def jsonToJornadas(partidosJSON, hashEquipos)
-        partidos = partidosJSON["matches"]
+    def jsonToJornadas(partidos, hashEquipos)
 
         # Creamos el array para las jornadas
         numJornadas = (partidos.size / hashEquipos.size) * 2
@@ -190,21 +190,15 @@ class Jsonify
 
     ##################################################################################
 
-    def jsonToLiga(ubicacionPartidos, ubicacionEquipos)
-        pathPartidos = File.join(File.dirname(__FILE__), ubicacionPartidos)
-		filePartidos = File.read(pathPartidos)
-        partidosJSON = JSON.parse(filePartidos)
-        
-        pathEquipos = File.join(File.dirname(__FILE__), ubicacionEquipos)
-		fileEquipos = File.read(pathEquipos)
-        equiposJSON = JSON.parse(fileEquipos)
-
-        clubs = equiposJSON["clubs"]
+    def jsonToLiga(jsonLiga)
+        equiposJSON = jsonLiga["equipos"]
         equipos = []
         hashEquipos = Hash.new
+        keysEquipos = equiposJSON.keys
 
         # Añadimos los equipos de la liga
-        for club in clubs
+        for k in keysEquipos
+            club = equiposJSON[k]
             nuevoEquipo = Equipo.new(club["name"])
 
             # Añadimos los jugadores del equipo
@@ -218,7 +212,19 @@ class Jsonify
             hashEquipos[club["name"]] = nuevoEquipo
         end
 
-        liga = Liga.new(equipos, partidosJSON["name"])
+        liga = Liga.new(equipos)
+
+        jornadasJSON = jsonLiga["jornadas"]
+        partidosJSON = []
+
+        for j in jornadasJSON
+            if j
+                keys = j.keys
+                for k in keys
+                    partidosJSON << j[k]
+                end
+            end
+        end
 
         jornadas = jsonToJornadas(partidosJSON, hashEquipos)
 

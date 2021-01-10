@@ -15,7 +15,7 @@ class Liga
     #      - Clasificación de la liga
     #      - Nombre de la liga
 
-    def initialize(equipos, nombreLiga)
+    def initialize(equipos, nombreLiga=nil)
         @equipos = equipos
         @jornadas = Array.new
         @rankingGoleadores = Array.new
