@@ -205,4 +205,9 @@ class MyDator < Dator
 
         @liga.aniadeJornada(jornada, numJornada)
     end
+
+    # HU19: Como usuario, quiero poder resetear la liga
+    def reseteaLiga()
+        @liga.reseteaLiga()
+    end
 end

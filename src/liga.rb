@@ -369,4 +369,11 @@ class Liga
         actualizaRanking(jornada.partidos)
         actualizaClasificacion(jornada.partidos)
     end
+
+    def reseteaLiga()
+        @equipos = Array.new
+        @jornadas = Array.new
+        @rankingGoleadores = Array.new
+        @clasificacion = Array.new
+    end
 end
