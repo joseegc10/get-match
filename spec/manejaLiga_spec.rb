@@ -133,6 +133,15 @@ describe ManejaLiga do
         end
     end
 
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    describe '#equipo' do
+        it 'obtener informacion de un equipo' do
+            equipo = @gestor.equipo('Real Madrid')
+
+            expect(equipo.nombre).to eq('Real Madrid')
+        end
+    end
+
     # HU19: Como usuario, quiero poder resetear la liga
     describe '#reseteaLiga' do
         it 'resetear una liga' do
