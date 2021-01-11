@@ -6,6 +6,7 @@ require_relative '../config/config.rb'
 require_relative './myLogger'
 require_relative './firebaseDator'
 require_relative './myDator'
+require 'uri'
 
 $config = configuracion()
 
@@ -400,7 +401,7 @@ class MyApp < Sinatra::Base
             
             @@manejador.aniadeEquipo(jsonEquipo)
 
-            #response.headers['Location'] = '/equipos/' + equipo.nombre
+            response.headers['Location'] = URI.encode('/equipos/' + equipo.nombre)
             status 200
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
