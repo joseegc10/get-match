@@ -2,7 +2,7 @@ require 'etcdv3'
 require 'figaro'
  
 NUM_MAX_EQUIPOS_DEFECTO = 10
-APP_ENV_DEFECTO = 'test'
+APP_ENV_DEFECTO = 'development'
 URI_DATABASE_DEFECTO = ENV["URI_DATABASE"]
 SECRET_DATABASE_DEFECTO = ENV["SECRET_DATABASE"]
 
@@ -68,7 +68,11 @@ def configuracion
             if !existenVariables(vars_os)
                 vars = Hash.new
                 vars["NUM_MAX_EQUIPOS"] = NUM_MAX_EQUIPOS_DEFECTO
-                vars["APP_ENV"] = APP_ENV_DEFECTO
+                if vars_os["APP_ENV"]
+                    vars["APP_ENV"] = vars_os["APP_ENV"]
+                else
+                    vars["APP_ENV"] = APP_ENV_DEFECTO
+                end
                 vars["URI_DATABASE"] = URI_DATABASE_DEFECTO
                 vars["SECRET_DATABASE"] = SECRET_DATABASE_DEFECTO
                 

@@ -18,7 +18,7 @@ class MyApp < Sinatra::Base
         set :logger, @@logger
     end
     
-    configure :development do
+    configure :development, :test do
         myLogger = MyLogger.new()
         @@logger = myLogger._logger
         set :logger, @@logger
