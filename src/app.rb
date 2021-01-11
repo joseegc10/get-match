@@ -450,7 +450,7 @@ class MyApp < Sinatra::Base
         end
     end
 
-    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    # HU20: Como usuario, debo poder acceder a la información de un equipo 
     get '/equipos/:equipo' do
         begin
             equipo = @@manejador.equipo(params['equipo'])
