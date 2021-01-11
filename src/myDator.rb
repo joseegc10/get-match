@@ -210,4 +210,9 @@ class MyDator < Dator
     def reseteaLiga()
         @liga.reseteaLiga()
     end
+
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    def equipo(nombre)
+        return buscaEquipo(nombre)
+    end
 end
