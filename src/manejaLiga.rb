@@ -85,8 +85,13 @@ class ManejaLiga
         return @dator.aniadeJornada(jornada, jornadaJSON, numJornada)
     end
 
-    # HU17: Como usuario, quiero poder resetear la liga 
+    # HU19: Como usuario, quiero poder resetear la liga 
     def reseteaLiga()
         return @dator.reseteaLiga()
+    end
+
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    def equipo(nombre)
+        return @dator.equipo(nombre)
     end
 end

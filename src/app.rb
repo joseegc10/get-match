@@ -437,13 +437,34 @@ class MyApp < Sinatra::Base
         end
     end
 
-    # HU17: Como usuario, quiero poder resetear la liga 
+    # HU19: Como usuario, quiero poder resetear la liga 
     delete '/nuevaLiga' do
         begin
             @@manejador.reseteaLiga()
 
             status 200
             json({:status => "Liga reseteada correctamente"})
+        rescue => $error
+            status 400
+            json({:status => $error.message})
+        end
+    end
+
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    get '/equipos/:equipo' do
+        begin
+            equipo = @@manejador.equipo(params['equipo'])
+
+            status 200
+            hash = Hash.new 
+
+            hash["nombre"] = equipo.nombre
+            hash["jugadores"] = []
+            for j in equipo.jugadores
+                hash["jugadores"] << j.nombre
+            end
+
+            json(hash)
         rescue => $error
             status 400
             json({:status => $error.message})

@@ -84,4 +84,14 @@ class Dator
     def aniadeJornada(jornada, numJornada)
         raise "Necesaria implementación del método"
     end
+
+    # HU19: Como usuario, quiero poder resetear la liga 
+    def reseteaLiga()
+        raise "Necesaria implementación del método"
+    end
+
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    def equipo(nombre)
+        raise "Necesaria implementación del método"
+    end
 end
