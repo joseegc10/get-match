@@ -65,5 +65,7 @@ COPY --from=builder $GEM_HOME $GEM_HOME
 WORKDIR /test
 VOLUME /test
 
+ENV APP_ENV test
+
 # Se establece la ejecución de los tests
 CMD ["rake", "test"]
