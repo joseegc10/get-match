@@ -10,7 +10,7 @@ require_relative './myDator'
 $config = configuracion()
 
 class MyApp < Sinatra::Base
-    set :environment, $config["APP_ENV"]
+    #set :environment, $config["APP_ENV"]
 
     configure do
         myLogger = MyLogger.new()
