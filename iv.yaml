@@ -10,3 +10,10 @@ test:
   - spec/jugador_spec.rb
 URL: https://get-match.joseegc10.vercel.app/api?equipo=Real%20Madrid
 make: rake
+PaaS: https://get-match.herokuapp.com/
+recurso:
+  nombre: equipos
+  metodo: POST
+  payload:
+    - name: "prueba"
+    - players: ["jugador1","jugador2"]
