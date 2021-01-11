@@ -1,12 +1,10 @@
 require_relative "../src/manejaLiga.rb"
-require_relative '../src/firebaseDator.rb'
+require_relative '../src/myDator.rb'
 
 describe ManejaLiga do 
-    before(:all) do
-        @dator = FirebaseDator.new()
+    before(:each) do
+        @dator = MyDator.new()
         @gestor = ManejaLiga.new(@dator)
-        @db = @dator.database
-        @ligaJSON = 
     end
 
     # HU1: Como usuario, quiero poder consultar el resultado de un partido
@@ -133,9 +131,5 @@ describe ManejaLiga do
 
             expect{@gestor.aniadeJornada(jornada, 1)}.to raise_error(ArgumentError)
         end
-    end
-
-    after(:all) do
-        puts "hola"
     end
 end
