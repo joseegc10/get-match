@@ -462,6 +462,19 @@ describe 'MyApp' do
         end
     end
 
+    # HU19: Como usuario, quiero poder resetear la liga
+    describe "#reseteaLiga" do
+        it 'liga reseteada' do
+            delete '/liga'
+
+            cuerpo = ({"status":"Liga reseteada correctamente"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+    end
+
     describe "error 404" do
         it 'ruta no encontrada' do
             get '/ruta/que/no/existe'

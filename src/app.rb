@@ -444,7 +444,7 @@ class MyApp < Sinatra::Base
     end
 
     # HU19: Como usuario, quiero poder resetear la liga
-    delete '/nuevaLiga' do
+    delete '/liga' do
         begin
             @@manejador.reseteaLiga()
 

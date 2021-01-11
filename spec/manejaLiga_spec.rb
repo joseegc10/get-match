@@ -132,4 +132,14 @@ describe ManejaLiga do
             expect{@gestor.aniadeJornada(jornada, 1)}.to raise_error(ArgumentError)
         end
     end
+
+    # HU19: Como usuario, quiero poder resetear la liga
+    describe '#reseteaLiga' do
+        it 'resetear una liga' do
+            @gestor.reseteaLiga()
+
+            expect(@gestor.clasificacionLiga().size).to eq(0)
+            expect(@gestor.rankingGoleadores().size).to eq(0)
+        end
+    end
 end
