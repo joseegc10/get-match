@@ -3,17 +3,48 @@ require_relative "../config/config.rb"
 require_relative './dator'
 
 # Clase que almacena una liga de futbol leída desde un fichero JSON
-
-NUM_MAX_EQUIPOS = configuracion()["NUM_MAX_EQUIPOS"]
 PARTIDOS_JSON = '../sampledata/partidos.json'
 EQUIPOS_JSON = '../sampledata/equipos.json'
+CONF = configuracion()
 
 class MyDator < Dator
 	def initialize()
         @jsonify = Jsonify.new()
-        @liga = @jsonify.jsonToLiga(PARTIDOS_JSON, EQUIPOS_JSON)
 
-        if @liga.equipos.size > NUM_MAX_EQUIPOS
+        pathPartidos = File.join(File.dirname(__FILE__), PARTIDOS_JSON)
+		filePartidos = File.read(pathPartidos)
+        partidosJSON = JSON.parse(filePartidos)
+
+        partidosJSON = partidosJSON["matches"]
+        finalPartidosJSON = []
+        jornada1 = Hash.new
+        jornada1["0"] = partidosJSON[0]
+        jornada1["1"] = partidosJSON[1]
+        jornada2 = Hash.new
+        jornada2["0"] = partidosJSON[2]
+        jornada2["1"] = partidosJSON[3]
+        finalPartidosJSON << jornada1
+        finalPartidosJSON << jornada2
+        
+        pathEquipos = File.join(File.dirname(__FILE__), EQUIPOS_JSON)
+		fileEquipos = File.read(pathEquipos)
+        equiposJSON = JSON.parse(fileEquipos)
+
+        equiposJSON = equiposJSON["clubs"]
+        finalEquiposJSON = Hash.new
+        i = 0
+        for e in equiposJSON
+            finalEquiposJSON[i.to_s] = e
+            i += 1
+        end
+
+        ligaJSON = Hash.new
+        ligaJSON["equipos"] = finalEquiposJSON
+        ligaJSON["jornadas"] = finalPartidosJSON
+
+        @liga = @jsonify.jsonToLiga(ligaJSON)
+
+        if @liga.equipos.size > CONF["NUM_MAX_EQUIPOS"]
             raise ArgumentError, 'Número de equipos demasiado alto'
         end
     end
@@ -149,8 +180,12 @@ class MyDator < Dator
     end
 
     # HU14: Como usuario, quiero poder añadir un equipo a una liga
-    def aniadeEquipo(equipo)
-        if @liga.equipos.size == NUM_MAX_EQUIPOS
+    def aniadeEquipo(jsonEquipo)
+        raise ArgumentError, 'El parámetro debe ser un json' unless jsonEquipo.is_a? Hash
+
+        equipo = @jsonify.jsonToEquipo(jsonEquipo)
+
+        if @liga.equipos.size == CONF["NUM_MAX_EQUIPOS"]
             raise ArgumentError, 'La liga tiene el número máximo de equipos'
         end
 
@@ -158,14 +193,14 @@ class MyDator < Dator
     end
 
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
-    def aniadePartido(partido, numJornada)
+    def aniadePartido(partido, jsonPartido, numJornada)
         numJornada -= 1
 
         @liga.aniadePartido(partido, numJornada)
     end
 
     # HU16: Como usuario, quiero poder añadir una jornada a una liga 
-    def aniadeJornada(jornada, numJornada)
+    def aniadeJornada(jornada, jsonPartidos, numJornada)
         numJornada -= 1
 
         @liga.aniadeJornada(jornada, numJornada)

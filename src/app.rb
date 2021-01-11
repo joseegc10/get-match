@@ -5,9 +5,12 @@ require 'logger'
 require_relative '../config/config.rb'
 require_relative './myLogger'
 require_relative './firebaseDator'
+require_relative './myDator'
+
+$config = configuracion()
 
 class MyApp < Sinatra::Base
-    set :environment, configuracion()["APP_ENV"]
+    #set :environment, $config["APP_ENV"]
 
     configure :production do
         myLogger = MyLogger.new('output.log')
@@ -22,8 +25,12 @@ class MyApp < Sinatra::Base
     end
 
     configure do
-        dator = FirebaseDator.new()
-        @@manejador = ManejaLiga.new(dator)
+        if $config["APP_ENV"] == "test"
+            @@manejador = ManejaLiga.new(MyDator.new())
+        else
+            @@manejador = ManejaLiga.new(FirebaseDator.new())
+        end
+
         @@jsonify = Jsonify.new()
     end
 
@@ -43,8 +50,8 @@ class MyApp < Sinatra::Base
             status 200
             json(
                 {
-                    :Local => resultado.equipoLocal.nombre, 
-                    :Visitante => resultado.equipoVisitante.nombre, 
+                    :Local => resultado.equipoLocal, 
+                    :Visitante => resultado.equipoVisitante, 
                     :resultado => {
                         :golesLocal => resultado.golesLocal,
                         :golesVisitante => resultado.golesVisitante
@@ -393,7 +400,6 @@ class MyApp < Sinatra::Base
 
             ## Comprobamos que la estructura es correcta y se podría formar un equipo
             equipo = @@jsonify.jsonToEquipo(jsonEquipo)
-
             
             @@manejador.aniadeEquipo(jsonEquipo)
 

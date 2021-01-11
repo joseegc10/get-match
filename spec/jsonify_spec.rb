@@ -3,12 +3,42 @@ require_relative "../src/jsonify.rb"
 describe Jsonify do 
     before(:each) do
         @jsonify = Jsonify.new()
-        @liga = @jsonify.jsonToLiga('../sampledata/partidos.json', '../sampledata/equipos.json')
+        pathPartidos = File.join(File.dirname(__FILE__), PARTIDOS_JSON)
+		filePartidos = File.read(pathPartidos)
+        partidosJSON = JSON.parse(filePartidos)
+
+        partidosJSON = partidosJSON["matches"]
+        finalPartidosJSON = []
+        jornada1 = Hash.new
+        jornada1["0"] = partidosJSON[0]
+        jornada1["1"] = partidosJSON[1]
+        jornada2 = Hash.new
+        jornada2["0"] = partidosJSON[2]
+        jornada2["1"] = partidosJSON[3]
+        finalPartidosJSON << jornada1
+        finalPartidosJSON << jornada2
+        
+        pathEquipos = File.join(File.dirname(__FILE__), EQUIPOS_JSON)
+		fileEquipos = File.read(pathEquipos)
+        equiposJSON = JSON.parse(fileEquipos)
+
+        equiposJSON = equiposJSON["clubs"]
+        finalEquiposJSON = Hash.new
+        i = 0
+        for e in equiposJSON
+            finalEquiposJSON[i.to_s] = e
+            i += 1
+        end
+
+        ligaJSON = Hash.new
+        ligaJSON["equipos"] = finalEquiposJSON
+        ligaJSON["jornadas"] = finalPartidosJSON
+        @liga = @jsonify.jsonToLiga(ligaJSON)
     end
 
     describe '#jsonToLiga' do
-        it 'nombre de liga bien creado' do
-            expect(@liga.nombreLiga).to eq 'Primera División 2020/21'
+        it 'nombre de liga es nil' do
+            expect(@liga.nombreLiga).to eq nil
         end
 
         it 'equipos bien creados' do
@@ -74,6 +104,8 @@ describe Jsonify do
             filePartidos = File.read(pathPartidos)
             partidosJSON = JSON.parse(filePartidos)
 
+            partidosJSON = partidosJSON["matches"]
+
             jornada, numJornada = @jsonify.jsonToJornada(partidosJSON, @liga.equipos)
 
             expect(jornada.fechaInicio).to eq (Date.parse "2020-12-1")
@@ -85,6 +117,8 @@ describe Jsonify do
             pathPartidos = File.join(File.dirname(__FILE__), '../sampledata/partidos.json')
             filePartidos = File.read(pathPartidos)
             partidosJSON = JSON.parse(filePartidos)
+
+            partidosJSON = partidosJSON["matches"]
 
             expect{@jsonify.jsonToJornada(partidosJSON, @liga.equipos)}.to raise_error(ArgumentError)
         end

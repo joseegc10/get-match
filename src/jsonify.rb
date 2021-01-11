@@ -50,7 +50,7 @@ class Jsonify
     ##################################################################################
 
     def jsonToPartido(json, equipos)
-        if json.keys.size != 5
+        if json.keys.size != 4 and json.keys.size != 5
             raise ArgumentError, 'La estructura del partido es incorrecta'
         end
 
@@ -112,10 +112,9 @@ class Jsonify
 
         partidos = []
         for jsonPartido in jsonPartidos
-            if jsonPartido.keys.size != 5
+            if jsonPartido.keys.size != 4 and jsonPartido.keys.size != 5
                 raise ArgumentError, 'La estructura del partido es incorrecta'
             end
-            p jsonPartido
 
             nuevoPartido, numJornadaPartido = jsonToPartido(jsonPartido, equipos)
 

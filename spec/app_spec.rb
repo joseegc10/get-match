@@ -303,8 +303,6 @@ describe 'MyApp' do
         it 'equipo correcto' do
             equipo = {
                 "name"=>"Valencia CF", 
-                "code"=>"VAL", 
-                "country"=>"Spain", 
                 "players"=>[
                     "Gaya", 
                     "Maxi Gomez"
@@ -323,8 +321,6 @@ describe 'MyApp' do
         it 'equipo ya existente' do
             equipo = {
                 "name"=>"Real Madrid", 
-                "code"=>"VAL", 
-                "country"=>"Spain", 
                 "players"=>[
                     "Gaya", 
                     "Maxi Gomez"
@@ -347,8 +343,6 @@ describe 'MyApp' do
             # Añado otro equipo además del Valencia
             equipo = {
                 "name"=>"Granada CF", 
-                "code"=>"GRA", 
-                "country"=>"Spain", 
                 "players"=>[
                     "Soldado", 
                     "Yangel Herrera"
@@ -411,9 +405,7 @@ describe 'MyApp' do
     # HU16: Como usuario, quiero poder añadir una jornada a una liga
     describe "añadir jornada de la liga" do 
         it 'jornada correcta' do
-            jornada = {
-                "name": "Primera División 2020/21",
-                "matches": [
+            jornada = [
                     {
                         "round": "Jornada 3",
                         "date": "2020-12-8",
@@ -421,11 +413,10 @@ describe 'MyApp' do
                         "team2": "Real Madrid"
                     }
                 ]
-            }
 
             post '/jornadas', jornada.to_json
 
-            cuerpo = ({"status":"Jornada añadida correctamente"}).to_json
+            cuerpo = ({"status":"Jornada 3 añadida correctamente"}).to_json
 
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.content_type).to eq ('application/json')
@@ -433,9 +424,7 @@ describe 'MyApp' do
         end
 
         it 'equipo que no está en liga' do
-            jornada = {
-                "name": "Primera División 2020/21",
-                "matches": [
+            jornada = [
                     {
                         "round": "Jornada 4",
                         "date": "2020-12-8",
@@ -443,7 +432,6 @@ describe 'MyApp' do
                         "team2": "Real Madrid"
                     }
                 ]
-            }
 
             post '/jornadas', jornada.to_json
 
@@ -455,9 +443,7 @@ describe 'MyApp' do
         end
 
         it 'jornada incorrecta' do
-            jornada = {
-                "name": "Primera División 2020/21",
-                "matches": [
+            jornada = [
                     {
                         "round": "Jornada 999",
                         "date": "2020-12-8",
@@ -465,7 +451,6 @@ describe 'MyApp' do
                         "team2": "Real Madrid"
                     }
                 ]
-            }
 
             post '/jornadas', jornada.to_json
 
