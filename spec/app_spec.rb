@@ -463,9 +463,22 @@ describe 'MyApp' do
     end
 
     # HU19: Como usuario, quiero poder resetear la liga
-    describe "#reseteaLiga" do
+    describe "resetear la liga" do
         it 'liga reseteada' do
             delete '/liga'
+
+            cuerpo = ({"status":"Liga reseteada correctamente"}).to_json
+
+            expect(last_response.body).to eq (cuerpo)
+            expect(last_response.content_type).to eq ('application/json')
+            expect(last_response.ok?).to eq (true)
+        end
+    end
+
+    # HU20: Como usuario, debo poder acceder a la información de un equipo
+    describe 'info de un equipo' do
+        it 'obtener la informacion de un equipo' do
+            get '/equipos/Real%20Madrid'
 
             cuerpo = ({"status":"Liga reseteada correctamente"}).to_json
 
