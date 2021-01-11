@@ -10,6 +10,11 @@ ARG GEM_HOME=/usr/local/bundle
 # Añadimos una nueva imagen para las dependencias
 FROM base as builder
 
+RUN apk update \
+ && apk add --no-cache  \
+    build-base  \
+    ruby-dev
+
 # Creamos una variable para el usuario
 ENV USER_NAME depuser
 
