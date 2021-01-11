@@ -39,6 +39,11 @@ class MyApp < Sinatra::Base
         data_object.to_json
     end
 
+    get '/' do
+        status 200
+        json({:status => "OK"})
+    end
+
     # HU1: Como usuario, quiero poder consultar el resultado de un partido
     get '/partido/resultado/:equipo/:jornada' do
         numJornada = params['jornada'].to_i
