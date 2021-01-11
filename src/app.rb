@@ -10,21 +10,13 @@ require_relative './myDator'
 $config = configuracion()
 
 class MyApp < Sinatra::Base
-    #set :environment, $config["APP_ENV"]
+    set :environment, $config["APP_ENV"]
 
-    configure :production do
-        myLogger = MyLogger.new('output.log')
-        @@logger = myLogger._logger
-        set :logger, @@logger
-    end
-    
-    configure :development, :test do
+    configure do
         myLogger = MyLogger.new()
         @@logger = myLogger._logger
         set :logger, @@logger
-    end
 
-    configure do
         if $config["APP_ENV"] == "test"
             @@manejador = ManejaLiga.new(MyDator.new())
         else
@@ -408,7 +400,7 @@ class MyApp < Sinatra::Base
             
             @@manejador.aniadeEquipo(jsonEquipo)
 
-            #headers['Location'] = '/equipos/' + equipo.nombre
+            response.headers['Location'] = '/equipos/' + equipo.nombre
             status 200
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
