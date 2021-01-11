@@ -1,0 +1,36 @@
+{
+    "name": "Primera División 2020/21",
+    "clubs": [
+        {
+            "name": "Real Madrid",
+            "players": [
+                "Sergio Ramos",
+                "Eden Hazard"
+            ]
+        },
+
+        {
+            "name": "FC Barcelona",
+            "players": [
+                "Leo Messi",
+                "Gerard Pique"
+            ]
+        },
+
+        {
+            "name": "Atlético Madrid",
+            "players": [
+                "Diego Costa",
+                "Joao Felix"
+            ]
+        },
+
+        {
+            "name": "Sevilla FC",
+            "players": [
+                "Jesus Navas",
+                "Kounde"
+            ]
+        }
+    ]
+}
