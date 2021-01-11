@@ -63,8 +63,9 @@ class FirebaseDator < Dator
 
     def actualizaCache()
         timeActual = DateTime.now
+        diferencia = (timeActual - @timeCache).to_i
 
-        if ((timeActual - @timeCache)*24*60).to_i >= 5
+        if (diferencia*24*60).to_i >= 5
             ligaJSON = @database.get('').body
             if ligaJSON
                 keys = ligaJSON.keys
