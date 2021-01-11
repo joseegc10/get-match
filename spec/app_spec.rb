@@ -314,6 +314,7 @@ describe 'MyApp' do
             cuerpo = ({"status":"Equipo añadido correctamente"}).to_json
 
             expect(last_response.body).to eq (cuerpo)
+            expect(last_response.location).to eq ('/equipos/Valencia CF')
             expect(last_response.content_type).to eq ('application/json')
             expect(last_response.ok?).to eq (true)
         end
@@ -468,8 +469,8 @@ describe 'MyApp' do
             get '/equipos/Real%20Madrid'
 
             cuerpo = ({
-                "nombre":"Real Madrid",
-                "jugadores":["Sergio Ramos", "Eden Hazard"]
+                "name":"Real Madrid",
+                "players":["Sergio Ramos", "Eden Hazard"]
                 
             }).to_json
 

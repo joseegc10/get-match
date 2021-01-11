@@ -235,4 +235,15 @@ class Jsonify
 
         return liga
     end
+
+    def equipoToJson(equipo)
+        hash = Hash.new
+        hash["name"] = equipo.nombre
+        hash["players"] = []
+        for j in equipo.jugadores
+            hash["players"] << j.nombre
+        end
+
+        return hash
+    end
 end

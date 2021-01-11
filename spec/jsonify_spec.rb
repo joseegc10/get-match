@@ -1,4 +1,5 @@
 require_relative "../src/jsonify.rb"
+require_relative "../src/equipo.rb"
 
 describe Jsonify do 
     before(:each) do
@@ -121,6 +122,14 @@ describe Jsonify do
             partidosJSON = partidosJSON["matches"]
 
             expect{@jsonify.jsonToJornada(partidosJSON, @liga.equipos)}.to raise_error(ArgumentError)
+        end
+    end
+
+    describe '#equipoToJson' do
+        it 'pasar equipo a json' do
+            equipo = Equipo.new('Real Madrid')
+            json = @jsonify.equipoToJson(equipo).to_json
+            expect(json).to eq('{"name":"Real Madrid","players":[]}')
         end
     end
 end

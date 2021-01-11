@@ -46,7 +46,7 @@ class MyApp < Sinatra::Base
 
         begin
             resultado = @@manejador.resultadoPartido(numJornada, nombreEquipo)
-
+            
             status 200
             json(
                 {
@@ -403,6 +403,7 @@ class MyApp < Sinatra::Base
             
             @@manejador.aniadeEquipo(jsonEquipo)
 
+            headers['Location'] = '/equipos/' + equipo.nombre
             status 200
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
@@ -460,15 +461,9 @@ class MyApp < Sinatra::Base
     get '/equipos/:equipo' do
         begin
             equipo = @@manejador.equipo(params['equipo'])
-
+            hash = @@jsonify.equipoToJson(equipo)
+            
             status 200
-            hash = Hash.new 
-
-            hash["nombre"] = equipo.nombre
-            hash["jugadores"] = []
-            for j in equipo.jugadores
-                hash["jugadores"] << j.nombre
-            end
 
             json(hash)
         rescue => $error
