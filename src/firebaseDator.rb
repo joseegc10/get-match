@@ -205,7 +205,7 @@ class FirebaseDator < Dator
 
     # HU10: Como usuario, me gustaría poder consultar los equipos que participan en una liga
     def equiposLiga()
-        equiposJSON = @database.get("equipos").body
+        equiposJSON = @database.get("equipos/").body
         if respuestaCorrectaBD(equiposJSON)
             equipos = @jsonify.jsonToEquipos(equiposJSON)
         else
@@ -217,12 +217,20 @@ class FirebaseDator < Dator
 
     # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
     def rankingGoleadores()
-        return @rankingGoleadores
+        if @rankingGoleadores
+            return @rankingGoleadores
+        else
+            raise ArgumentError, 'No existe ninguna jornada en la liga'
+        end
     end
 
     # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
     def clasificacionLiga()
-        return @clasificacion
+        if @clasificacion
+            return @clasificacion
+        else
+            raise ArgumentError, 'No existe ninguna jornada en la liga'
+        end
     end
 
     # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
@@ -250,7 +258,7 @@ class FirebaseDator < Dator
             raise ArgumentError, 'La liga tiene el número máximo de equipos'
         end
 
-        @database.push('equipos', equipoJSON)
+        @database.push('equipos/', equipoJSON)
     end
 
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
