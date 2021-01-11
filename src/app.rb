@@ -392,7 +392,7 @@ class MyApp < Sinatra::Base
         end
     end
 
-    # HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
+    # HU14: Como usuario, quiero poder añadir un equipo a una liga
     post '/equipos' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
@@ -462,7 +462,7 @@ class MyApp < Sinatra::Base
         begin
             equipo = @@manejador.equipo(params['equipo'])
             hash = @@jsonify.equipoToJson(equipo)
-            
+
             status 200
 
             json(hash)
