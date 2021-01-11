@@ -217,6 +217,7 @@ class FirebaseDator < Dator
 
     # HU11: Como usuario, me gustaría poder consultar el ranking de goleadores de una liga
     def rankingGoleadores()
+        actualizaCache()
         if @rankingGoleadores
             return @rankingGoleadores
         else
@@ -226,6 +227,7 @@ class FirebaseDator < Dator
 
     # HU12: Como usuario, me gustaría poder consultar la clasificación de una liga
     def clasificacionLiga()
+        actualizaCache()
         if @clasificacion
             return @clasificacion
         else

@@ -408,7 +408,7 @@ class MyApp < Sinatra::Base
             
             @@manejador.aniadeEquipo(jsonEquipo)
 
-            headers['Location'] = '/equipos/' + equipo.nombre
+            #headers['Location'] = '/equipos/' + equipo.nombre
             status 200
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
