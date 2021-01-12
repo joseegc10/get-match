@@ -71,15 +71,15 @@ class Liga
     end
 
     def actualizaRanking(partidos)
-        nombreGoleadores = Array.new
-
-        for goleador_goles in @rankingGoleadores
-            nombreGoleadores << goleador_goles.goleador.nombre
-        end
-
         for partido in partidos
 
             for goleador in partido.goleadores
+                nombreGoleadores = Array.new
+
+                for goleador_goles in @rankingGoleadores
+                    nombreGoleadores << goleador_goles.goleador.nombre
+                end
+
                 indice = nombreGoleadores.index(goleador.nombre)
                 if indice
                     # Sumamos un gol al goleador
@@ -113,18 +113,15 @@ class Liga
     end
 
     def actualizaClasificacion(partidos)
-        nombreEquipos = Array.new
-
-        for equipo_puntos_goles in @clasificacion
-            nombreEquipos << equipo_puntos_goles.equipo.nombre
-        end
-
-        p nombreEquipos
-
         for partido in partidos
+            nombreEquipos = Array.new
+
+            for equipo_puntos_goles in @clasificacion
+                nombreEquipos << equipo_puntos_goles.equipo.nombre
+            end
+            
             begin
                 resultado = partido.calculaResultado()
-                p resultado
                 golesLocal = resultado.golesLocal
                 golesVisitante = resultado.golesVisitante
                 jugado = true
@@ -137,14 +134,8 @@ class Liga
                 indiceLocal = nombreEquipos.index(partido.local.nombre)
                 indiceVisitante = nombreEquipos.index(partido.visitante.nombre)
 
-                p nombreEquipos[indiceLocal]
-                p nombreEquipos[indiceVisitante]
-
                 @clasificacion[indiceLocal].goles += golesLocal
                 @clasificacion[indiceVisitante].goles += golesVisitante
-
-                p @clasificacion[indiceLocal].equipo
-                p @clasificacion[indiceVisitante].equipo
 
                 if golesLocal != golesVisitante # Hay un ganador
                     if golesLocal > golesVisitante
@@ -154,12 +145,9 @@ class Liga
                         ganador = partido.visitante
                         indice = indiceVisitante
                     end
-
-                    p ganador
         
                     # Sumamos tres puntos al equipo ganador
                     nuevoEquipo = @clasificacion[indice]
-                    p nuevoEquipo
                     @clasificacion.delete_at(indice)
                     nuevoEquipo.puntos += 3
         
