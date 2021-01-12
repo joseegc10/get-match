@@ -10,13 +10,25 @@ class Jornada
     #      - Fecha en la que comienza
     #      - Lista de partidos que se juegan en la jornada
 
-	def initialize(fechaInicio)
+	def initialize(fechaInicio=nil)
         @fechaInicio = fechaInicio
         @partidos = Array.new
 	end
 
     attr_reader :fechaInicio
     attr_reader :partidos
+
+    def participan(local, visitante)
+        for p in @partidos
+            if p.local.nombre == local or p.visitante.nombre == local
+                return true
+            elsif p.local.nombre == visitante or p.visitante.nombre == visitante
+                return true
+            end
+        end
+
+        return false
+    end
     
     # Método que añade un partido al array de partidos
     def aniadePartido(partido)

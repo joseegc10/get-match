@@ -63,9 +63,9 @@ class FirebaseDator < Dator
 
     def actualizaCache()
         timeActual = DateTime.now
-        diferencia = (timeActual - @timeCache).to_i
+        diferencia = (timeActual - @timeCache)
 
-        if (diferencia*24*60).to_i >= 5
+        if (diferencia*24*60).to_i >= 1
             ligaJSON = @database.get('').body
             if ligaJSON
                 keys = ligaJSON.keys
@@ -261,22 +261,81 @@ class FirebaseDator < Dator
             raise ArgumentError, 'La liga tiene el número máximo de equipos'
         end
 
-        @database.push('equipos/', equipoJSON)
+        query = {
+            :orderBy => '"name"',
+            :equalTo => '"' + equipoJSON["name"] + '"'
+        }
+
+        buscaEquipoJSON = @database.get('equipos', query).body
+        p buscaEquipoJSON
+
+        if respuestaCorrectaBD(buscaEquipoJSON)
+            raise ArgumentError, "El equipo #{equipoJSON["name"]} ya existe en la liga"
+        else
+            @database.push('equipos/', equipoJSON)
+        end
     end
 
     # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
     def aniadePartido(partido, partidoJSON, numJornada)
+        equiposJSON = @database.get('equipos').body
+
+        if respuestaCorrectaBD(equiposJSON)
+            equipos = @jsonify.jsonToEquipos(equiposJSON)
+        else
+            raise ArgumentError, "No existe ningún equipo en la liga"
+        end
+
+        # Comprobar que el partido cumple las condiciones para poder ser añadido
+        jornadaJSON = @database.get("jornadas/#{numJornada}").body
+
+        if respuestaCorrectaBD(jornadaJSON)
+            keys = jornadaJSON.keys
+            nuevoJSON = []
+            for k in keys
+                nuevoJSON << jornadaJSON[k]
+            end
+            jornada, num = @jsonify.jsonToJornada(nuevoJSON, equipos)
+            participan = jornada.participan(partido.local.nombre, partido.visitante.nombre)
+            if participan
+                raise ArgumentError, 'En el partido participa un equipo que ya esta en la jornada'
+            end
+        else
+            raise ArgumentError, "La jornada #{numJornada} no existe"
+        end
+
         @database.push("jornadas/#{numJornada}", partidoJSON)
     end
     # Prueba: {"round":"Jornada 1","date":"2020-12-1","team1":"Valencia CF","team2":"Granada CF","score":{"ft":[0,1],"scorers":[{"team":"Granada CF","name":"Luis Milla"}]}}
 
     # HU16: Como usuario, quiero poder añadir una jornada a una liga 
     def aniadeJornada(jornada, jornadaJSON, numJornada)
-        for j in jornadaJSON
-            @database.push("jornadas/#{numJornada}", j)
+        equiposJSON = @database.get('equipos').body
+
+        if respuestaCorrectaBD(equiposJSON)
+            equipos = @jsonify.jsonToEquipos(equiposJSON)
+        else
+            raise ArgumentError, "No existe ningún equipo en la liga"
+        end
+
+        # Comprobar que la jornada cumple las condiciones para poder ser añadida
+        jornadaJSON_antes = @database.get("jornadas/#{numJornada}").body
+
+        if respuestaCorrectaBD(jornadaJSON_antes)
+            raise ArgumentError, "La jornada #{numJornada} ya existe"
+        else
+            jorn = Jornada.new()
+            for j in jornadaJSON
+                # Comprobamos que el partido se puede añadir
+                partido, jor = @jsonify.jsonToPartido(j, equipos)
+                jorn.aniadePartido(partido)
+
+                # Añaimos el partido a la jornada
+                @database.push("jornadas/#{numJornada}", j)
+            end
         end
     end
-    # Prueba: {"matches":[{"round":"Jornada 1","date":"2020-12-1","team1":"Real Madrid","team2":"Sevilla FC","score":{"ft":[1,0],"scorers":[{"team":"Real Madrid","name":"Sergio Ramos"}]}},{"round":"Jornada 1","date":"2020-12-2","team1":"FC Barcelona","team2":"Atletico Madrid","score":{"ft":[1,2],"scorers":[{"team":"FC Barcelona","name":"Leo Messi"},{"team":"Atletico Madrid","name":"Joao Felix"},{"team":"Atletico Madrid","name":"Joao Felix"}]}}]}
+    # Prueba: {[{"round":"Jornada 1","date":"2020-12-1","team1":"Real Madrid","team2":"Sevilla FC","score":{"ft":[1,0],"scorers":[{"team":"Real Madrid","name":"Sergio Ramos"}]}},{"round":"Jornada 1","date":"2020-12-2","team1":"FC Barcelona","team2":"Atletico Madrid","score":{"ft":[1,2],"scorers":[{"team":"FC Barcelona","name":"Leo Messi"},{"team":"Atletico Madrid","name":"Joao Felix"},{"team":"Atletico Madrid","name":"Joao Felix"}]}}]
 
     # HU19: Como usuario, quiero poder resetear la liga 
     def reseteaLiga()
@@ -286,8 +345,8 @@ class FirebaseDator < Dator
     # HU20: Como usuario, debo poder acceder a la información de un equipo
     def equipo(nombre)
         query = {
-            '"orderBy"': '"name"',
-            '"equalTo"': '"' + nombre + '"'
+            :orderBy => '"name"',
+            :equalTo => '"' + nombre + '"'
         }
 
         equipoJSON = @database.get('equipos', query).body
