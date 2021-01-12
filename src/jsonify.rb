@@ -227,6 +227,12 @@ class Jsonify
 
         jornadas = jsonToJornadas(partidosJSON, hashEquipos)
 
+        for pa in jornadas[0].partidos
+            p pa.local.nombre
+            p pa.visitante.nombre
+            p pa.calculaResultado
+        end
+
         i = 0
         for jornada in jornadas
             liga.aniadeJornada(jornada, i)
