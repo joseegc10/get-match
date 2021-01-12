@@ -63,7 +63,7 @@ class Partido
         raise ArgumentError, 'El parámetro no es un Jugador' unless goleador.is_a? Jugador
 
         if (not @resultado)
-            @resultado = Resultado.new(0,0,@local,@visitante)
+            @resultado = Resultado.new(0,0,@local.nombre,@visitante.nombre)
         end
 
         if (goleador.equipo.nombre == @local.nombre)
@@ -82,7 +82,7 @@ class Partido
         raise ArgumentError, 'El parámetro no es un array de jugadores' unless nuevosGoleadores.is_a? Array
 
         if (not @resultado)
-            @resultado = Resultado.new(0,0,@local,@visitante)
+            @resultado = Resultado.new(0,0,@local.nombre,@visitante.nombre)
         end
 
         for goleador in nuevosGoleadores

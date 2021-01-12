@@ -45,3 +45,15 @@ Para consultar las herramientas que se usan en el proyecto seguir el siguiente [
 ### Github Action
 
 He creado una github action para la publicación automática de la imagen en GitHub Container Registry. La explicación del fichero se puede ver en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/ghact.md).
+
+## Serverless
+
+### Vercel
+
+La documentación sobre Vercel y la función Serverless creada se puede consultar en el siguiente [enlace](./docs/serverless/vercel.md).
+
+### AWS Lambda
+
+- La documentación sobre AWS Lambda y el bot de Telegram creado se puede consultar en el siguiente [enlace](https://github.com/joseegc10/get-match/blob/master/docs/serverless/aws_lamda.md).
+- La documentación sobre el archivo serverless.yml que me permite establecer la configuración del deploy a aws, puede consultarse [aquí](./docs/serverless/serverless.md).
+- He creado una github action para el deploy automático a aws lambda cuando hacemos push en este repositorio modificando alguno de los dos archivos del bot. La información sobre esta action se puede consultar [aquí](./docs/serverless/deploy_aws_lambda.md).
