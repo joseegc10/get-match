@@ -28,9 +28,6 @@ class FirebaseDator < Dator
             if keys.include?('jornadas')
                 liga = @jsonify.jsonToLiga(ligaJSON)
                 @clasificacion = liga.clasificacion
-                for c in @clasificacion
-                    p c
-                end
                 @rankingGoleadores = liga.rankingGoleadores
                 @timeCache = DateTime.now
             end
@@ -75,9 +72,6 @@ class FirebaseDator < Dator
                 if keys.include?('jornadas')
                     liga = @jsonify.jsonToLiga(ligaJSON)
                     @clasificacion = liga.clasificacion
-                    for c in @clasificacion
-                        p c
-                    end
                     @rankingGoleadores = liga.rankingGoleadores
                     @timeCache = DateTime.now
                 end

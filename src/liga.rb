@@ -119,9 +119,12 @@ class Liga
             nombreEquipos << equipo_puntos_goles.equipo.nombre
         end
 
+        p nombreEquipos
+
         for partido in partidos
             begin
                 resultado = partido.calculaResultado()
+                p resultado
                 golesLocal = resultado.golesLocal
                 golesVisitante = resultado.golesVisitante
                 jugado = true
@@ -134,8 +137,14 @@ class Liga
                 indiceLocal = nombreEquipos.index(partido.local.nombre)
                 indiceVisitante = nombreEquipos.index(partido.visitante.nombre)
 
+                p nombreEquipos[indiceLocal]
+                p nombreEquipos[indiceVisitante]
+
                 @clasificacion[indiceLocal].goles += golesLocal
                 @clasificacion[indiceVisitante].goles += golesVisitante
+
+                p @clasificacion[indiceLocal].equipo
+                p @clasificacion[indiceVisitante].equipo
 
                 if golesLocal != golesVisitante # Hay un ganador
                     if golesLocal > golesVisitante
@@ -145,9 +154,12 @@ class Liga
                         ganador = partido.visitante
                         indice = indiceVisitante
                     end
+
+                    p ganador
         
                     # Sumamos tres puntos al equipo ganador
                     nuevoEquipo = @clasificacion[indice]
+                    p nuevoEquipo
                     @clasificacion.delete_at(indice)
                     nuevoEquipo.puntos += 3
         
