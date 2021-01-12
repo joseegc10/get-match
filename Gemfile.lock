@@ -17,6 +17,7 @@ GEM
       googleauth
       httpclient (>= 2.5.3)
       json
+    foreman (0.87.2)
     google-protobuf (3.14.0)
     googleapis-common-protos-types (1.0.5)
       google-protobuf (~> 3.11)
@@ -79,6 +80,7 @@ DEPENDENCIES
   etcdv3
   figaro
   firebase
+  foreman
   rack
   rack-test
   rspec

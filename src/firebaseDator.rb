@@ -65,7 +65,7 @@ class FirebaseDator < Dator
         timeActual = DateTime.now
         diferencia = (timeActual - @timeCache)
 
-        if (diferencia*24*60).to_i >= 0
+        if (diferencia*24*60).to_i >= 5
             ligaJSON = @database.get('').body
             if ligaJSON
                 keys = ligaJSON.keys

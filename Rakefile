@@ -8,7 +8,7 @@ task :install do
 end
 
 task :start do
-	exec "rackup config.ru"
+	exec "foreman start"
 end
 
 task :stop do

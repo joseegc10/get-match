@@ -73,7 +73,7 @@ class Jsonify
         end
 
         if json["score"]
-            resultado = Resultado.new(json["score"]["ft"][0], json["score"]["ft"][1], equipoLocal, equipoVisitante)
+            resultado = Resultado.new(json["score"]["ft"][0], json["score"]["ft"][1], equipoLocal.nombre, equipoVisitante.nombre)
             nombreGoleadores = json["score"]["scorers"]
             goleadores = []
 
