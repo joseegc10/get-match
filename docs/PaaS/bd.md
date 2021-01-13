@@ -48,7 +48,7 @@ En un futuro, se podría añadir una capa más a la lógica de mi aplicación qu
 
 ## Implementación de la base de datos de firebase en ruby
 
-En primer lugar, tenemos que irnos a la página de [Firebase](https://firebase.google.com/?hl=es) e iniciar sesión con nuestra cuenta. Posteriormente, pulsamos en 'Ir a consola' y creamos un nuevo proyecto. Una vez está creado, nos dirigimos al apartado de realtime database. Para poder conectarnos a la base de datos, necesitamos un SECRET, para el cual nos vamos al apartado Configuración --> Cuentas de Servicio --> Secretos de la base de datos y pulsamos en crear uno nuevo, copiándo tanto esto como la uri de mi base de datos y estaleciéndolas como variables de Heroku tal y como se explicó en la documentación del despliegue.
+En primer lugar, tenemos que irnos a la página de [Firebase](https://firebase.google.com/?hl=es) e iniciar sesión con nuestra cuenta. Posteriormente, pulsamos en 'Ir a consola' y creamos un nuevo proyecto. Una vez está creado, nos dirigimos al apartado de realtime database. Para poder conectarnos a la base de datos, necesitamos un SECRET, para el cual nos vamos al apartado Configuración --> Cuentas de Servicio --> Secretos de la base de datos y pulsamos en crear uno nuevo, copiándo tanto esto como la uri de mi base de datos y estableciéndolas como variables de Heroku tal y como se explicó en la documentación del despliegue.
 
 Para hacer uso de la base de datos de realtime database de firebase, se ha hecho uso de la gema firebase de ruby. Esta se instala con el comando `gem install firebase` y a continuación se pueden ver ejemplos de su uso:
 
@@ -63,7 +63,7 @@ equiposJSON = @database.get('equipos').body
 @database.delete('') 
 ```
 
-Además, si queremos hacer consultas en función de algún parámetro, tenemos que usar lo que firebase llama **reglas**. Estas, nos permite establecer ciertos atributos a las rutas en las que se basa la base de datos. Por ejemplo, si queremos permitir que en la ruta /equipos se pueda hacer una búsqueda por nombre, tenemos que irnos al apartado reglas de realtime database y añadir la siguiente regla:
+Además, si queremos hacer consultas en función de algún parámetro, tenemos que usar lo que firebase llama **reglas**. Estas nos permiten establecer ciertos atributos a las rutas en las que se basa la base de datos. Por ejemplo, si queremos permitir que en la ruta /equipos se pueda hacer una búsqueda por nombre, tenemos que irnos al apartado reglas de realtime database y añadir la siguiente regla:
 
 ```json
 "equipos": {

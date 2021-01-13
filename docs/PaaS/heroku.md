@@ -41,6 +41,26 @@ Como vemos en las dos imágenes anteriores, el commit anterior al 160ec588 si qu
 
 ![c_circle](../img/PaaS/c_circle.png)
 
+## Buildpack y Docker
+
+Como hemos visto en el despliegue anterior, en ningún momento se crea un buildpack particular, sino que usamos el que viene por defecto para ruby. Si miramos en la documentación del buildpack de ruby por defecto, vemos que considera que hay que tener lo siguiente:
+
+- Gemfile para las gemas de la aplicación.
+- Config.ru para indicar la aplicación rack.
+- Presencia de config/environment.rb y de config/application.rb para el caso de aplicaciones Rails.
+
+En mi caso, como uso el framework Sinatra no necesito esto último que he mencionado. Por tanto, como no necesito nada más que lo anterior para ejecutar mi aplicación en este momento, he decidido hacer uso del buildpack por defecto para ruby.
+
+Otra opción hubiera sido crear un archivo Dockerfile que me permitiera ejecutar la aplicación. Tras ello, deberíamos crear un archivo heroku.yml que contenga lo siguiente:
+
+```yml
+build:
+  docker:
+    web: Dockerfile
+```
+
+Si hacemos esto, nos permitiría mudarnos a otro PaaS que soporte Docker sin ningún esfuerzo extra. Sin embargo, no he visto adecuado realizarlo debido a que la simpleza de mi aplicación hace que en cualquier PaaS sea sencillo ejecutarla.
+
 ## Variables de entorno
 
 Lo siguiente que tenemos que hacer es establecer las variables de entorno a utilizar por heroku. Estas variables son las que se explicaron en la [documentación sobre la configuración distribuida](../microservicio/conf_logs.md), con algún cambio. En primer lugar, se ha eliminado la **variable PORT**, ya que heroku establece el puerto por nosotros, por lo que no es posible indicarle un puerto particular. Además, se han creado dos variables para la conexión con la base de datos, estas son **URI_DATABASE** y **SECRET_DATABASE**. Por tanto, se han modificado los métodos de configuración distribuida que expliqué en la documentación enlazada anteriormente para que tanto en etcd como en figaro se pruebe a pedir estas variables.
