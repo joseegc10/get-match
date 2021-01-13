@@ -129,13 +129,13 @@ get '/partido/resultado/:equipo/:jornada' do
             }
         )
     rescue => $error
-        status 400
+        status 404
         json({:status => $error.message})
     end
 end
 ```
 
-Como vemos, si tras la llamada al método correspondiente del manejador no obtenemos una excepción, devolvemos el código 200 (OK) y respondemos con el objeto json del partido. En el caso de que surja algún error, devolvemos un json con el mensaje de por qué se ha producido dicho error y el código 400 (bad request). Además, vemos que el error se almacena en la variable $error que posteriormente será usada por el logger.
+Como vemos, si tras la llamada al método correspondiente del manejador no obtenemos una excepción, devolvemos el código 200 (OK) y respondemos con el objeto json del partido. En el caso de que surja algún error, devolvemos un json con el mensaje de por qué se ha producido dicho error y el código 404 (not found). Además, vemos que el error se almacena en la variable $error que posteriormente será usada por el logger.
 
 **La estructura que he explicado para la HU1 se mantiene para el resto de HUs.** Es decir, en todas ellas devuelvo el objeto correspondiente en caso de ningún error y devuelvo el mensaje del error en caso de que salte alguna excepción. Por tanto, el código se ha desarrollado teniendo en cuenta esto, es decir, tras llamar al método correspondiente del manejador, se harán todas las comprobaciones en los sucesivos métodos que se llamen internamente, y si no obtenemos ninguna excepción significa que la operación se ha realizado correctamente.
 

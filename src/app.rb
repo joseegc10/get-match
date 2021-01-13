@@ -62,7 +62,7 @@ class MyApp < Sinatra::Base
                 }
             )
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -92,7 +92,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -119,7 +119,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -151,7 +151,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -191,7 +191,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -217,7 +217,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -248,7 +248,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -278,7 +278,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -302,7 +302,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -331,7 +331,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -360,7 +360,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -390,7 +390,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -410,7 +410,7 @@ class MyApp < Sinatra::Base
             status 200
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -426,7 +426,7 @@ class MyApp < Sinatra::Base
             status 200
             json({:status => "Partido añadido correctamente"})
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -442,7 +442,7 @@ class MyApp < Sinatra::Base
             status 200
             json({:status => "Jornada #{numJornada} añadida correctamente"})
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -455,7 +455,7 @@ class MyApp < Sinatra::Base
             status 200
             json({:status => "Liga reseteada correctamente"})
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end
@@ -470,7 +470,7 @@ class MyApp < Sinatra::Base
 
             json(hash)
         rescue => $error
-            status 400
+            status 404
             json({:status => $error.message})
         end
     end

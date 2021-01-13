@@ -56,6 +56,6 @@ En cuanto a la HU20, no se tenía una ruta que devolviera toda la información d
 
 Además, se ha creado la ruta /status que devuelve `{status:"OK"}`
 
-Por último, mostramos algunas pruebas del correcto despliegue en heroku. En mi API, vamos a devolver status 200 en el caso de que se realice todo de forma correcta, pudiendo ver que en todas las peticiones obtenemos este status:
+Por último, mostramos algunas pruebas del correcto despliegue en heroku. En mi API, vamos a devolver status 404 en el caso de que nos pidan un recurso que no existe o status 200 en el caso de que se realice todo de forma correcta. Podemos ver que en todas las peticiones obtenemos status 200:
 
 ![rutas](../img/PaaS/rutas.png)
