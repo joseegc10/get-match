@@ -35,7 +35,7 @@ Mostramos ahora un commit que no ha producido un deploy en heroku:
 
 ![cf_git](../img/PaaS/cf_git.png)
 
-![cf_her](../img/PaaS/cf_her.png)
+![cf_her](../img/PaaS/gf_her.png)
 
 Como vemos en las dos imágenes anteriores, el commit anterior al 160ec588 si que está en git pero no esta en heroku, ya que dicho commit anterior no pasó los tests de circleci, como vemos en la siguiente imagen:
 
