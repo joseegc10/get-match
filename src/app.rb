@@ -477,7 +477,6 @@ class MyApp < Sinatra::Base
 
     error 404 do
         @@logger.info("La ruta introducida no ha sido encontrada")
-		json({:status => 'Error: la ruta introducida no ha sido encontrada'})
     end
     
     after do

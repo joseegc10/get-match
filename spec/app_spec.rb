@@ -492,16 +492,4 @@ describe 'MyApp' do
             expect(last_response.ok?).to eq (true)
         end
     end
-
-    describe "error 404" do
-        it 'ruta no encontrada' do
-            get '/ruta/que/no/existe'
-
-            cuerpo = ({"status":"Error: la ruta introducida no ha sido encontrada"}).to_json
-
-            expect(last_response.body).to eq (cuerpo)
-            expect(last_response.content_type).to eq ('application/json')
-            expect(last_response.ok?).to eq (false)
-        end
-    end
 end
