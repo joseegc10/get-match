@@ -39,7 +39,7 @@ Por tanto, se ha creado una tarea en mi fichero [Rakefile](../../Rakefile), star
 
 ## Pruebas de prestaciones
 
-Por tanto, una vez he elegido Foreman como gestor de procesos, este me va a servir para saber cual es el numero de instancias de mi aplicación que es mejor levantar en Heroku. Esto se hacía con la orden `foreman start -c web=2` donde en este caso se estarían levantando dos instancias de mi aplicación.
+Por tanto, una vez he elegido Foreman como gestor de procesos, este me va a servir para saber cual es el número de instancias de mi aplicación que es mejor levantar en Heroku. Esto se hacía con la orden `foreman start -c web=2` donde en este caso se estarían levantando dos instancias de mi aplicación.
 
 Para poder saber que número es mejor, se ha usado la herramienta Jmeter. Lo que he hecho es añadir al plan de prueba un grupo de hilos y un reporte resumen que me permita saber las diferentes métricas. En cuanto al grupo de hilos, este consiste en 50 usuarios haciendo peticiones y se ha creado una petición HTTP para este grupo que lo que hace es una solicitud GET a la ruta /equipos. El elegir esta ruta pienso que representa una situación real de mi aplicación, pues en realidad todas las peticiones a mi API son muy similares, es decir, hacemos una petición más o menos del mismo tamaño a la base de datos y devolvemos el resultado. Por tanto, una vez está creada la liga, lo que podemos hacer es hacer peticiones a mi API para obtener información de dicha liga, por lo que cualquier ruta que hubiera elegido pienso que sería muy similar.
 
