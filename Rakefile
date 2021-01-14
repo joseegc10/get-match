@@ -8,7 +8,7 @@ task :install do
 end
 
 task :start do
-	exec "foreman start -c web=4"
+	exec "foreman start -c web=6"
 end
 
 task :stop do
