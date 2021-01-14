@@ -8,7 +8,7 @@ task :install do
 end
 
 task :start do
-	exec "foreman start -c worker=2"
+	exec "foreman start -c worker=1"
 end
 
 task :stop do
