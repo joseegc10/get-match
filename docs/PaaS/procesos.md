@@ -78,6 +78,6 @@ Como se puede observar, cuando aumentamos el número de instancias de 1 a 2, con
 
 Entre 3 y 4 ya existe muy poca diferencia, pues la media de latencia prácticamente es igual y en el resto de métricas pasa lo mismo. Por tanto, pienso que cualquiera de estos dos valores es adecuado.
 
-Por último, vemos que cuando subimos de 4 ya tanto la latenca media como la desviación estandar comienza a aumentar bastante, sobre todo en el paso de 5 a 6, por lo que estos valores quedan descartados.
+Por último, vemos que cuando subimos de 4 ya tanto la latencia media como la desviación estandar comienza a aumentar bastante, sobre todo en el paso de 5 a 6, por lo que estos valores quedan descartados.
 
 Como conclusión, cualquiera de los valores 3 y 4 son adecuados, pero decido quedarme con el valor 4 pues se reduce un poco la latencia media.

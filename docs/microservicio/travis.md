@@ -12,6 +12,6 @@ Lo anterior también se puede demostrar consultando el siguiente [enlace](https:
 
 Además, para comprobar que pasan los tests con el código actual, podemos fijarnos en CircleCI. La documentación sobre este sistema se puede consultar [aquí](../circleci/circleci.md). En él, cogemos la imagen Docker e intentamos pasar los test, que como puede verse en la siguiente imagen, pasan de forma correcta:
 
-![circleci](../img/microservicio/circleci.png)
+![circleci](../img/pasa_tests.png)
 
 Esto también se puede demostrar en el siguiente [enlace](https://github.com/joseegc10/get-match/runs/1539231869).
