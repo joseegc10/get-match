@@ -407,7 +407,7 @@ class MyApp < Sinatra::Base
             @@manejador.aniadeEquipo(jsonEquipo)
 
             response.headers['Location'] = URI.encode('/equipos/' + equipo.nombre)
-            status 200
+            status 201
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
             status 404
@@ -423,7 +423,7 @@ class MyApp < Sinatra::Base
             partido, numJornada = @@jsonify.jsonToPartido(jsonPartido, @@manejador.equiposLiga)
             @@manejador.aniadePartido(partido, jsonPartido, numJornada)
 
-            status 200
+            status 201
             json({:status => "Partido añadido correctamente"})
         rescue => $error
             status 404
@@ -439,7 +439,7 @@ class MyApp < Sinatra::Base
             jornada, numJornada = @@jsonify.jsonToJornada(jsonPartidos, @@manejador.equiposLiga)
             @@manejador.aniadeJornada(jornada, jsonPartidos, numJornada)
 
-            status 200
+            status 201
             json({:status => "Jornada #{numJornada} añadida correctamente"})
         rescue => $error
             status 404

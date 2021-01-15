@@ -316,7 +316,7 @@ describe 'MyApp' do
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.location).to eq ('/equipos/Valencia%20CF')
             expect(last_response.content_type).to eq ('application/json')
-            expect(last_response.ok?).to eq (true)
+            expect(last_response.ok?).to eq (false)
         end
 
         it 'equipo ya existente' do
@@ -365,7 +365,7 @@ describe 'MyApp' do
 
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.content_type).to eq ('application/json')
-            expect(last_response.ok?).to eq (true)
+            expect(last_response.ok?).to eq (false)
         end
 
         it 'partido con equipo ya existente' do
@@ -421,7 +421,7 @@ describe 'MyApp' do
 
             expect(last_response.body).to eq (cuerpo)
             expect(last_response.content_type).to eq ('application/json')
-            expect(last_response.ok?).to eq (true)
+            expect(last_response.ok?).to eq (false)
         end
 
         it 'equipo que no está en liga' do
