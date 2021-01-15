@@ -15,5 +15,5 @@ recurso:
   nombre: equipos
   metodo: POST
   payload:
-    - name: "prueba"
-    - players: ["jugador1","jugador2"]
+    name: "prueba"
+    players: ["jugador1","jugador2"]
