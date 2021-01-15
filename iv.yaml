@@ -13,7 +13,7 @@ make: rake
 PaaS: https://get-match.herokuapp.com/
 recurso:
   nombre: equipos
-  metodo: POST
+  metodo: PUT
   payload:
     name: "prueba"
     players: ["jugador1","jugador2"]
