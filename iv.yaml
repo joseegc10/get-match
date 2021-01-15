@@ -17,3 +17,4 @@ recurso:
   payload:
     name: "prueba"
     players: ["jugador1","jugador2"]
+  
