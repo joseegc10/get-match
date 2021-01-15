@@ -406,7 +406,7 @@ class MyApp < Sinatra::Base
             
             @@manejador.aniadeEquipo(jsonEquipo)
 
-            response.headers['Location'] = URI.encode('/equipos/' + equipo.nombre)
+            response['Location'] = URI.encode('/equipos/' + equipo.nombre)
             status 201
             json({:status => "Equipo añadido correctamente"})
         rescue => $error
