@@ -396,15 +396,20 @@ class MyApp < Sinatra::Base
     end
 
     # HU14: Como usuario, quiero poder añadir un equipo a una liga
-    put '/equipos' do
+    put '/equipos/:nombreEquipo' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
+            nombreEquipo = params['nombreEquipo']
             jsonEquipo = JSON.parse(request.body.read)
 
             ## Comprobamos que la estructura es correcta y se podría formar un equipo
             equipo = @@jsonify.jsonToEquipo(jsonEquipo)
             
             @@manejador.aniadeEquipo(jsonEquipo)
+
+            if nombreEquipo != equipo.nombre
+                raise 'El nombre del objeto solicitado no coincide con el de los datos recibidos'
+            end
 
             response['Location'] = URI.encode('/equipos/' + equipo.nombre)
             status 201
