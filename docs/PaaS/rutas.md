@@ -29,15 +29,15 @@ get '/ranking/goleadores'
 get '/ranking/clasificacion'
 # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
 get '/equipo/goles/:equipo'
-# HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
+# HU14: Como usuario, quiero poder añadir un equipo a una liga
 put '/equipos/:nombre'
 # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
-post '/partidos'
+put '/partidos/:numJornada/:equipo'
 # HU16: Como usuario, quiero poder añadir una jornada a una liga 
-post '/jornadas'
+put '/jornadas/:numJornada'
 ```
 
-Comentar que los métodos put y post se han corregido puesto que anteriormente en sus rutas se hacía uso de verbos, algo que no seguía las buenas prácticas. Ahora simplemente se menciona la entidad que vamos a añadir a la liga.
+Comentar que los métodos put se han corregido puesto que anteriormente en sus rutas se hacía uso de verbos, algo que no seguía las buenas prácticas. Ahora simplemente se menciona la entidad que vamos a añadir a la liga.
 
 Además, en este último desarrollo del proyecto se han añadido dos HUs que se han visto necesarias. Estas son:
 

@@ -289,21 +289,38 @@ class FirebaseDator < Dator
         jornadaJSON = @database.get("jornadas/#{numJornada}").body
 
         if respuestaCorrectaBD(jornadaJSON)
-            keys = jornadaJSON.keys
-            nuevoJSON = []
-            for k in keys
-                nuevoJSON << jornadaJSON[k]
-            end
-            jornada, num = @jsonify.jsonToJornada(nuevoJSON, equipos)
-            participan = jornada.participan(partido.local.nombre, partido.visitante.nombre)
-            if participan
-                raise ArgumentError, 'En el partido participa un equipo que ya esta en la jornada'
+            query = {
+                :orderBy => '"team1"',
+                :equalTo => '"' + partidoJSON["team1"] + '"'
+            }
+
+            queryJSON = @database.get("jornadas/#{numJornada}", query).body
+            queryJSON = queryJSON[queryJSON.keys[0]]
+
+            if respuestaCorrectaBD(queryJSON)
+                if queryJSON["team2"] != partidoJSON["team2"]
+                    raise ArgumentError, "El equipo #{queryJSON["team1"]} ya participa en la jornada con otro equipo"
+                end
+    
+                @database.set("jornadas/#{numJornada}", partidoJSON, query)
+            else
+                query = {
+                    :orderBy => '"team2"',
+                    :equalTo => '"' + partidoJSON["team2"] + '"'
+                }
+    
+                queryJSON = @database.get("jornadas/#{numJornada}", query).body
+                queryJSON = queryJSON[queryJSON.keys[0]]
+    
+                if respuestaCorrectaBD(queryJSON)
+                    raise ArgumentError, "El equipo #{queryJSON["team2"]} ya participa en la jornada con otro equipo"
+                else
+                    @database.push("jornadas/#{numJornada}", partidoJSON)
+                end
             end
         else
             raise ArgumentError, "La jornada #{numJornada} no existe"
         end
-
-        @database.push("jornadas/#{numJornada}", partidoJSON)
     end
     # Prueba: {"round":"Jornada 1","date":"2020-12-1","team1":"Valencia CF","team2":"Granada CF","score":{"ft":[0,1],"scorers":[{"team":"Granada CF","name":"Luis Milla"}]}}
 
@@ -320,18 +337,20 @@ class FirebaseDator < Dator
         # Comprobar que la jornada cumple las condiciones para poder ser añadida
         jornadaJSON_antes = @database.get("jornadas/#{numJornada}").body
 
+        # Si ya existe la jornada, la borramos para actualizarla
         if respuestaCorrectaBD(jornadaJSON_antes)
-            raise ArgumentError, "La jornada #{numJornada} ya existe"
-        else
-            jorn = Jornada.new()
-            for j in jornadaJSON
-                # Comprobamos que el partido se puede añadir
-                partido, jor = @jsonify.jsonToPartido(j, equipos)
-                jorn.aniadePartido(partido)
+            @database.delete("jornadas/#{numJornada}")
+        end
 
-                # Añaimos el partido a la jornada
-                @database.push("jornadas/#{numJornada}", j)
-            end
+        # Añado los partidos de la jornada
+        jorn = Jornada.new()
+        for j in jornadaJSON
+            # Comprobamos que el partido se puede añadir
+            partido, jor = @jsonify.jsonToPartido(j, equipos)
+            jorn.aniadePartido(partido)
+
+            # Añaimos el partido a la jornada
+            @database.push("jornadas/#{numJornada}", j)
         end
     end
     # Prueba: {[{"round":"Jornada 1","date":"2020-12-1","team1":"Real Madrid","team2":"Sevilla FC","score":{"ft":[1,0],"scorers":[{"team":"Real Madrid","name":"Sergio Ramos"}]}},{"round":"Jornada 1","date":"2020-12-2","team1":"FC Barcelona","team2":"Atletico Madrid","score":{"ft":[1,2],"scorers":[{"team":"FC Barcelona","name":"Leo Messi"},{"team":"Atletico Madrid","name":"Joao Felix"},{"team":"Atletico Madrid","name":"Joao Felix"}]}}]
