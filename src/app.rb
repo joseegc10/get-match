@@ -396,7 +396,7 @@ class MyApp < Sinatra::Base
     end
 
     # HU14: Como usuario, quiero poder añadir un equipo a una liga
-    post '/equipos' do
+    put '/equipos' do
         # curl --header "Content-Type: application/json" --request POST --data '{"name":"Valencia","code":"VAL","country":"Spain","players":["Gaya","Mangala"]}' http://localhost:9999/add/equipo
         begin
             jsonEquipo = JSON.parse(request.body.read)

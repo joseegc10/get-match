@@ -267,12 +267,11 @@ class FirebaseDator < Dator
         }
 
         buscaEquipoJSON = @database.get('equipos', query).body
-        p buscaEquipoJSON
 
         if respuestaCorrectaBD(buscaEquipoJSON)
-            raise ArgumentError, "El equipo #{equipoJSON["name"]} ya existe en la liga"
+            @database.set('equipos', equipoJSON, query)
         else
-            @database.push('equipos/', equipoJSON)
+            @database.push('equipos', equipoJSON)
         end
     end
 

@@ -309,7 +309,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/equipos', equipo.to_json
+            put '/equipos', equipo.to_json
 
             cuerpo = ({"status":"Equipo añadido correctamente"}).to_json
 
@@ -328,7 +328,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/equipos', equipo.to_json
+            put '/equipos', equipo.to_json
 
             cuerpo = ({"status":"El equipo ya existe en la liga"}).to_json
 
@@ -350,7 +350,7 @@ describe 'MyApp' do
                 ]
             }
 
-            post '/equipos', equipo.to_json
+            put '/equipos', equipo.to_json
 
             partido = {
                 "round"=>"Jornada 2",
