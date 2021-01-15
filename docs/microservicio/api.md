@@ -82,16 +82,16 @@ get '/ranking/clasificacion'
 # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
 get '/equipo/goles/:equipo'
 # HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
-post '/add/equipo'
+put '/equipos/:equipo'
 # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
-post '/add/partido'
+post '/partidos'
 # HU16: Como usuario, quiero poder añadir una jornada a una liga 
-post '/add/jornada'
+post '/jornadas'
 ```
 
-En cada ruta de las anteriores, las variables se marcan con :NOMBRE_VARIABLE. Además, se ha intentado mantener una especie de jerarquía, para que las rutas estén relacionadas y no sean 15 nombres de rutas independientes. Por ejemplo, podemos observar que los métodos post empiezan por /add/ y siguen con el nombre de la entidad que quieren añadir a la liga. Posteriormente, en los métodos de consultas, empezamos con el nombre de la entidad de la que queremos consultar algo, siguiendo con lo que queremos consultar y terminando con la variable o variables que identifican al objeto buscado.
+En cada ruta de las anteriores, las variables se marcan con :NOMBRE_VARIABLE. Además, se ha intentado mantener una especie de jerarquía, para que las rutas estén relacionadas y no sean 15 nombres de rutas independientes. Por ejemplo, en los métodos de consultas, empezamos con el nombre de la entidad de la que queremos consultar algo, seguimos con lo que queremos consultar y terminamos con la variable o variables que identifican al objeto buscado.
 
-En cuanto al tipo de método HTTP usado, en el caso de las rutas de consultas está bastante claro, pues se corresponden con el método get. En cuanto a las tres últimas HUs, podríamos usar post o put en función de lo que busquemos. En mi caso, he elegido post ya que solo quiero que el objeto se cree cuando no exista. En el caso que exista, devuelvo el error correspondiente.
+En cuanto al tipo de método HTTP usado, en el caso de las rutas de consultas está bastante claro, pues se corresponden con el método get. En cuanto a las tres últimas HUs, podríamos usar post o put en función de lo que busquemos. En mi caso, para los partidos y las jornadas he elegido post ya que solo quiero que el objeto se cree cuando no exista y en el caso que exista, devuelvo el error correspondiente. En cuanto a los equipos, a priori conozco el identificar de un equipo (su nombre) por lo que tengo que usar el método put, además de que si por ejemplo existe el equipo Real Madrid, si hacemos un put con este nombre, lo que quiero es que se actualice el equipo con la nueva información, para atender a fichajes o ventas de dicho equipo, en lugar de devolver un error como ocurría con los partidos o las jornadas.
 
 ## Tipos devueltos y estados
 

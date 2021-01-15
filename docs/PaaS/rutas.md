@@ -2,7 +2,7 @@
 
 Siguiendo los pasos del documento anterior, conseguimos acceder al API a través de [https://get-match.herokuapp.com/](https://get-match.herokuapp.com/).
 
-En cuanto al diseño del API, ya se explicó en el siguiente [documento](../microservicio/api.md) las diferentes capas de mi API y su correspondencia con las HUs, por lo que la información sobre el diseño se puede encontrar ahí. En resumen, establecíamos que en la API se han diseñado las siguientes rutas:
+En cuanto al diseño del API, se puede consultar en el siguiente [documento](../microservicio/api.md) las diferentes capas de mi API y su correspondencia con las HUs. En resumen, establecemos que en la API se han diseñado las siguientes rutas:
 
 ```ruby
 # HU1: Como usuario, quiero poder consultar el resultado de un partido
@@ -30,14 +30,14 @@ get '/ranking/clasificacion'
 # HU13: Como usuario, me gustaría poder consultar el número de goles que ha metido un equipo en una liga
 get '/equipo/goles/:equipo'
 # HU14: Como usuario, quiero poder añadir un equipo a una ligaanejadoranejador
-post '/equipos'
+put '/equipos/:nombre'
 # HU15: Como usuario, quiero poder añadir un partido a una jornada de la liga
 post '/partidos'
 # HU16: Como usuario, quiero poder añadir una jornada a una liga 
 post '/jornadas'
 ```
 
-Comentar que los métodos post se han corregido puesto que en sus rutas se hacía uso de verbos, algo que no seguía las buenas prácticas. Ahora simplemente se menciona la entidad que vamos a añadir a la liga.
+Comentar que los métodos put y post se han corregido puesto que anteriormente en sus rutas se hacía uso de verbos, algo que no seguía las buenas prácticas. Ahora simplemente se menciona la entidad que vamos a añadir a la liga.
 
 Además, en este último desarrollo del proyecto se han añadido dos HUs que se han visto necesarias. Estas son:
 

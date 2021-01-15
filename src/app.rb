@@ -404,12 +404,12 @@ class MyApp < Sinatra::Base
 
             ## Comprobamos que la estructura es correcta y se podría formar un equipo
             equipo = @@jsonify.jsonToEquipo(jsonEquipo)
-            
-            @@manejador.aniadeEquipo(jsonEquipo)
 
             if nombreEquipo != equipo.nombre
                 raise 'El nombre del objeto solicitado no coincide con el de los datos recibidos'
             end
+            
+            @@manejador.aniadeEquipo(jsonEquipo)
 
             response['Location'] = URI.encode('/equipos/' + equipo.nombre)
             status 201
